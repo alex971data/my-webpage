@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDs Search</title>
+    
+    <!-- Favicon - Add one of these options -->
+    <!--  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔗</text></svg>">  -->
+    <link rel="icon" type="image/png" href="favico/target.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .controls {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .controls label {
+            font-weight: bold;
+            margin-right: 5px;
+            white-space: nowrap;
+        }
+        
+        .controls select, .controls input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .controls select {
+            min-width: 120px;
+        }
+        
+        .search-input {
+            width: 140px;
+            transition: border-color 0.2s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+        }
+        
+        .alphabet-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 15px;
+        }
+        
+        .alphabet-btn {
+            background-color: #ffffff;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.2s;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .alphabet-btn:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .alphabet-btn.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .alphabet-btn.all {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        
+        .alphabet-btn.all:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        
+        .clear-filters {
+            background-color: #6c757d;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 0;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+        
+        .clear-filters:hover {
+            background-color: #545b62;
+        }
+        
+        .url-list {
+            padding: 20px;
+        }
+        
+        .url-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .url-item:hover {
+            background-color: #e3f2fd;
+            border-color: #007bff;
+            transform: translateY(-1px);
+        }
+        
+        .id-badge {
+            background-color: #6c757d;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            min-width: 35px;
+            text-align: center;
+            margin-right: 10px;
+            font-family: monospace;
+        }
+        
+        .priority-badge {
+            background-color: #007bff;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+            margin-right: 15px;
+        }
+        
+        .url-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            flex-grow: 1;
+        }
+        
+        .last-accessed {
+            font-size: 12px;
+            color: #666;  /* Change this color for default "X hours/days ago" text */
+            font-style: italic;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+        
+        .never-accessed {
+            color: #999;  /* Change this color for "Never accessed" text */
+        }
+        
+        .recently-accessed {
+            color: #28a745;  /* Change this color for recent activity (within 24 hours) */
+            font-weight: bold;
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+        
+        .results-count {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JDs Search</h1>
+        </div>
+        
+        <div class="controls">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="searchInput">Search:</label>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Names" autocomplete="off">
+                </div>
+                <div class="filter-group">
+                    <label for="priorityFilter">Priority:</label>
+                    <select id="priorityFilter">
+                        <option value="">All Priorities</option>
+                        <option value="1">1. Top Financial</option>
+                        <option value="2">2. Other Financial</option>
+                        <option value="3">3. Insurance</option>
+                        <option value="4">4. Top Others</option>
+                        <option value="5">5. Search Engine</option>
+                        <option value="6">6. LinkedIn</option>
+                        <option value="7">Priority 7</option>
+                        <option value="8">Priority 8</option>
+                        <option value="9">Priority 9</option>
+                        <option value="10">Priority 10</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="recentFilter">Recent:</label>
+                    <select id="recentFilter">
+                        <option value="">All</option>
+                        <option value="1">Now</option>
+                        <option value="60">Last hour</option>
+                        <option value="1440">24 hrs</option>
+                        <option value="4320">3 days</option>
+                        <option value="7200">5 days</option>
+                        <option value="10080">7 days</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+                <button class="clear-filters" id="clearFilters">Clear</button>
+            </div>
+            
+            <div class="alphabet-filter" id="alphabetFilter">
+                <span style="font-weight: bold; margin-right: 10px;">Filter:</span>				
+            </div>
+			
+        </div>
+        
+        <div class="url-list">
+            <div class="results-count" id="resultsCount"></div>
+            <div id="urlList"></div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // ADD YOUR URLs HERE - EDIT THIS SECTION
+        // ========================================
+        // Format: { id: 1, name: "Display Name", url: "https://website.com", priority: 1 }
+        
+       const urlData = [
+			{ id: 1, name: "Remitly", url: "https://careers.remitly.com/job-search-results/", priority: 3 },	
+			{ id: 2, name: "Bloomberg", url: "https://bloomberg.avature.net/careers/SearchJobs?_gl=1*1lxrntk*_gcl_au*MTE3NzA1ODk1Ny4xNzU2ODM4NDgx*_ga*NDg1NzM3MTExLjE3NTY4Mzg0ODI.*_ga_F61D775DS4*czE3NjA1NjAwNDkkbzYkZzAkdDE3NjA1NjAwNTYkajUzJGwwJGgw", priority: 1 },
+			{ id: 3, name: "JPMorgan Chase", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/requisitions?keyword=%23nutmeg&location=LONDON%2C+United+Kingdom&locationId=300000057005324&locationLevel=state&mode=location", priority: 1 },
+			{ id: 4, name: "Close Brothers Group", url: "https://www.closebrothers.com/careers", priority: 1 },
+			{ id: 5, name: "Crown Agents Bank", url: "https://careers.smartrecruiters.com/CrownAgentsBank", priority: 1 },
+			{ id: 6, name: "European Bank", url: "https://jobs.ebrd.com/search/?createNewAlert=false&q=&locationsearch=london", priority: 2 },
+			{ id: 7, name: "FCA", url: "https://fca.wd3.myworkdayjobs.com/FCA_Careers", priority: 2 },
+			{ id: 8, name: "Fidelity", url: "https://fil.wd3.myworkdayjobs.com/en-US/001?locationCountry=29247e57dbaf46fb855b224e03170bc7", priority: 1 },
+			{ id: 9, name: "First Direct", url: "https://mycareer.hsbc.com/en_GB/external/SearchJobs/?1017=%5B67222%5D&1017_format=812&1023=%5B1248550%5D&1023_format=913&listFilterMode=1&pipelineRecordsPerPage=10&#anchor__search-jobs", priority: 1 },
+			{ id: 10, name: "Fisher Investments", url: "https://www.fishercareers.com/search-jobs?_gl=1*szzscy*_gcl_aw*R0NMLjE3MjM1NTg4MzIuQ2owS0NRandpT3kxQmhEQ0FSSXNBREd2UW5CSHFlZGt0WmhOS2Y3MmVHeWxzbWs1TkJzT0hkOVJiaHoydXh1dVZXbjZzVWpRd21GSU1JUWFBdV9fRUFMd193Y0I.*_gcl_au*NDcwNTIzOTM1LjE3MjM1NTg4MzI.*_ga*MjAzMDQ0NDAwLjE3MjM1NTg4MzI.*_ga_L89E9NWVHN*MTcyMzU1ODgzMi4xLjEuMTcyMzU1ODg1OS4zMy4wLjA.", priority: 1 },
+			{ id: 11, name: "Goldman Sachs", url: "https://higher.gs.com/results?LOCATION=London&page=1&sort=RELEVANCE", priority: 1 },
+			{ id: 12, name: "HSBC Group", url: "https://mycareer.hsbc.com/en_GB/external/SearchJobs/?1017=%5B%2267222%22%5D&1017_table_86_3=2&1023=%5B1248547%5D&1023_format=913&listFilterMode=1&pipelineRecordsPerPage=10&#anchor__search-jobs", priority: 1 },
+			{ id: 13, name: "Jaja", url: "https://jaja.co.uk/careers/", priority: 2 },
+			{ id: 14, name: "Jefferies", url: "https://careers.jefferies.com/#en/sites/CX_1/jobs?location=London%2C+United+Kingdom&locationId=300000268117789&locationLevel=state&mode=location", priority: 1 },
+			{ id: 15, name: "Lazard", url: "https://www.lazard.com/careers/jobs/", priority: 1 },
+			{ id: 16, name: "Lloyds", url: "https://lbg.wd3.myworkdayjobs.com/en-US/lbg_Careers?source=lbgcareerssite&utm_source=cord&locations=373443f4ecb0019f0153a1f9f311ebe0&timeType=ae73709ec7900155fba9b76861087b00", priority: 1 },
+			{ id: 17, name: "BottomLine", url: "https://www.bottomline.com/about/careers/jobs", priority: 2 },
+			{ id: 18, name: "Macquarie", url: "https://recruitment.macquarie.com/en_US/careers/SearchJobs/?592=%5B887254%5D&592_format=9525&listFilterMode=1&jobRecordsPerPage=9&", priority: 1 },
+			{ id: 19, name: "Millennium", url: "https://career.mlp.com/careers?location=London%2C%20United%20Kingdom&pid=755952525581&domain=mlp.com&sort_by=relevance&triggerGoButton=false&triggerGoButton=true", priority: 1 },
+			{ id: 20, name: "Northern Trust", url: "https://ntrs.wd1.myworkdayjobs.com/northerntrust/?source=APPLICANT_SOURCE-3-356", priority: 1 },
+			{ id: 21, name: "Royal Bank of Canada", url: "https://jobs.rbc.com/ca/en/search-results?keywords=project", priority: 1 },
+			{ id: 22, name: "SS&C", url: "https://wd1.myworkdaysite.com/en-US/recruiting/ssctech/SSCTechnologies?locationCountry=29247e57dbaf46fb855b224e03170bc7", priority: 2 },
+			{ id: 23, name: "Standard Chartered", url: "https://jobs.standardchartered.com/content/Search-Result-Page/?employment_type=professional_hires&utm_source=careersite", priority: 3 },
+			{ id: 24, name: "T. Rowe Price", url: "https://troweprice.wd5.myworkdayjobs.com/en-US/TRowePriceInternational?source=Indeed&locations=0502b9cdc12e10010e49bf3d20220000", priority: 1 },
+			{ id: 25, name: "TSB", url: "https://career2.successfactors.eu/career?company=tsbukprod&lang=en_GB&site=VjItSmFoc1VqUEliN25XSmxwcnB4TjZ5QT09", priority: 2 },
+			{ id: 26, name: "UBS", url: "https://jobs.ubs.com/TGnewUI/Search/Home/HomeWithPreLoad?partnerid=25008&siteid=5012&PageType=searchResults&SearchType=linkquery&LinkID=3109#keyWordSearch=&locationSearch=", priority: 1 },
+			{ id: 27, name: "Vanguard", url: "https://www.vanguardjobs.com/job-search-results/?location=GB%2C%20England%2C%20London#", priority: 2 },
+			{ id: 28, name: "Wells Fargo", url: "https://www.wellsfargojobs.com/en/jobs/", priority: 1 },
+			{ id: 29, name: "3i Group Plc", url: "https://3i.wd103.myworkdayjobs.com/en-US/Intern_Career/jobs", priority: 1 },
+			{ id: 30, name: "Bank ABC", url: "https://europecareers.bank-abc.com/", priority: 1 },
+			{ id: 31, name: "Aberdeen Asset Management", url: "https://www.aberdeenplc.com/en-gb/careers", priority: 3 },
+			{ id: 32, name: "AKJ Fintech", url: "https://www.akj.com/career", priority: 3 },
+			{ id: 33, name: "Aberforth Partners LLP: Jobs | LinkedIn", url: "https://www.linkedin.com/company/aberforth-partners-llp/jobs/", priority: 6 },
+			{ id: 34, name: "ABN AMRO", url: "https://www.werkenbijabnamro.nl/vacatures/land/verenigd-koninkrijk", priority: 2 },
+			{ id: 35, name: "Abu Dhabi Commercial Bank", url: "https://adcbcareers.com/search/?createNewAlert=false&q=", priority: 3 },
+			{ id: 36, name: "Advent | LinkedIn", url: "https://www.linkedin.com/company/advent-international/jobs/", priority: 6 },
+			{ id: 37, name: "Ahli United Bank | LinkedIn", url: "https://www.linkedin.com/company/al-ahli-united-bank/jobs/", priority: 6 },
+			{ id: 38, name: "AJ Bell Group", url: "https://www.ajbell.co.uk/group/careers", priority: 1 },
+			{ id: 39, name: "Alfa Bank", url: "https://alphabanklondon.co.uk/careers", priority: 2 },
+			{ id: 40, name: "Allenby Capital: Jobs | LinkedIn", url: "https://www.linkedin.com/company/allenby-capital/jobs/", priority: 6 },
+			{ id: 41, name: "PGIM Careers", url: "https://jobs.pgim.com/", priority: 3 },
+			{ id: 42, name: "Allianz", url: "https://careers.allianz.com/global/en/search-results?p=ChIJdd4hrwug2EcRmSrV3Vo6llI&location=London%2C%20UK", priority: 3 },
+			{ id: 43, name: "Allied Irish Bank", url: "https://jobs.aib.ie/aib/go/AIB-UK/9605500/", priority: 2 },
+			{ id: 44, name: "Alquity Investment Management | LinkedIn", url: "https://www.linkedin.com/company/alquity-investment-management-limited/jobs/", priority: 6 },
+			{ id: 45, name: "Altium Capital Management", url: "https://altiumcap.com/open", priority: 2 },
+			{ id: 46, name: "Alvarez & Marsal", url: "https://careers.alvarezandmarsal.com/", priority: 2 },
+			{ id: 47, name: "RBC", url: "https://jobs.rbc.com/ca/en/uk-europe-ci", priority: 1 },
+			{ id: 48, name: "Schroders Careers", url: "https://ekbq.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/", priority: 1 },
+			{ id: 49, name: "IG Group", url: "https://ig.wd103.myworkdayjobs.com/EXT_IG", priority: 1 },
+			{ id: 50, name: "ANZ Bank Careers", url: "https://careers.anz.com/go/ANZ-Jobs-List/4739210/", priority: 2 },
+			{ id: 51, name: "Santander", url: "https://santander.wd3.myworkdayjobs.com/en-US/SantanderCareers?q=project&utm_source=santander.com&utm_medium=referral&utm_campaign=home&source=Santander_com", priority: 1 },
+			{ id: 52, name: "Bank of America", url: "https://careers.bankofamerica.com/en-us", priority: 1 },
+			{ id: 53, name: "Bank of England", url: "https://www.bankofengland.co.uk/careers", priority: 1 },
+			{ id: 54, name: "Barclays", url: "https://home.barclays/careers/", priority: 1 },
+			{ id: 55, name: "BlackRock", url: "https://careers.blackrock.com/", priority: 1 },
+			{ id: 56, name: "Aviva Investors", url: "https://careers.avivainvestors.com/", priority: 1 },
+			{ id: 57, name: "Royal London Group", url: "https://jobs.royallondon.com/", priority: 3 },
+			{ id: 58, name: "Aztec Group", url: "https://aztec.group/careers/current-vacancies/", priority: 2 },
+			{ id: 59, name: "Liberty Specialty Markets", url: "https://libertymutual1.avature.net/LSMCareers", priority: 3 },
+			{ id: 60, name: "Isio", url: "https://careers.isio.com/en-GB/jobs?utm_campaign=page_3534213_cta_26435572&utm_content=https%3A%2F%2Fcareers.isio.com&utm_medium=cta-block&utm_source=teamtailor-page", priority: 2 },
+			{ id: 61, name: "Fitch Group", url: "https://careers.fitch.group/search/?createNewAlert=false&q=&locationsearch=london&optionsFacetsDD_customfield2=&optionsFacetsDD_department=&optionsFacetsDD_customfield4=", priority: 1 },
+			{ id: 62, name: "Interpath Advisory", url: "https://apply.workable.com/interpath-advisory/", priority: 1 },
+			{ id: 63, name: "Wise", url: "https://wise.jobs/", priority: 1 },
+			{ id: 64, name: "Mastercard", url: "https://careers.mastercard.com/us/en", priority: 1 },
+			{ id: 65, name: "Keyrock", url: "https://jobs.ashbyhq.com/keyrock?locationId=d513fbeb-208d-454b-bf28-0b7b77d29240", priority: 1 },
+			{ id: 66, name: "SE", url: "https://careers.seic.com/global/en/home?_gl=1*uvat92*_gcl_au*MTg5MDY3MTUzNy4xNzU2ODQwMDkx*_ga*MTgwMjEzNTU2Ni4xNzU2ODQwNTMw*_ga_MT7NE92F3W*czE3NTc0NDg3MzkkbzMkZzEkdDE3NTc0NDg5MDYkajM0JGwwJGgw", priority: 3 },
+			{ id: 67, name: "BNY", url: "https://bnymellon.eightfold.ai/careers?start=0&pid=38051254&sort_by=hot", priority: 1 },
+			{ id: 68, name: "Citi", url: "https://jobs.citi.com/search-jobs", priority: 1 },
+			{ id: 69, name: "Clarksons", url: "https://www.clarksons.com/home/careers/experienced-professionals/", priority: 1 },
+			{ id: 70, name: "TrinityBridge", url: "https://www.trinitybridge.com/about-us/careers", priority: 3 },
+			{ id: 71, name: "Deutsche Bank", url: "https://careers.db.com/professionals/index?language_id=1#/professional/", priority: 1 },
+			{ id: 72, name: "ING", url: "https://careers.ing.com/en/search-jobs", priority: 1 },
+			{ id: 73, name: "Jupiter Asset Management", url: "https://jupiteram.com/global/en/corporate/working-at-jupiter/current-opportunities/", priority: 1 },
+			{ id: 74, name: "Legal & General", url: "https://careers.legalandgeneral.com/", priority: 1 },
+			{ id: 75, name: "CITIC CLSA", url: "https://citicclsa.wd3.myworkdayjobs.com/External?locations=107b208411a2102419a3f760cdba0000", priority: 3 },
+			{ id: 76, name: "Pantheon Ventures", url: "https://job-boards.greenhouse.io/pantheonpublic", priority: 3 },
+			{ id: 77, name: "AIG", url: "https://www.aig.com/home/careers", priority: 3 },
+			{ id: 78, name: "PayPal", url: "https://careers.pypl.com/home/", priority: 2 },
+			{ id: 79, name: "CMC Markets", url: "https://www.cmcmarkets.com/group/careers", priority: 2 },
+			{ id: 80, name: "OpenPayd", url: "https://www.openpayd.com/careers/", priority: 2 },
+			{ id: 81, name: "NatWest", url: "https://jobs.natwestgroup.com/search/jobs/in/country/united-kingdom", priority: 1 },
+			{ id: 82, name: "Ninety One", url: "https://externalcareers.ninetyone.com/experienced-hires/index.html?searchCriteria[0][key]=LOV10&searchCriteria[0][values][]=10948&searchCriteria[1][key]=Resultsperpage&searchCriteria[1][values][]=10", priority: 1 },
+			{ id: 83, name: "Nomura", url: "https://careers.nomura.com/Nomura/go/Career-Opportunities-Europe/9051100/", priority: 1 },
+			{ id: 84, name: "Societe Generale", url: "https://careers.societegenerale.com/en/job-offers/project-manager-director-24000OIO-en", priority: 1 },
+			{ id: 85, name: "Blackstone", url: "https://blackstone.wd1.myworkdayjobs.com/en-US/Blackstone_Careers", priority: 1 },
+			{ id: 86, name: "Man Group", url: "https://www.man.com/careers", priority: 1 },
+			{ id: 87, name: "ICBC Standard Bank", url: "https://icbccareers.resourcesolutions.com/gold/iapply/index.cfm?event=jobs.search", priority: 1 },
+			{ id: 88, name: "Jane Street", url: "https://www.janestreet.com/join-jane-street/open-roles/?type=experienced-candidates&location=london", priority: 1 },
+			{ id: 89, name: "FNZ", url: "https://fnz.wd3.myworkdayjobs.com/fnz_careers?locations=565ae0c72c9101d60d389ef01e005201&timeType=1b2d5d2e4ebc01a4c6f282d8fc296900", priority: 2 },
+			{ id: 90, name: "MUFG", url: "https://mufgub.wd3.myworkdayjobs.com/en-US/MUFG-Careers", priority: 1 },
+			{ id: 91, name: "Couts", url: "https://jobs.coutts.com/", priority: 1 },
+			{ id: 92, name: "Marex", url: "https://www.marex.com/careers/career-opportunities/", priority: 1 },
+			{ id: 93, name: "r3", url: "https://r3.com/careers/latest-job-opportunities/", priority: 2 },
+			{ id: 94, name: "TD Banking", url: "https://td.wd3.myworkdayjobs.com/en-US/TD_Bank_Careers?locationCountry=29247e57dbaf46fb855b224e03170bc7", priority: 2 },
+			{ id: 95, name: "Australian Super", url: "https://ejjl.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?location=LONDON%2C+United+Kingdom&locationId=300000036725316&locationLevel=city&mode=location&radius=25&radiusUnit=MI", priority: 1 },
+			{ id: 96, name: "Visa", url: "https://www.visa.co.uk/en_gb/jobs/", priority: 2 },
+			{ id: 97, name: "CinVen", url: "https://cinven.pinpointhq.com/", priority: 1 },
+			{ id: 98, name: "Apollo", url: "https://athene.wd5.myworkdayjobs.com/Apollo_Careers?locations=033362e37aa31001a2dd3350ad910000&locations=1586257e8e5310014892e2e5a24e0000", priority: 1 },
+			{ id: 99, name: "7iM", url: "https://careers.7im.co.uk/vacancies/vacancy-search-results.aspx", priority: 1 },
+			{ id: 100, name: "Aliance Bernsteins", url: "https://abglobal.wd1.myworkdayjobs.com/alliancebernsteincareers?locationCountry=29247e57dbaf46fb855b224e03170bc7", priority: 2 },
+			{ id: 101, name: "Allspring", url: "https://recruiting.ultipro.com/NEW1055NWPZ/JobBoard/419e3b86-b794-443a-bf5e-928e8ac8f78d/?q=&o=postedDateDesc&w=&wc=&we=&wpst=", priority: 1 },
+			{ id: 102, name: "Tandem Bank", url: "https://www.tandem.co.uk/career-job-board", priority: 2 },
+			{ id: 103, name: "Amundi Investment Solutions", url: "https://jobs.amundi.com/job/list-of-all-jobs.aspx?all=1&mode=list#ancrecontenu", priority: 1 },
+			{ id: 104, name: "AxA Investment", url: "https://jobs.axa/careersection/axa_im_external/moresearch.ftl", priority: 2 },
+			{ id: 105, name: "BnP PariBas", url: "https://group.bnpparibas/en/careers/all-job-offers/permanent/london", priority: 1 },
+			{ id: 106, name: "MoneyGram", url: "https://careers.moneygram.com/job-opportunities?title=&location=london&keyword=", priority: 2 },
+			{ id: 107, name: "Convera", url: "https://job-boards.eu.greenhouse.io/convera?offices%5B%5D=4010280101", priority: 2 },
+			{ id: 108, name: "Wester Union", url: "https://careers.westernunion.com/job-search-results/?keyword=london", priority: 2 },
+			{ id: 109, name: "Ameriprise Financial", url: "https://careers.ameriprise.com/search-jobs/?search=&country=United+Kingdom&location=London&brand=Columbia+Threadneedle+Investments&pagesize=20#results", priority: 1 },
+			{ id: 110, name: "EdenTree", url: "https://careers.benefactgroup.com/jobs?location=London&query=", priority: 2 },
+			{ id: 111, name: "Franklin Templeton", url: "https://franklintempleton.wd5.myworkdayjobs.com/Primary-External-1?_gl=1*153fl8k*_gcl_au*MTI4MTQ2Njk5MC4xNzU4Mzc0ODM0*_ga*MjA1MzcxMjU0MC4xNzU4Mzc0ODM0*_ga_15V8ZZDP8Z*czE3NTgzNzQ4MzMkbzEkZzEkdDE3NTgzNzQ5MjYkajU2JGwwJGgw&locationCountry=29247e57dbaf46fb855b224e03170bc7", priority: 2 },
+			{ id: 112, name: "Fulcrum Asset", url: "https://fulcrumasset.com/about-us/careers/", priority: 2 },
+			{ id: 113, name: "Impax Asset Management", url: "https://careers-impaxam.icims.com/jobs/search?ss=1&searchLocation=--London", priority: 2 },
+			{ id: 114, name: "Insight Investment", url: "https://www.insightinvestment.com/uk/nav/careers/vacancies/", priority: 1 },
+			{ id: 115, name: "J O Hambro", url: "https://perpetual.wd3.myworkdayjobs.com/en-US/JOHCM_External?locationRegionStateProvince=d9bbc5c4067649ecbf64c920864362a9", priority: 2 },
+			{ id: 116, name: "Jacobi", url: "https://jacobi.bamboohr.com/careers", priority: 2 },
+			{ id: 117, name: "MFS", url: "https://mfs.wd1.myworkdayjobs.com/MFS-Careers?locations=2c191d673ad410363966d1a6941a340c", priority: 2 },
+			{ id: 118, name: "wtw", url: "https://careers.wtwco.com/jobs/search?block_index=0&block_uid=7600248349f098afc1761a0e9804bba2&cities%5B%5D=London&country_codes%5B%5D=GB&location_uids=&page=1&page_row_index=1&page_row_uid=a64a2fc0ce22bb1452e35839488df51d&page_version_uid=82800f2d718ca09e85dc6b6d7aa58363&query=&search_cities=&search_country_codes=&search_dropdown_field_1_values=&sort=", priority: 2 },
+			{ id: 119, name: "Baker Street Advisors", url: "https://www.bakerstreetadvisors.com/careers", priority: 2 },
+			{ id: 120, name: "Loomi Sayies", url: "https://jobs.dayforcehcm.com/en-US/loomissayles/CANDIDATEPORTAL?locationString=London%2C+UK&distance=15&locationId=6&locationType=2", priority: 3 },
+			{ id: 121, name: "M&G", url: "https://mgpru.wd3.myworkdayjobs.com/mandgprudential?locations=4754e8be5c2a014172262e61de4f816b&timeType=f5bc852146ef01ebe1fc7a268d4f8200", priority: 1 },
+			{ id: 122, name: "Mornagan Stanley", url: "https://morganstanley.eightfold.ai/careers?source=mscom&start=0&pid=549793807896&sort_by=timestamp&filter_city=London", priority: 1 },
+			{ id: 123, name: "Natixis", url: "https://recrutement.natixis.com/en/our-job-offers?tax_city=london&external=false", priority: 1 },
+			{ id: 124, name: "AEW", url: "https://www.aew.com/about/careers#jobs", priority: 3 },
+			{ id: 125, name: "NedBank", url: "https://jobs.nedbank.co.za/search/?createNewAlert=false&q=&locationsearch=london", priority: 2 },
+			{ id: 126, name: "Pension Protection Fund", url: "https://www.ppf.co.uk/about-us/careers/Current-vacancies", priority: 2 },
+			{ id: 127, name: "Premier Miton", url: "https://www.premiermiton.com/about-us/people/vacancies/", priority: 2 },
+			{ id: 128, name: "Savils Investment", url: "https://careers.savillsim.com/jobs", priority: 1 },
+			{ id: 129, name: "Walter Scott", url: "https://www.walterscott.com/careers/", priority: 2 },
+			{ id: 130, name: "Balyansy", url: "https://bambusdev.my.site.com/s/", priority: 1 },
+			{ id: 131, name: "Munich Re", url: "https://www.munichre.com/en/careers/job-search.html#1930147607", priority: 3 },
+			{ id: 132, name: "Rothschild & Co", url: "https://www.rothschildandco.com/en/careers/experienced-professionals/vacancies/?division=&location=&corporate_grade=&worker_type=&city=1065", priority: 1 },
+			{ id: 133, name: "Phoenix Group", url: "https://fa-enor-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/jobs?lastSelectedFacet=LOCATIONS&selectedLocationsFacet=300000002576021", priority: 3 },
+			{ id: 134, name: "American Express", url: "https://aexp.eightfold.ai/careers?location=London%2C%20London%2C%20United%20Kingdom&pid=30778817&domain=aexp.com&sort_by=relevance&hl=en&triggerGoButton=false&triggerGoButton=true", priority: 2 },
+			{ id: 135, name: "BroadRidge", url: "https://broadridge.wd5.myworkdayjobs.com/en-US/Careers/jobs?locations=d6cda7bdc9de01949329f26e5731717d", priority: 1 },
+			{ id: 136, name: "State Street", url: "https://careers.statestreet.com/global/en/search-results?m=3&cityStateCountry=London%2C%20London%2C%20United%20Kingdom", priority: 1 },
+			{ id: 137, name: "Finastra", url: "https://finastra.wd3.myworkdayjobs.com/FINC?locations=8061b46e841701d3947ce6097a40d67d", priority: 2 },
+			{ id: 138, name: "Clearwater Analytics", url: "https://cwan.com/company/careers/?_location=london&_department=#results", priority: 2 },
+			{ id: 139, name: "CFC", url: "https://cfc.pinpointhq.com/#js-careers-jobs-block", priority: 3 },
+			{ id: 140, name: "Ki Insurance", url: "https://kipeople.my.salesforce-sites.com/recruit/fRecruit__ApplyJobList?portal=Ki+Careers", priority: 3 },
+			{ id: 141, name: "Hiscox", url: "https://hiscox.wd3.myworkdayjobs.com/en-US/Hiscox_External_Site?utm_source=cord&locations=f43e256868681001eacdc94d8b970000", priority: 3 },
+			{ id: 142, name: "MS Amlin", url: "https://msamlin.wd3.myworkdayjobs.com/en-US/MSAmlinCareers/details/ABS-Project-Portfolio-Manager_RQ12244-1?locations=6ad3ea69fefc01205f8e371b6401fea2&locations=7e5be4074a5910010557bed89d660000", priority: 3 },
+			{ id: 143, name: "Arch Captial Insurance", url: "https://archgroup.wd1.myworkdayjobs.com/en-US/careers?utm_source=cord&locationCountry=29247e57dbaf46fb855b224e03170bc7&locations=b7ece8a00915100122c99017e28b0000", priority: 3 },
+			{ id: 144, name: "Cord", url: "https://cord.com/candidate/search/281355?filters=%5B%7B%22a%22%3A%22sortBy%22%2C%22l%22%3A%22Posted%20date%22%2C%22v%22%3A%22recent_add%22%7D%2C%7B%22a%22%3A%22jobTitle%22%2C%22l%22%3A%22Project%20Manager%22%2C%22v%22%3A%22Project%20Manager%22%7D%2C%7B%22a%22%3A%22location%22%2C%22l%22%3A%22London%2C%20UK%22%2C%22v%22%3A%22London%2C%20UK%22%7D%2C%7B%22a%22%3A%22salary%22%2C%22l%22%3A%22Min%3A%20%C2%A375%2C000%22%2C%22v%22%3A75000%7D%2C%7B%22a%22%3A%22jobType%22%2C%22l%22%3A%22Permanent%22%2C%22v%22%3A%22Permanent%22%7D%5D&v=%7B%22label%22%3A%22Positions%22%2C%22value%22%3A%22listing%22%7D", priority: 5 },
+			{ id: 145, name: "efinancialcareers", url: "https://www.efinancialcareers.co.uk/jobs/project-manager/in-london%2C-uk?q=Project+manager&location=London%2C+UK&latitude=51.50721&longitude=-0.12758&countryCode=GB&locationPrecision=City&radius=40&radiusUnit=km&pageSize=15&currencyCode=GBP&language=en&jobSavedSearchId=07b498c0-e360-41ba-b15e-04edba636770&includeUnspecifiedSalary=true", priority: 5 },
+			{ id: 146, name: "Temenos", url: "https://temenos.csod.com/ux/ats/careersite/4/home?c=temenos&city=london&_gl=1*9vrvov*_gcl_au*MTMzOTI2MDQ4NS4xNzU5NTg2MTcx&_ga=2.41394145.2132367342.1759586171-979330097.1759586168", priority: 2 },
+			{ id: 147, name: "Bottomline", url: "https://www.bottomline.com/about/careers/jobs", priority: 2 },
+			{ id: 148, name: "Pacific Life", url: "https://pacificlife.wd1.myworkdayjobs.com/PacificLifeReCareers?locations=0041f683bcec010098d8adaeeccb0000", priority: 3 },	
+			{ id: 149, name: "DBS", url: "https://www.dbs.com/careers/jobs.page?title=london&market=United%20Kingdom", priority: 1 },	
+			{ id: 150, name: "Shawbrook Bank", url: "https://careers.shawbrook.co.uk/en/jobs", priority: 1 },
+			{ id: 151, name: "Saxo Bank", url: "https://www.home.saxo/about-us/careers", priority: 2 },				
+			{ id: 152, name: "Peperstone Spread Betting", url: "https://apply.workable.com/pepperstone/#jobs", priority: 2 },				
+			{ id: 153, name: "Capital", url: "https://careers.capital.com/#job-openings", priority: 2 },				
+			{ id: 154, name: "Interactive Broker", url: "https://job-boards.greenhouse.io/ibkr?offices%5B%5D=4014218002", priority: 2 },				
+			{ id: 155, name: "e-Toro", url: "https://www.etoro.com/about/careers/#join-our-team", priority: 2 },							
+			{ id: 156, name: "Couttus", url: "https://jobs.coutts.com/", priority: 1 },				
+			{ id: 157, name: "Pictet", url: "https://career012.successfactors.eu/career?company=banquepict&career%5fns=job%5flisting%5fsummary&navBarLevel=JOB%5fSEARCH&_s.crb=REroq1EEQPaKAm59xEKV0RF79RtcJ63R%2fw0pcqtCgUI%3d", priority: 2 },
+			{ id: 158, name: "Arbuthnot Latham", url: "https://careers.arbuthnotlatham.co.uk/", priority: 1 },				
+			{ id: 159, name: "Freetrade", url: "https://freetrade.io/careers?ashby_location_id=f97aa4ef-38c2-4958-b88c-20bc05f2986a", priority: 2 },			
+			{ id: 160, name: "Monzo", url: "https://monzo.com/careers#jobs", priority: 1 },				
+			{ id: 161, name: "Revolut", url: "https://www.revolut.com/careers/?city=London", priority: 1 },
+			{ id: 162, name: "Starling", url: "https://www.starlingbank.com/careers/#jobs", priority: 1 },
+			{ id: 163, name: "Tide", url: "https://job-boards.greenhouse.io/tide?offices%5B%5D=4052076003", priority: 2 },
+			{ id: 164, name: "Virgin Money", url: "https://careers.virginmoney.com/search-jobs/London%2C%20England/1382/4/2635167-6269131-2648110-2643743/51x50853/-0x12574/50/2", priority: 2 },
+			{ id: 165, name: "Zopa Bank", url: "https://careers.zopa.com/work-with-us?location=london", priority: 2 },
+			{ id: 166, name: "Google", url: "https://www.google.com/about/careers/applications/jobs/results?location=London%2C%20UK#!t=jo&jid=127025001&", priority: 4 },
+			{ id: 167, name: "Liberty Mutual", url: "https://libertymutual1.avature.net/LSMCareers/SearchJobs/?locationSearch=232%7C%7C%7CLondon%2C%20UK&listFilterMode=1&folderRecordsPerPage=6&", priority: 3 },
+			{ id: 168, name: "Titanbay", url: "https://www.titanbay.com/careers", priority: 2 },
+			{ id: 169, name: "Phoenix Group", url: "https://fa-enor-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/jobs?location=London%2C+England%2C+United+Kingdom&locationId=300000002576021&locationLevel=city&mode=location&radius=25&radiusUnit=MI", priority: 2 },			
+			{ id: 170, name: "TIPICAP", url: "https://tp.wd3.myworkdayjobs.com/en-US/TP-ICAP?utm_source=cord&locations=46da1ada662e0100b8cb821a03560000&timeType=d8a05bbf0c5b10f88dde8187ebd44077", priority: 2 },			
+			{ id: 171, name: "MI5", url: "https://recruitmentservices.applicationtrack.com/vx/lang-en-GB/mobile-0/appcentre-a18/candidate/jobboard/vacancy/1", priority: 4 },			
+			{ id: 172, name: "S&P Global", url: "https://careers.spglobal.com/jobs?location=London,%20Greater%20London,%20United%20Kingdom&woe=7&regionCode=GB&stretchUnit=MILES&stretch=10&page=4", priority: 1 },			
+			{ id: 173, name: "Canada Life Limited", url: "https://www.canadalife.co.uk/our-company/careers/", priority: 1 },			
+			{ id: 174, name: "Url Name", url: "https://www.efinancialcareers.co.uk/jobs/project-manager/in-london%2C-uk?q=Project+manager&location=London%2C+UK&latitude=51.50721&longitude=-0.12758&countryCode=GB&locationPrecision=City&radius=40&radiusUnit=km&pageSize=15&currencyCode=GBP&language=en&jobSavedSearchId=07b498c0-e360-41ba-b15e-04edba636770&includeUnspecifiedSalary=true", priority: 2 },			
+			{ id: 175, name: "Otta", url: "https://app.welcometothejungle.com/", priority: 5 },			
+			{ id: 176, name: "GlassDoor", url: "https://www.glassdoor.co.uk/Job/london-england-project-manager-jobs-SRCH_IL.0,14_IC2671300_KO15,30.htm?fromAge=7", priority: 5 },			
+			{ id: 177, name: "Gov jobs", url: "https://www.civilservicejobs.service.gov.uk/csr/index.cgi", priority: 4 },			
+			{ id: 178, name: "Ministry of Justice", url: "https://jobs.justice.gov.uk/careers", priority: 4 },			
+			{ id: 179, name: "Janus Handerson", url: "https://jobs.janushenderson.com/search/?createNewAlert=false&q=london&optionsFacetsDD_customfield3=&optionsFacetsDD_country=&optionsFacetsDD_department=", priority: 1 },						
+			{ id: 180, name: "GCHQ", url: "https://www.gchq-careers.co.uk/", priority: 4 },	
+			{ id: 181, name: "Url Name", url: "https://url", priority: 2 },	
+			{ id: 182, name: "Url Name", url: "https://url", priority: 2 },	
+			{ id: 183, name: "Url Name", url: "https://url", priority: 2 },	
+			{ id: 184, name: "Url Name", url: "https://url", priority: 2 },				
+			];
+        
+        // ========================================
+        // DON'T EDIT BELOW THIS LINE
+        // ========================================
+        
+        const urlList = document.getElementById('urlList');
+        const priorityFilter = document.getElementById('priorityFilter');
+        const recentFilter = document.getElementById('recentFilter');
+        const alphabetFilter = document.getElementById('alphabetFilter');
+        const clearFiltersBtn = document.getElementById('clearFilters');
+        const resultsCount = document.getElementById('resultsCount');
+        const searchInput = document.getElementById('searchInput');
+        
+        let selectedLetter = '';
+        let searchTerm = '';
+        
+        // Get last accessed time for a URL
+        function getLastAccessed(id) {
+            const lastAccessed = localStorage.getItem(`url_${id}_last_accessed`);
+            return lastAccessed ? new Date(lastAccessed) : null;
+        }
+        
+        // Set last accessed time for a URL
+        function setLastAccessed(id) {
+            localStorage.setItem(`url_${id}_last_accessed`, new Date().toISOString());
+        }
+        
+        // Format time difference for display
+        function formatTimeSince(date) {
+            if (!date) return 'Never accessed';
+            
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMinutes = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+            
+            if (diffMinutes < 1) return 'Just now';
+            if (diffMinutes < 60) return `${diffMinutes}m ago`;
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+            
+            return date.toLocaleDateString();
+        }
+        
+        // Determine CSS class based on last accessed time
+        function getAccessedClass(date) {
+            if (!date) return 'never-accessed';
+            
+            const now = new Date();
+            const diffMs = now - date;
+            const diffHours = Math.floor(diffMs / 3600000);
+            
+            if (diffHours < 24) return 'recently-accessed';
+            return '';
+        }
+        
+        // Initialize alphabet filter
+        function initAlphabetFilter() {
+            // Create "All" button
+            const allBtn = document.createElement('button');
+            allBtn.className = 'alphabet-btn all active';
+            allBtn.textContent = 'All';
+            allBtn.addEventListener('click', () => filterByLetter(''));
+            alphabetFilter.appendChild(allBtn);
+            
+            // Create letter buttons A-Z
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                const btn = document.createElement('button');
+                btn.className = 'alphabet-btn';
+                btn.textContent = letter;
+                btn.addEventListener('click', () => filterByLetter(letter));
+                alphabetFilter.appendChild(btn);
+            }
+            
+            // Create 0-9 button for numbers
+            const numbersBtn = document.createElement('button');
+            numbersBtn.className = 'alphabet-btn';
+            numbersBtn.textContent = '0-9';
+            numbersBtn.addEventListener('click', () => filterByLetter('0-9'));
+            alphabetFilter.appendChild(numbersBtn);
+        }
+        
+        function filterByLetter(letter) {
+            selectedLetter = letter;
+            
+            // Update active state of buttons
+            document.querySelectorAll('.alphabet-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (letter === '') {
+                document.querySelector('.alphabet-btn.all').classList.add('active');
+            } else {
+                document.querySelector(`.alphabet-btn:not(.all):not(.clear-filters)`).parentNode
+                    .querySelector(`[textContent="${letter}"]`)?.classList.add('active');
+                // Find and activate the correct button
+                Array.from(document.querySelectorAll('.alphabet-btn')).find(btn => 
+                    btn.textContent === letter
+                )?.classList.add('active');
+            }
+            
+            renderUrls();
+        }
+        
+        function sortByName(urls) {
+            return urls.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+        }
+        
+        function filterByPriority(urls, priority) {
+            if (!priority) return urls;
+            return urls.filter(item => item.priority == priority);
+        }
+        
+        function filterByRecent(urls, filterValue) {
+            if (!filterValue) return urls;
+            
+            // Special case for "never accessed"
+            if (filterValue === 'never') {
+                return urls.filter(item => {
+                    const lastAccessed = getLastAccessed(item.id);
+                    return !lastAccessed;
+                });
+            }
+            
+            // For time-based filters
+            const minutesLimit = parseInt(filterValue);
+            const now = new Date();
+            return urls.filter(item => {
+                const lastAccessed = getLastAccessed(item.id);
+                if (!lastAccessed) return false;
+                
+                const diffMs = now - lastAccessed;
+                const diffMinutes = Math.floor(diffMs / 60000);
+                
+                return diffMinutes <= minutesLimit;
+            });
+        }
+        
+        function filterByAlphabet(urls, letter) {
+            if (!letter) return urls;
+            
+            if (letter === '0-9') {
+                return urls.filter(item => /^[0-9]/.test(item.name));
+            }
+            
+            return urls.filter(item => 
+                item.name.toLowerCase().startsWith(letter.toLowerCase())
+            );
+        }
+        
+        function filterBySearch(urls, search) {
+            if (!search) return urls;
+            
+            const searchLower = search.toLowerCase();
+            return urls.filter(item => 
+                item.name.toLowerCase().includes(searchLower)
+            );
+        }
+        
+        function renderUrls() {
+            const selectedPriority = priorityFilter.value;
+            const selectedRecent = recentFilter.value;
+            let filteredUrls = urlData;
+            
+            // Apply filters in order
+            filteredUrls = filterByPriority(filteredUrls, selectedPriority);
+            filteredUrls = filterByRecent(filteredUrls, selectedRecent);
+            filteredUrls = filterByAlphabet(filteredUrls, selectedLetter);
+            filteredUrls = filterBySearch(filteredUrls, searchTerm);
+            filteredUrls = sortByName(filteredUrls);
+            
+            // Update results count
+            const totalUrls = urlData.length;
+            let filterText = `Showing ${filteredUrls.length} of ${totalUrls} URLs`;
+            
+            if (searchTerm) {
+                filterText += ` matching "${searchTerm}"`;
+            }
+            
+            resultsCount.textContent = filterText;
+            
+            urlList.innerHTML = '';
+            
+            if (filteredUrls.length === 0) {
+                urlList.innerHTML = '<div class="empty-message">No URLs match the selected filters</div>';
+                return;
+            }
+            
+            filteredUrls.forEach(item => {
+                const urlItem = document.createElement('div');
+                urlItem.className = 'url-item';
+                urlItem.title = `Click to open: ${item.url}`;
+                
+                const lastAccessed = getLastAccessed(item.id);
+                const timeText = formatTimeSince(lastAccessed);
+                const accessedClass = getAccessedClass(lastAccessed);
+                
+                urlItem.innerHTML = `
+                    <span class="id-badge">${item.id}</span>
+                    <span class="priority-badge">${item.priority}</span>
+                    <span class="url-name">${item.name}</span>
+                    <span class="last-accessed ${accessedClass}">${timeText}</span>
+                `;
+                
+                urlItem.addEventListener('click', () => {
+                    setLastAccessed(item.id);
+                    window.open(item.url, '_blank');
+                    // Update the display immediately
+                    setTimeout(() => {
+                        renderUrls();
+                    }, 100);
+                });
+                
+                urlList.appendChild(urlItem);
+            });
+        }
+        
+        function clearAllFilters() {
+            priorityFilter.value = '';
+            recentFilter.value = '';
+            selectedLetter = '';
+            searchTerm = '';
+            searchInput.value = '';
+            
+            // Reset alphabet buttons
+            document.querySelectorAll('.alphabet-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.alphabet-btn.all').classList.add('active');
+            
+            renderUrls();
+        }
+        
+        function handleSearch() {
+            searchTerm = searchInput.value.trim();
+            renderUrls();
+        }
+        
+        // Event listeners
+        priorityFilter.addEventListener('change', renderUrls);
+        recentFilter.addEventListener('change', renderUrls);
+        clearFiltersBtn.addEventListener('click', clearAllFilters);
+        searchInput.addEventListener('input', handleSearch);
+        searchInput.addEventListener('keyup', handleSearch);
+        
+        // Initialize
+        initAlphabetFilter();
+        renderUrls();
+    </script>
+</body>
+</html>
