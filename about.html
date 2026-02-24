@@ -1,1 +1,302 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDs Search</title>
+    
+    <!-- Favicon - Add one of these options -->
+    <!--  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔗</text></svg>">  -->
+    <link rel="icon" type="image/png" href="favico/target.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .controls {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .controls label {
+            font-weight: bold;
+            margin-right: 5px;
+            white-space: nowrap;
+        }
+        
+        .controls select, .controls input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .controls select {
+            min-width: 120px;
+        }
+        
+        .search-input {
+            width: 140px;
+            transition: border-color 0.2s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+        }
+        
+        .alphabet-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 15px;
+        }
+        
+        .alphabet-btn {
+            background-color: #ffffff;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.2s;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .alphabet-btn:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .alphabet-btn.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .alphabet-btn.all {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        
+        .alphabet-btn.all:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        
+        .clear-filters {
+            background-color: #6c757d;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 0;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+        
+        .clear-filters:hover {
+            background-color: #545b62;
+        }
+        
+        .url-list {
+            padding: 20px;
+        }
+        
+        .url-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .url-item:hover {
+            background-color: #e3f2fd;
+            border-color: #007bff;
+            transform: translateY(-1px);
+        }
+        
+        .id-badge {
+            background-color: #6c757d;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            min-width: 35px;
+            text-align: center;
+            margin-right: 10px;
+            font-family: monospace;
+        }
+        
+        .priority-badge {
+            background-color: #007bff;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+            margin-right: 15px;
+        }
+        
+        .url-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            flex-grow: 1;
+        }
+        
+        .last-accessed {
+            font-size: 12px;
+            color: #666;  /* Change this color for default "X hours/days ago" text */
+            font-style: italic;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+        
+        .never-accessed {
+            color: #999;  /* Change this color for "Never accessed" text */
+        }
+        
+        .recently-accessed {
+            color: #28a745;  /* Change this color for recent activity (within 24 hours) */
+            font-weight: bold;
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+        
+        .results-count {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JDs Search</h1>
+        </div>
+        
+        <div class="controls">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="searchInput">Search:</label>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Names" autocomplete="off">
+                </div>
+                <div class="filter-group">
+                    <label for="priorityFilter">Category:</label>
+                    <select id="priorityFilter">
+                        <option value="">All Categories</option>
+                        <option value="1">1. Top Financial</option>
+                        <option value="2">2. Other Financial</option>
+                        <option value="3">3. Insurance</option>
+                        <option value="4">4. Top Others</option>
+                        <option value="5">5. Search Engine</option>
+                        <option value="6">6. LinkedIn</option>
+                        <option value="7">7. Goverment</option>
+                        <option value="8">8. Others</option>
+                        <option value="9">Category 9</option>
+                        <option value="10">Category 10</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="recentFilter">Recent:</label>
+                    <select id="recentFilter">
+                        <option value="">All</option>
+                        <option value="1">Now</option>
+                        <option value="60">Last hour</option>
+                        <option value="1440">24 hrs</option>
+                        <option value="4320">3 days</option>
+                        <option value="7200">5 days</option>
+                        <option value="10080">7 days</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+                <button class="clear-filters" id="clearFilters">Clear</button>
+            </div>
+            
+            <div class="alphabet-filter" id="alphabetFilter">
+                <span style="font-weight: bold; margin-right: 10px;">Filter:</span>				
+            </div>
+			
+        </div>
+        
+        <div class="url-list">
+            <div class="results-count" id="resultsCount"></div>
+            <div id="urlList"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
