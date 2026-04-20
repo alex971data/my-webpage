@@ -1,405 +1,881 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Euromillions Tracker</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-sans)}
-.app{padding:1rem 0}
-.tabs{display:flex;gap:8px;margin-bottom:1.5rem;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:0}
-.tab{padding:8px 16px;font-size:14px;cursor:pointer;border:none;background:none;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px}
-.tab.active{color:var(--color-text-primary);border-bottom:2px solid #534AB7;font-weight:500}
-.panel{display:none}.panel.active{display:block}
-.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1rem}
-.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1.5rem}
-.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.875rem;text-align:center}
-.metric-label{font-size:12px;color:var(--color-text-secondary);margin-bottom:4px}
-.metric-value{font-size:22px;font-weight:500;color:var(--color-text-primary)}
-.section-title{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:0.75rem}
-.ball{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;font-size:13px;font-weight:500;flex-shrink:0}
-.ball-main{background:#EEEDFE;color:#3C3489;border:1px solid #AFA9EC}
-.ball-star{background:#FAEEDA;color:#633806;border:1px solid #EF9F27}
-.balls-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.freq-bar-wrap{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.freq-label{width:36px;text-align:center}
-.freq-bar-bg{flex:1;background:var(--color-background-secondary);border-radius:4px;height:20px;overflow:hidden}
-.freq-bar{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:12px;color:#fff;transition:width 0.4s}
-.freq-count{font-size:12px;color:var(--color-text-secondary);min-width:40px;text-align:right}
-.pair-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
-.pair-item:last-child{border-bottom:none}
-.pair-count{margin-left:auto;font-size:13px;color:var(--color-text-secondary)}
-.draw-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary);flex-wrap:wrap}
-.draw-row:last-child{border-bottom:none}
-.draw-date{font-size:13px;color:var(--color-text-secondary);min-width:90px}
-.del-btn{margin-left:auto;background:none;border:none;cursor:pointer;color:var(--color-text-tertiary);font-size:16px;padding:0 4px}
-.del-btn:hover{color:#E24B4A}
-input[type=number]{width:52px;text-align:center;padding:4px}
-.input-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
-.input-section{margin-bottom:1rem}
-.input-section-label{font-size:13px;color:var(--color-text-secondary);margin-bottom:6px}
-.add-btn{padding:8px 20px;font-size:14px}
-.cold-badge{font-size:11px;background:#FAECE7;color:#993C1D;border-radius:4px;padding:2px 6px;margin-left:4px}
-.hot-badge{font-size:11px;background:#EEEDFE;color:#3C3489;border-radius:4px;padding:2px 6px;margin-left:4px}
-.overdue-badge{font-size:11px;background:#FCEBEB;color:#A32D2D;border-radius:4px;padding:2px 6px;margin-left:4px}
-.error{font-size:13px;color:#E24B4A;margin-top:6px;min-height:18px}
-.empty{text-align:center;padding:2rem;color:var(--color-text-secondary);font-size:14px}
-.draws-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem}
-.clear-btn{font-size:12px;padding:4px 10px;color:#E24B4A;border-color:#E24B4A}
-.overdue-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
-.overdue-row:last-child{border-bottom:none}
-.overdue-draws{font-size:13px;color:var(--color-text-secondary);margin-left:auto}
-</style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-<div class="app">
-  <h2 class="sr-only">Euromillions draw statistics tracker</h2>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  .header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .header h1 { font-size: 24px; font-weight: bold; }
+  .header p { font-size: 13px; margin-top: 4px; opacity: 0.85; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 12px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #6c757d;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    font-family: Arial, sans-serif;
+  }
+
+  .tab:hover { background-color: #e9ecef; color: #007bff; }
+  .tab.active { color: #007bff; border-bottom: 3px solid #007bff; background-color: white; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Controls / form areas */
+  .controls {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .field-group {
+    margin-bottom: 15px;
+  }
+
+  .field-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .field-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  input[type=number], input[type=date] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.2s;
+  }
+
+  input[type=number] { width: 62px; text-align: center; }
+  input[type=date] { width: auto; }
+
+  input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+  }
+
+  .btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+    font-weight: bold;
+  }
+
+  .btn-primary { background-color: #007bff; color: white; }
+  .btn-primary:hover { background-color: #0069d9; }
+
+  .btn-secondary { background-color: #6c757d; color: white; }
+  .btn-secondary:hover { background-color: #545b62; }
+
+  .btn-danger { background-color: #dc3545; color: white; }
+  .btn-danger:hover { background-color: #c82333; }
+
+  .btn-outline {
+    background-color: white;
+    color: #007bff;
+    border: 2px solid #007bff;
+  }
+  .btn-outline:hover { background-color: #007bff; color: white; }
+
+  .btn-sm { padding: 5px 12px; font-size: 12px; }
+
+  .error-msg {
+    font-size: 13px;
+    color: #dc3545;
+    margin-top: 8px;
+    min-height: 18px;
+    font-style: italic;
+  }
+
+  /* Content area */
+  .content {
+    padding: 20px;
+  }
+
+  /* Metric cards */
+  .metric-grid {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .metric {
+    flex: 1;
+    min-width: 120px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .metric-value {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #007bff;
+  }
+
+  /* Cards for each stat block */
+  .stat-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* Balls */
+  .ball {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .ball-main {
+    background-color: #cce5ff;
+    color: #004085;
+    border: 1px solid #99caff;
+  }
+
+  .ball-star {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffd966;
+  }
+
+  .balls-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .star-sep {
+    color: #ffc107;
+    font-size: 14px;
+    padding: 0 2px;
+  }
+
+  /* Frequency bars */
+  .freq-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+
+  .freq-label { width: 40px; display: flex; justify-content: center; }
+
+  .freq-bar-bg {
+    flex: 1;
+    background-color: #e9ecef;
+    border-radius: 3px;
+    height: 22px;
+    overflow: hidden;
+  }
+
+  .freq-bar {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
+    transition: width 0.4s ease;
+  }
+
+  .freq-count {
+    font-size: 12px;
+    color: #6c757d;
+    min-width: 36px;
+    text-align: right;
+  }
+
+  /* Pairs / triplets */
+  .pair-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .pair-item:last-child { border-bottom: none; }
+
+  .pair-count {
+    margin-left: auto;
+    background-color: #007bff;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+  }
+
+  /* Draw rows (history) */
+  .draw-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    transition: all 0.2s;
+  }
+
+  .draw-row:hover {
+    background-color: #e3f2fd;
+    border-color: #007bff;
+  }
+
+  .draw-date {
+    font-size: 13px;
+    color: #6c757d;
+    font-style: italic;
+    min-width: 95px;
+  }
+
+  .del-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #adb5bd;
+    font-size: 18px;
+    padding: 0 4px;
+    line-height: 1;
+    transition: color 0.2s;
+    font-family: Arial, sans-serif;
+  }
+  .del-btn:hover { color: #dc3545; }
+
+  /* Overdue */
+  .overdue-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .overdue-row:last-child { border-bottom: none; }
+
+  .overdue-ago { font-size: 13px; color: #495057; }
+
+  .overdue-badge {
+    font-size: 11px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-weight: bold;
+  }
+
+  .overdue-count {
+    margin-left: auto;
+    font-size: 12px;
+    color: #6c757d;
+    font-style: italic;
+  }
+
+  /* Results count bar */
+  .results-count {
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #495057;
+    margin-bottom: 15px;
+  }
+
+  .draws-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .import-export {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .import-export-label {
+    font-size: 13px;
+    color: #6c757d;
+    font-weight: bold;
+  }
+
+  .empty-message {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 40px 20px;
+  }
+
+  .notice {
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #856404;
+    margin-bottom: 15px;
+  }
+
+  /* Last draw preview */
+  .last-draw-box {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+    display: none;
+  }
+
+  .last-draw-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #6c757d;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>★ Euromillions Tracker</h1>
+    <p>Draw history &amp; statistics</p>
+  </div>
 
   <div class="tabs">
-    <button class="tab active" onclick="showTab('add')">Add draw</button>
+    <button class="tab active" onclick="showTab('add')">Add Draw</button>
     <button class="tab" onclick="showTab('stats')">Statistics</button>
     <button class="tab" onclick="showTab('overdue')">Overdue</button>
-    <button class="tab" onclick="showTab('draws')">All draws</button>
+    <button class="tab" onclick="showTab('draws')">All Draws</button>
   </div>
 
   <!-- ADD DRAW -->
   <div id="tab-add" class="panel active">
-    <div class="card">
-      <div class="section-title" style="margin-bottom:1rem">Add a new draw</div>
-      <div class="input-section">
-        <div class="input-section-label">Draw date</div>
-        <input type="date" id="draw-date" style="padding:6px 10px;font-size:14px">
+    <div class="controls">
+      <div class="field-group">
+        <label for="draw-date">Draw date</label>
+        <input type="date" id="draw-date">
       </div>
-      <div class="input-section">
-        <div class="input-section-label">Main numbers (5 numbers, 1–50)</div>
-        <div class="input-row">
-          <input type="number" id="n1" min="1" max="50" placeholder="N1">
-          <input type="number" id="n2" min="1" max="50" placeholder="N2">
-          <input type="number" id="n3" min="1" max="50" placeholder="N3">
-          <input type="number" id="n4" min="1" max="50" placeholder="N4">
-          <input type="number" id="n5" min="1" max="50" placeholder="N5">
+      <div class="field-group">
+        <label>Main numbers &mdash; 5 numbers between 1 and 50</label>
+        <div class="field-row">
+          <input type="number" id="n1" min="1" max="50" placeholder="1">
+          <input type="number" id="n2" min="1" max="50" placeholder="2">
+          <input type="number" id="n3" min="1" max="50" placeholder="3">
+          <input type="number" id="n4" min="1" max="50" placeholder="4">
+          <input type="number" id="n5" min="1" max="50" placeholder="5">
         </div>
       </div>
-      <div class="input-section">
-        <div class="input-section-label">Lucky stars (2 numbers, 1–12)</div>
-        <div class="input-row">
-          <input type="number" id="s1" min="1" max="12" placeholder="S1">
-          <input type="number" id="s2" min="1" max="12" placeholder="S2">
+      <div class="field-group">
+        <label>Lucky stars &mdash; 2 numbers between 1 and 12</label>
+        <div class="field-row">
+          <input type="number" id="s1" min="1" max="12" placeholder="1">
+          <input type="number" id="s2" min="1" max="12" placeholder="2">
         </div>
       </div>
-      <button class="add-btn" onclick="addDraw()">Add draw</button>
-      <div class="error" id="err-msg"></div>
+      <button class="btn btn-primary" onclick="addDraw()">Add Draw</button>
+      <div class="error-msg" id="err-msg"></div>
     </div>
 
-    <div class="card" id="last-draw-card" style="display:none">
-      <div class="section-title" style="margin-bottom:0.75rem">Last draw added</div>
-      <div class="balls-row" id="last-draw-balls"></div>
+    <div class="content">
+      <div class="last-draw-box" id="last-draw-box">
+        <div class="last-draw-label">Last draw added</div>
+        <div class="balls-row" id="last-draw-balls"></div>
+      </div>
     </div>
   </div>
 
-  <!-- STATS -->
+  <!-- STATISTICS -->
   <div id="tab-stats" class="panel">
-    <div class="metric-grid" id="metric-grid"></div>
+    <div class="content">
+      <div class="metric-grid" id="metric-grid"></div>
 
-    <div class="card">
-      <div class="section-title">Most frequent main numbers</div>
-      <div id="freq-most"></div>
-    </div>
-    <div class="card">
-      <div class="section-title">Least frequent main numbers</div>
-      <div id="freq-least"></div>
-    </div>
-    <div class="card">
-      <div class="section-title">Most frequent lucky stars</div>
-      <div id="freq-stars"></div>
-    </div>
-    <div class="card">
-      <div class="section-title">Top 10 pairs drawn together</div>
-      <div id="top-pairs"></div>
-    </div>
-    <div class="card">
-      <div class="section-title">Top 5 triplets drawn together</div>
-      <div id="top-triplets"></div>
+      <div class="stat-card">
+        <div class="section-title">Most frequent main numbers &mdash; top 10</div>
+        <div id="freq-most"></div>
+      </div>
+
+      <div class="stat-card">
+        <div class="section-title">Least frequent main numbers &mdash; bottom 10</div>
+        <div id="freq-least"></div>
+      </div>
+
+      <div class="stat-card">
+        <div class="section-title">Lucky star frequencies</div>
+        <div id="freq-stars"></div>
+      </div>
+
+      <div class="stat-card">
+        <div class="section-title">Top 10 pairs drawn together</div>
+        <div id="top-pairs"></div>
+      </div>
+
+      <div class="stat-card">
+        <div class="section-title">Top 5 triplets drawn together</div>
+        <div id="top-triplets"></div>
+      </div>
     </div>
   </div>
 
   <!-- OVERDUE -->
   <div id="tab-overdue" class="panel">
-    <div class="card">
-      <div class="section-title" style="margin-bottom:0.75rem">Main numbers — draws since last appearance</div>
-      <div id="overdue-main"></div>
-    </div>
-    <div class="card">
-      <div class="section-title" style="margin-bottom:0.75rem">Lucky stars — draws since last appearance</div>
-      <div id="overdue-stars"></div>
+    <div class="content">
+      <div class="stat-card">
+        <div class="section-title">Main numbers &mdash; draws since last appearance</div>
+        <div id="overdue-main"></div>
+      </div>
+      <div class="stat-card">
+        <div class="section-title">Lucky stars &mdash; draws since last appearance</div>
+        <div id="overdue-stars"></div>
+      </div>
     </div>
   </div>
 
   <!-- ALL DRAWS -->
   <div id="tab-draws" class="panel">
-    <div class="card">
+    <div class="content">
+      <div class="notice">
+        Data is stored in this browser's localStorage. Use Export JSON to back it up, and Import JSON to restore it on another browser or device.
+      </div>
       <div class="draws-header">
-        <div class="section-title" style="margin-bottom:0">All draws (<span id="draw-count">0</span>)</div>
-        <button class="clear-btn" onclick="clearAll()">Clear all</button>
+        <div class="results-count" style="margin-bottom:0; flex:1;">
+          Showing <strong><span id="draw-count">0</span></strong> draws
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="clearAll()">Clear All</button>
       </div>
       <div id="all-draws"></div>
+      <div class="import-export">
+        <span class="import-export-label">Backup:</span>
+        <button class="btn btn-secondary btn-sm" onclick="exportJSON()">Export JSON</button>
+        <label>
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('import-file').click()">Import JSON</button>
+          <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
+        </label>
+      </div>
     </div>
   </div>
-</div>
+
+</div><!-- end .container -->
 
 <script>
-const STORAGE_KEY = 'euromillions_draws_v1';
+  const STORAGE_KEY = 'euromillions_draws_v1';
+  let draws = [];
 
-async function loadDraws() {
-  try {
-    const r = await window.storage.get(STORAGE_KEY);
-    return r ? JSON.parse(r.value) : [];
-  } catch(e) { return []; }
-}
+  // ── Persistence ──────────────────────────────────────────────────────────────
 
-async function saveDraws(draws) {
-  try { await window.storage.set(STORAGE_KEY, JSON.stringify(draws)); } catch(e) {}
-}
-
-let draws = [];
-
-function showTab(name) {
-  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', ['add','stats','overdue','draws'][i]===name));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
-  if(name==='stats') renderStats();
-  if(name==='overdue') renderOverdue();
-  if(name==='draws') renderAllDraws();
-}
-
-function makeBall(n, type) {
-  const b = document.createElement('div');
-  b.className = 'ball ' + (type==='star' ? 'ball-star' : 'ball-main');
-  b.textContent = n;
-  return b;
-}
-
-function addDraw() {
-  const err = document.getElementById('err-msg');
-  err.textContent = '';
-  const dateVal = document.getElementById('draw-date').value;
-  const ns = [1,2,3,4,5].map(i => parseInt(document.getElementById('n'+i).value));
-  const ss = [1,2].map(i => parseInt(document.getElementById('s'+i).value));
-
-  if(!dateVal) { err.textContent = 'Please enter a draw date.'; return; }
-  if(ns.some(isNaN) || ss.some(isNaN)) { err.textContent = 'Please fill in all numbers.'; return; }
-  if(ns.some(n=>n<1||n>50)) { err.textContent = 'Main numbers must be between 1 and 50.'; return; }
-  if(ss.some(s=>s<1||s>12)) { err.textContent = 'Lucky stars must be between 1 and 12.'; return; }
-  const uniqueNs = new Set(ns);
-  if(uniqueNs.size!==5) { err.textContent = 'Main numbers must all be different.'; return; }
-  const uniqueSs = new Set(ss);
-  if(uniqueSs.size!==2) { err.textContent = 'Lucky stars must be different.'; return; }
-
-  const draw = { date: dateVal, numbers: [...ns].sort((a,b)=>a-b), stars: [...ss].sort((a,b)=>a-b) };
-  draws.unshift(draw);
-  draws.sort((a,b)=>b.date.localeCompare(a.date));
-  saveDraws(draws);
-
-  const card = document.getElementById('last-draw-card');
-  card.style.display='block';
-  const ballsDiv = document.getElementById('last-draw-balls');
-  ballsDiv.innerHTML='';
-  draw.numbers.forEach(n => ballsDiv.appendChild(makeBall(n,'main')));
-  const sep = document.createElement('span');
-  sep.style.cssText='color:var(--color-text-secondary);font-size:13px;padding:0 4px';sep.textContent='★';
-  ballsDiv.appendChild(sep);
-  draw.stars.forEach(s => ballsDiv.appendChild(makeBall(s,'star')));
-
-  [1,2,3,4,5].forEach(i=>document.getElementById('n'+i).value='');
-  [1,2].forEach(i=>document.getElementById('s'+i).value='');
-}
-
-function getFreqs() {
-  const main = {}, stars = {};
-  for(let n=1;n<=50;n++) main[n]=0;
-  for(let s=1;s<=12;s++) stars[s]=0;
-  draws.forEach(d => {
-    d.numbers.forEach(n => main[n]++);
-    d.stars.forEach(s => stars[s]++);
-  });
-  return { main, stars };
-}
-
-function getPairs() {
-  const pairs = {}, trips = {};
-  draws.forEach(d => {
-    const ns = d.numbers;
-    for(let i=0;i<ns.length;i++) for(let j=i+1;j<ns.length;j++) {
-      const k = ns[i]+'-'+ns[j];
-      pairs[k] = (pairs[k]||0)+1;
-    }
-    for(let i=0;i<ns.length;i++) for(let j=i+1;j<ns.length;j++) for(let l=j+1;l<ns.length;l++) {
-      const k = ns[i]+'-'+ns[j]+'-'+ns[l];
-      trips[k] = (trips[k]||0)+1;
-    }
-  });
-  return { pairs, trips };
-}
-
-function getOverdue() {
-  const lastSeen = {}, lastSeenStars = {};
-  for(let n=1;n<=50;n++) lastSeen[n]=null;
-  for(let s=1;s<=12;s++) lastSeenStars[s]=null;
-  draws.forEach((d,idx) => {
-    d.numbers.forEach(n => { if(lastSeen[n]===null) lastSeen[n]=idx; });
-    d.stars.forEach(s => { if(lastSeenStars[s]===null) lastSeenStars[s]=idx; });
-  });
-  return { lastSeen, lastSeenStars };
-}
-
-function freqBar(count, max, color) {
-  const pct = max>0 ? Math.round((count/max)*100) : 0;
-  return `<div class="freq-bar-bg"><div class="freq-bar" style="width:${pct}%;background:${color};">${count>0?count:''}</div></div>`;
-}
-
-function renderStats() {
-  const n = draws.length;
-  document.getElementById('metric-grid').innerHTML = `
-    <div class="metric"><div class="metric-label">Total draws</div><div class="metric-value">${n}</div></div>
-    <div class="metric"><div class="metric-label">Latest draw</div><div class="metric-value" style="font-size:15px">${n>0?draws[0].date:'—'}</div></div>
-    <div class="metric"><div class="metric-label">Earliest draw</div><div class="metric-value" style="font-size:15px">${n>0?draws[draws.length-1].date:'—'}</div></div>
-  `;
-
-  if(n===0) {
-    ['freq-most','freq-least','freq-stars','top-pairs','top-triplets'].forEach(id=>document.getElementById(id).innerHTML='<div class="empty">No draws yet. Add your first draw!</div>');
-    return;
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      draws = raw ? JSON.parse(raw) : [];
+    } catch(e) { draws = []; }
+    draws.sort((a, b) => b.date.localeCompare(a.date));
   }
 
-  const {main, stars} = getFreqs();
-  const mainArr = Object.entries(main).map(([k,v])=>({n:+k,c:v})).sort((a,b)=>b.c-a.c);
-  const maxMain = mainArr[0].c;
-
-  const topEl = document.getElementById('freq-most');
-  topEl.innerHTML='';
-  mainArr.slice(0,10).forEach(({n,c})=>{
-    const row = document.createElement('div'); row.className='freq-bar-wrap';
-    row.innerHTML=`<div class="freq-label">${makeBall(n,'main').outerHTML}</div>${freqBar(c,maxMain,'#534AB7')}<div class="freq-count">${c}x</div>`;
-    topEl.appendChild(row);
-  });
-
-  const botEl = document.getElementById('freq-least');
-  botEl.innerHTML='';
-  [...mainArr].sort((a,b)=>a.c-b.c).slice(0,10).forEach(({n,c})=>{
-    const row = document.createElement('div'); row.className='freq-bar-wrap';
-    row.innerHTML=`<div class="freq-label">${makeBall(n,'main').outerHTML}</div>${freqBar(c,maxMain,'#888780')}<div class="freq-count">${c}x</div>`;
-    botEl.appendChild(row);
-  });
-
-  const starsArr = Object.entries(stars).map(([k,v])=>({n:+k,c:v})).sort((a,b)=>b.c-a.c);
-  const maxStars = starsArr[0]?.c||1;
-  const starsEl = document.getElementById('freq-stars');
-  starsEl.innerHTML='';
-  starsArr.forEach(({n,c})=>{
-    const row = document.createElement('div'); row.className='freq-bar-wrap';
-    row.innerHTML=`<div class="freq-label">${makeBall(n,'star').outerHTML}</div>${freqBar(c,maxStars,'#BA7517')}<div class="freq-count">${c}x</div>`;
-    starsEl.appendChild(row);
-  });
-
-  const {pairs, trips} = getPairs();
-  const pairsArr = Object.entries(pairs).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  const pairsEl = document.getElementById('top-pairs');
-  pairsEl.innerHTML='';
-  if(pairsArr.length===0) { pairsEl.innerHTML='<div class="empty">Not enough data.</div>'; }
-  pairsArr.forEach(([k,c])=>{
-    const [a,b] = k.split('-').map(Number);
-    const row = document.createElement('div'); row.className='pair-item';
-    const ballsW = document.createElement('div'); ballsW.className='balls-row';
-    ballsW.appendChild(makeBall(a,'main')); ballsW.appendChild(makeBall(b,'main'));
-    row.appendChild(ballsW);
-    const cnt = document.createElement('div'); cnt.className='pair-count'; cnt.textContent=c+'x';
-    row.appendChild(cnt);
-    pairsEl.appendChild(row);
-  });
-
-  const tripsArr = Object.entries(trips).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  const tripsEl = document.getElementById('top-triplets');
-  tripsEl.innerHTML='';
-  if(tripsArr.length===0) { tripsEl.innerHTML='<div class="empty">Not enough data.</div>'; }
-  tripsArr.forEach(([k,c])=>{
-    const nums = k.split('-').map(Number);
-    const row = document.createElement('div'); row.className='pair-item';
-    const ballsW = document.createElement('div'); ballsW.className='balls-row';
-    nums.forEach(n=>ballsW.appendChild(makeBall(n,'main')));
-    row.appendChild(ballsW);
-    const cnt = document.createElement('div'); cnt.className='pair-count'; cnt.textContent=c+'x';
-    row.appendChild(cnt);
-    tripsEl.appendChild(row);
-  });
-}
-
-function renderOverdue() {
-  const n = draws.length;
-  const mainEl = document.getElementById('overdue-main');
-  const starsEl = document.getElementById('overdue-stars');
-  if(n===0) {
-    mainEl.innerHTML = starsEl.innerHTML = '<div class="empty">No draws yet.</div>';
-    return;
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(draws));
+    } catch(e) {
+      alert('Could not save to localStorage. Your browser storage may be full or disabled.');
+    }
   }
-  const {lastSeen, lastSeenStars} = getOverdue();
 
-  const mainArr = Object.entries(lastSeen).map(([k,v])=>({n:+k,ago:v===null?n:v})).sort((a,b)=>b.ago-a.ago);
-  mainEl.innerHTML='';
-  mainArr.forEach(({n,ago})=>{
-    const never = ago===draws.length;
-    const row = document.createElement('div'); row.className='overdue-row';
-    row.appendChild(makeBall(n,'main'));
-    const lbl = document.createElement('span'); lbl.style.cssText='font-size:13px;color:var(--color-text-secondary)';
-    lbl.textContent = never ? 'Never drawn' : (ago===0 ? 'Last draw' : ago+' draw'+(ago>1?'s':'')+' ago');
-    row.appendChild(lbl);
-    if(ago>=10||never) { const b=document.createElement('span'); b.className='overdue-badge'; b.textContent='overdue'; row.appendChild(b); }
-    row.appendChild(Object.assign(document.createElement('span'),{className:'overdue-draws',textContent: never?'—':ago+' draws since'}));
-    mainEl.appendChild(row);
-  });
+  // ── Helpers ──────────────────────────────────────────────────────────────────
 
-  const starsArr = Object.entries(lastSeenStars).map(([k,v])=>({n:+k,ago:v===null?n:v})).sort((a,b)=>b.ago-a.ago);
-  starsEl.innerHTML='';
-  starsArr.forEach(({n,ago})=>{
-    const never = ago===draws.length;
-    const row = document.createElement('div'); row.className='overdue-row';
-    row.appendChild(makeBall(n,'star'));
-    const lbl = document.createElement('span'); lbl.style.cssText='font-size:13px;color:var(--color-text-secondary)';
-    lbl.textContent = never ? 'Never drawn' : (ago===0 ? 'Last draw' : ago+' draw'+(ago>1?'s':'')+' ago');
-    row.appendChild(lbl);
-    if(ago>=5||never) { const b=document.createElement('span'); b.className='overdue-badge'; b.textContent='overdue'; row.appendChild(b); }
-    row.appendChild(Object.assign(document.createElement('span'),{className:'overdue-draws',textContent: never?'—':ago+' draws since'}));
-    starsEl.appendChild(row);
-  });
-}
+  function makeBall(n, type) {
+    const b = document.createElement('div');
+    b.className = 'ball ' + (type === 'star' ? 'ball-star' : 'ball-main');
+    b.textContent = n;
+    return b;
+  }
 
-function renderAllDraws() {
-  document.getElementById('draw-count').textContent = draws.length;
-  const el = document.getElementById('all-draws');
-  if(draws.length===0) { el.innerHTML='<div class="empty">No draws yet. Add your first draw!</div>'; return; }
-  el.innerHTML='';
-  draws.forEach((d,idx) => {
-    const row = document.createElement('div'); row.className='draw-row';
-    const date = document.createElement('div'); date.className='draw-date'; date.textContent=d.date;
-    row.appendChild(date);
-    const ballsW = document.createElement('div'); ballsW.className='balls-row';
-    d.numbers.forEach(n=>ballsW.appendChild(makeBall(n,'main')));
-    const sep=document.createElement('span');sep.style.cssText='color:var(--color-text-secondary);font-size:12px';sep.textContent='★';
-    ballsW.appendChild(sep);
-    d.stars.forEach(s=>ballsW.appendChild(makeBall(s,'star')));
-    row.appendChild(ballsW);
-    const del=document.createElement('button');del.className='del-btn';del.textContent='×';del.title='Delete';
-    del.onclick=()=>{ draws.splice(idx,1); saveDraws(draws); renderAllDraws(); };
-    row.appendChild(del);
-    el.appendChild(row);
-  });
-}
+  function starSep() {
+    const s = document.createElement('span');
+    s.className = 'star-sep';
+    s.textContent = '★';
+    return s;
+  }
 
-function clearAll() {
-  if(draws.length===0) return;
-  if(!confirm('Delete all '+draws.length+' draws? This cannot be undone.')) return;
-  draws=[];
-  saveDraws(draws);
-  renderAllDraws();
-}
+  function showTab(name) {
+    document.querySelectorAll('.tab').forEach((t, i) =>
+      t.classList.toggle('active', ['add','stats','overdue','draws'][i] === name));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    if (name === 'stats') renderStats();
+    if (name === 'overdue') renderOverdue();
+    if (name === 'draws') renderAllDraws();
+  }
 
-(async()=>{
-  draws = await loadDraws();
-  document.getElementById('draw-count').textContent = draws.length;
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('draw-date').value = today;
-})();
+  // ── Add draw ─────────────────────────────────────────────────────────────────
+
+  function addDraw() {
+    const err = document.getElementById('err-msg');
+    err.textContent = '';
+    const dateVal = document.getElementById('draw-date').value;
+    const ns = [1,2,3,4,5].map(i => parseInt(document.getElementById('n'+i).value));
+    const ss = [1,2].map(i => parseInt(document.getElementById('s'+i).value));
+
+    if (!dateVal) { err.textContent = 'Please enter a draw date.'; return; }
+    if (ns.some(isNaN) || ss.some(isNaN)) { err.textContent = 'Please fill in all numbers.'; return; }
+    if (ns.some(n => n < 1 || n > 50)) { err.textContent = 'Main numbers must be between 1 and 50.'; return; }
+    if (ss.some(s => s < 1 || s > 12)) { err.textContent = 'Lucky stars must be between 1 and 12.'; return; }
+    if (new Set(ns).size !== 5) { err.textContent = 'Main numbers must all be different.'; return; }
+    if (new Set(ss).size !== 2) { err.textContent = 'Lucky stars must be different.'; return; }
+
+    const draw = {
+      date: dateVal,
+      numbers: [...ns].sort((a, b) => a - b),
+      stars: [...ss].sort((a, b) => a - b)
+    };
+
+    draws.push(draw);
+    draws.sort((a, b) => b.date.localeCompare(a.date));
+    save();
+
+    const box = document.getElementById('last-draw-box');
+    box.style.display = 'block';
+    const ballsDiv = document.getElementById('last-draw-balls');
+    ballsDiv.innerHTML = '';
+    draw.numbers.forEach(n => ballsDiv.appendChild(makeBall(n, 'main')));
+    ballsDiv.appendChild(starSep());
+    draw.stars.forEach(s => ballsDiv.appendChild(makeBall(s, 'star')));
+
+    [1,2,3,4,5].forEach(i => document.getElementById('n'+i).value = '');
+    [1,2].forEach(i => document.getElementById('s'+i).value = '');
+  }
+
+  // ── Stats ────────────────────────────────────────────────────────────────────
+
+  function getFreqs() {
+    const main = {}, stars = {};
+    for (let n = 1; n <= 50; n++) main[n] = 0;
+    for (let s = 1; s <= 12; s++) stars[s] = 0;
+    draws.forEach(d => {
+      d.numbers.forEach(n => main[n]++);
+      d.stars.forEach(s => stars[s]++);
+    });
+    return { main, stars };
+  }
+
+  function getPairs() {
+    const pairs = {}, trips = {};
+    draws.forEach(d => {
+      const ns = d.numbers;
+      for (let i = 0; i < ns.length; i++)
+        for (let j = i+1; j < ns.length; j++) {
+          const k = ns[i]+'-'+ns[j];
+          pairs[k] = (pairs[k]||0) + 1;
+        }
+      for (let i = 0; i < ns.length; i++)
+        for (let j = i+1; j < ns.length; j++)
+          for (let l = j+1; l < ns.length; l++) {
+            const k = ns[i]+'-'+ns[j]+'-'+ns[l];
+            trips[k] = (trips[k]||0) + 1;
+          }
+    });
+    return { pairs, trips };
+  }
+
+  function freqBar(count, max, color) {
+    const pct = max > 0 ? Math.round((count / max) * 100) : 0;
+    return `<div class="freq-bar-bg"><div class="freq-bar" style="width:${pct}%;background:${color};">${count > 0 ? count : ''}</div></div>`;
+  }
+
+  function renderFreqList(el, arr, ballType, color, max) {
+    el.innerHTML = '';
+    const maxVal = max || (arr[0]?.c || 1);
+    arr.forEach(({ n, c }) => {
+      const row = document.createElement('div');
+      row.className = 'freq-bar-wrap';
+      const label = document.createElement('div');
+      label.className = 'freq-label';
+      label.appendChild(makeBall(n, ballType));
+      row.appendChild(label);
+      row.innerHTML += freqBar(c, maxVal, color);
+      const cnt = document.createElement('div');
+      cnt.className = 'freq-count';
+      cnt.textContent = c + 'x';
+      row.appendChild(cnt);
+      el.appendChild(row);
+    });
+  }
+
+  function renderStats() {
+    const n = draws.length;
+    document.getElementById('metric-grid').innerHTML = `
+      <div class="metric"><div class="metric-label">Total draws</div><div class="metric-value">${n}</div></div>
+      <div class="metric"><div class="metric-label">Latest draw</div><div class="metric-value" style="font-size:15px">${n > 0 ? draws[0].date : '—'}</div></div>
+      <div class="metric"><div class="metric-label">Earliest draw</div><div class="metric-value" style="font-size:15px">${n > 0 ? draws[draws.length-1].date : '—'}</div></div>
+    `;
+
+    const empty = '<div class="empty-message">No draws yet. Add your first draw.</div>';
+    if (n === 0) {
+      ['freq-most','freq-least','freq-stars','top-pairs','top-triplets'].forEach(id =>
+        document.getElementById(id).innerHTML = empty);
+      return;
+    }
+
+    const { main, stars } = getFreqs();
+    const mainArr = Object.entries(main).map(([k,v]) => ({ n:+k, c:v })).sort((a,b) => b.c - a.c);
+    const maxMain = mainArr[0].c || 1;
+
+    renderFreqList(document.getElementById('freq-most'), mainArr.slice(0,10), 'main', '#007bff', maxMain);
+    renderFreqList(document.getElementById('freq-least'), [...mainArr].sort((a,b) => a.c-b.c).slice(0,10), 'main', '#6c757d', maxMain);
+
+    const starsArr = Object.entries(stars).map(([k,v]) => ({ n:+k, c:v })).sort((a,b) => b.c-a.c);
+    renderFreqList(document.getElementById('freq-stars'), starsArr, 'star', '#ffc107');
+
+    const { pairs, trips } = getPairs();
+
+    function renderCombos(el, arr) {
+      el.innerHTML = '';
+      if (arr.length === 0) { el.innerHTML = '<div class="empty-message">Not enough data yet.</div>'; return; }
+      arr.forEach(([k, c]) => {
+        const nums = k.split('-').map(Number);
+        const row = document.createElement('div');
+        row.className = 'pair-item';
+        const bw = document.createElement('div');
+        bw.className = 'balls-row';
+        nums.forEach(num => bw.appendChild(makeBall(num, 'main')));
+        row.appendChild(bw);
+        const cnt = document.createElement('div');
+        cnt.className = 'pair-count';
+        cnt.textContent = c + 'x';
+        row.appendChild(cnt);
+        el.appendChild(row);
+      });
+    }
+
+    renderCombos(document.getElementById('top-pairs'), Object.entries(pairs).sort((a,b) => b[1]-a[1]).slice(0,10));
+    renderCombos(document.getElementById('top-triplets'), Object.entries(trips).sort((a,b) => b[1]-a[1]).slice(0,5));
+  }
+
+  // ── Overdue ──────────────────────────────────────────────────────────────────
+
+  function renderOverdue() {
+    const n = draws.length;
+    const mainEl = document.getElementById('overdue-main');
+    const starsEl = document.getElementById('overdue-stars');
+    const empty = '<div class="empty-message">No draws yet.</div>';
+    if (n === 0) { mainEl.innerHTML = starsEl.innerHTML = empty; return; }
+
+    const lastSeen = {}, lastSeenStars = {};
+    for (let i = 1; i <= 50; i++) lastSeen[i] = null;
+    for (let s = 1; s <= 12; s++) lastSeenStars[s] = null;
+    draws.forEach((d, idx) => {
+      d.numbers.forEach(num => { if (lastSeen[num] === null) lastSeen[num] = idx; });
+      d.stars.forEach(s => { if (lastSeenStars[s] === null) lastSeenStars[s] = idx; });
+    });
+
+    function renderOverdueList(el, obj, type, threshold) {
+      el.innerHTML = '';
+      Object.entries(obj)
+        .map(([k, v]) => ({ n: +k, ago: v === null ? n : v }))
+        .sort((a, b) => b.ago - a.ago)
+        .forEach(({ n: num, ago }) => {
+          const never = ago === draws.length;
+          const row = document.createElement('div');
+          row.className = 'overdue-row';
+          row.appendChild(makeBall(num, type));
+          const lbl = document.createElement('span');
+          lbl.className = 'overdue-ago';
+          lbl.textContent = never ? 'Never drawn' : ago === 0 ? 'Last draw' : ago + ' draw' + (ago > 1 ? 's' : '') + ' ago';
+          row.appendChild(lbl);
+          if (ago >= threshold || never) {
+            const badge = document.createElement('span');
+            badge.className = 'overdue-badge';
+            badge.textContent = 'overdue';
+            row.appendChild(badge);
+          }
+          const ds = document.createElement('span');
+          ds.className = 'overdue-count';
+          ds.textContent = never ? 'never' : ago + ' since';
+          row.appendChild(ds);
+          el.appendChild(row);
+        });
+    }
+
+    renderOverdueList(mainEl, lastSeen, 'main', 10);
+    renderOverdueList(starsEl, lastSeenStars, 'star', 5);
+  }
+
+  // ── All draws ────────────────────────────────────────────────────────────────
+
+  function renderAllDraws() {
+    const countEl = document.getElementById('draw-count');
+    if (countEl) countEl.textContent = draws.length;
+    const el = document.getElementById('all-draws');
+    if (draws.length === 0) {
+      el.innerHTML = '<div class="empty-message">No draws yet. Add your first draw.</div>';
+      return;
+    }
+    el.innerHTML = '';
+    draws.forEach((d, idx) => {
+      const row = document.createElement('div');
+      row.className = 'draw-row';
+      const date = document.createElement('div');
+      date.className = 'draw-date';
+      date.textContent = d.date;
+      row.appendChild(date);
+      const bw = document.createElement('div');
+      bw.className = 'balls-row';
+      d.numbers.forEach(n => bw.appendChild(makeBall(n, 'main')));
+      bw.appendChild(starSep());
+      d.stars.forEach(s => bw.appendChild(makeBall(s, 'star')));
+      row.appendChild(bw);
+      const del = document.createElement('button');
+      del.className = 'del-btn';
+      del.textContent = '×';
+      del.title = 'Delete this draw';
+      del.onclick = () => { draws.splice(idx, 1); save(); renderAllDraws(); };
+      row.appendChild(del);
+      el.appendChild(row);
+    });
+  }
+
+  function clearAll() {
+    if (draws.length === 0) return;
+    if (!confirm('Delete all ' + draws.length + ' draws? This cannot be undone.')) return;
+    draws = [];
+    save();
+    renderAllDraws();
+  }
+
+  // ── Import / Export ───────────────────────────────────────────────────────────
+
+  function exportJSON() {
+    const blob = new Blob([JSON.stringify(draws, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'euromillions-draws.json';
+    a.click();
+  }
+
+  function importJSON(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const imported = JSON.parse(e.target.result);
+        if (!Array.isArray(imported)) throw new Error('File must contain a JSON array');
+        const valid = imported.every(d => d.date && Array.isArray(d.numbers) && Array.isArray(d.stars));
+        if (!valid) throw new Error('Some entries are missing required fields');
+        draws = imported;
+        draws.sort((a, b) => b.date.localeCompare(a.date));
+        save();
+        renderAllDraws();
+        alert('Imported ' + draws.length + ' draws successfully.');
+      } catch (err) {
+        alert('Import failed: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+  }
+
+  // ── Init ─────────────────────────────────────────────────────────────────────
+
+  document.getElementById('draw-date').value = new Date().toISOString().split('T')[0];
+  load();
 </script>
+</body>
+</html>
