@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Euromillions Tracker</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px; }
+  .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
+  .header { background-color: #007bff; color: white; padding: 20px; text-align: center; }
+  .header h1 { font-size: 24px; font-weight: bold; }
+  .header p { font-size: 13px; margin-top: 4px; opacity: 0.85; }
+  .tabs { display: flex; flex-wrap: wrap; background-color: #f8f9fa; border-bottom: 1px solid #ddd; }
+  .tab { flex: 1; min-width: 80px; padding: 11px 6px; font-size: 13px; font-weight: bold; cursor: pointer; border: none; background: none; color: #6c757d; border-bottom: 3px solid transparent; transition: all 0.2s; font-family: Arial, sans-serif; }
+  .tab:hover { background-color: #e9ecef; color: #007bff; }
+  .tab.active { color: #007bff; border-bottom: 3px solid #007bff; background-color: white; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .sub-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 20px; background-color: #f8f9fa; border-bottom: 1px solid #ddd; }
+  .sub-tab { padding: 5px 12px; font-size: 12px; font-weight: bold; cursor: pointer; border: 2px solid #007bff; background: white; color: #007bff; border-radius: 4px; transition: all 0.2s; font-family: Arial, sans-serif; }
+  .sub-tab:hover { background-color: #007bff; color: white; }
+  .sub-tab.active { background-color: #007bff; color: white; }
+  .sub-panel { display: none; }
+  .sub-panel.active { display: block; }
+  .controls { padding: 20px; background-color: #f8f9fa; border-bottom: 1px solid #ddd; }
+  .field-group { margin-bottom: 15px; }
+  .field-group label { display: block; font-weight: bold; font-size: 14px; margin-bottom: 6px; }
+  .field-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  input[type=number], input[type=date] { padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: Arial, sans-serif; transition: border-color 0.2s; }
+  input[type=number] { width: 62px; text-align: center; }
+  input:focus { outline: none; border-color: #007bff; box-shadow: 0 0 0 2px rgba(0,123,255,0.25); }
+  .btn { padding: 8px 16px; border-radius: 4px; font-size: 14px; font-family: Arial, sans-serif; cursor: pointer; border: none; transition: background-color 0.2s; font-weight: bold; }
+  .btn-primary { background-color: #007bff; color: white; }
+  .btn-primary:hover { background-color: #0069d9; }
+  .btn-secondary { background-color: #6c757d; color: white; }
+  .btn-secondary:hover { background-color: #545b62; }
+  .btn-danger { background-color: #dc3545; color: white; }
+  .btn-danger:hover { background-color: #c82333; }
+  .btn-outline { background-color: white; color: #007bff; border: 2px solid #007bff; }
+  .btn-outline:hover { background-color: #007bff; color: white; }
+  .btn-sm { padding: 5px 12px; font-size: 12px; }
+  .content { padding: 20px; }
+  .metric-grid { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .metric { flex: 1; min-width: 120px; background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 5px; padding: 12px; text-align: center; }
+  .metric-label { font-size: 11px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .metric-value { font-size: 22px; font-weight: bold; color: #333; }
+  .section-title { font-size: 15px; font-weight: bold; color: #333; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #007bff; }
+  .stat-card { background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 5px; padding: 15px; margin-bottom: 15px; }
+  .ball { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; font-size: 12px; font-weight: bold; flex-shrink: 0; }
+  .ball-main { background-color: #cce5ff; color: #004085; border: 1px solid #99caff; }
+  .ball-star { background-color: #fff3cd; color: #856404; border: 1px solid #ffd966; }
+  .balls-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .star-sep { color: #ffc107; font-size: 14px; padding: 0 2px; }
+  .freq-bar-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .freq-label { width: 40px; display: flex; justify-content: center; }
+  .freq-bar-bg { flex: 1; background-color: #e9ecef; border-radius: 3px; height: 22px; overflow: hidden; }
+  .freq-bar { height: 100%; border-radius: 3px; display: flex; align-items: center; padding-left: 8px; font-size: 12px; color: white; font-weight: bold; transition: width 0.4s ease; }
+  .freq-count { font-size: 12px; color: #6c757d; min-width: 36px; text-align: right; }
+  .pair-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #e0e0e0; }
+  .pair-item:last-child { border-bottom: none; }
+  .badge { padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; min-width: 30px; text-align: center; margin-left: auto; }
+  .badge-blue { background-color: #007bff; color: white; }
+  .badge-green { background-color: #28a745; color: white; }
+  .badge-gray { background-color: #e9ecef; color: #6c757d; }
+  .badge-orange { background-color: #fd7e14; color: white; }
+  .badge-red { background-color: #dc3545; color: white; }
+  .draw-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin-bottom: 6px; background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 5px; flex-wrap: wrap; transition: all 0.2s; }
+  .draw-row:hover { background-color: #e3f2fd; border-color: #007bff; }
+  .draw-date { font-size: 13px; color: #6c757d; font-style: italic; min-width: 95px; }
+  .overdue-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #e0e0e0; }
+  .overdue-row:last-child { border-bottom: none; }
+  .overdue-ago { font-size: 13px; color: #495057; }
+  .overdue-badge { font-size: 11px; background-color: #f8d7da; color: #721c24; border-radius: 12px; padding: 2px 8px; font-weight: bold; }
+  .overdue-count { margin-left: auto; font-size: 12px; color: #6c757d; font-style: italic; }
+  .pattern-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid #e0e0e0; flex-wrap: wrap; }
+  .pattern-row:last-child { border-bottom: none; }
+  .pattern-label { font-size: 13px; color: #333; min-width: 160px; }
+  .pattern-pct { font-size: 12px; color: white; background-color: #007bff; padding: 2px 8px; border-radius: 12px; font-weight: bold; min-width: 44px; text-align: center; }
+  .pattern-count { font-size: 12px; color: #6c757d; min-width: 30px; text-align: right; }
+  .band-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .band-label { font-size: 12px; color: #495057; min-width: 52px; font-weight: bold; }
+  .sum-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .sum-label { font-size: 11px; color: #6c757d; min-width: 60px; text-align: right; }
+  .timing-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #e0e0e0; flex-wrap: wrap; }
+  .timing-row:last-child { border-bottom: none; }
+  .timing-avg { font-size: 12px; color: #495057; flex: 1; }
+  .timing-max { font-size: 12px; color: #dc3545; min-width: 70px; }
+  .timing-curr { font-size: 12px; color: #6c757d; min-width: 60px; text-align: right; }
+  .sim-row { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #e0e0e0; flex-wrap: wrap; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-dates { font-size: 12px; color: #6c757d; min-width: 170px; }
+  .hot-badge { font-size: 11px; background-color: #d4edda; color: #155724; border-radius: 12px; padding: 2px 8px; font-weight: bold; }
+  .cold-badge { font-size: 11px; background-color: #e9ecef; color: #6c757d; border-radius: 12px; padding: 2px 8px; }
+  .results-count { background-color: #e9ecef; padding: 10px 15px; border-radius: 4px; font-size: 14px; color: #495057; margin-bottom: 15px; }
+  .draws-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+  .empty-message { text-align: center; color: #6c757d; font-style: italic; padding: 30px 20px; }
+  .notice { background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 4px; padding: 10px 14px; font-size: 13px; color: #856404; margin-bottom: 15px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  @media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+  .info-text { font-size: 12px; color: #6c757d; margin-top: 8px; font-style: italic; }
+  .summary-row { font-size: 13px; margin-bottom: 10px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .summary-row strong { color: #333; }
+
+  /* GitHub / backup bar */
+  .sync-bar { background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 5px; padding: 12px 15px; margin-bottom: 15px; }
+  .sync-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
+  .sync-label { font-size: 13px; font-weight: bold; color: #495057; }
+  .sync-status { font-size: 12px; font-style: italic; color: #6c757d; margin-top: 4px; min-height: 16px; }
+
+  /* Timeline */
+  .timeline-wrap { overflow-x: auto; }
+  .tl-row { display: flex; align-items: center; gap: 5px; padding: 4px 0; border-bottom: 1px solid #f0f0f0; min-width: max-content; }
+  .tl-row:last-child { border-bottom: none; }
+  .tl-date { font-size: 11px; color: #6c757d; width: 90px; flex-shrink: 0; }
+  .tl-ball { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-size: 10px; font-weight: bold; flex-shrink: 0; }
+  .tl-ball-main { background-color: #cce5ff; color: #004085; border: 1px solid #99caff; }
+  .tl-ball-star { background-color: #fff3cd; color: #856404; border: 1px solid #ffd966; }
+  .tl-sep { color: #ffc107; font-size: 11px; }
+  .view-toggle { display: flex; gap: 0; border: 2px solid #007bff; border-radius: 4px; overflow: hidden; width: fit-content; margin-bottom: 15px; }
+  .view-btn { padding: 5px 14px; font-size: 12px; font-weight: bold; cursor: pointer; border: none; background: white; color: #007bff; font-family: Arial, sans-serif; transition: all 0.2s; }
+  .view-btn.active { background: #007bff; color: white; }
+
+  /* Forecast */
+  .fc-section { background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 5px; padding: 15px; margin-bottom: 15px; }
+  .fc-section-title { font-size: 13px; font-weight: bold; color: #495057; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .fc-fields { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+  .fc-field { display: flex; flex-direction: column; gap: 4px; }
+  .fc-field label { font-size: 11px; color: #6c757d; font-weight: bold; text-transform: uppercase; letter-spacing: 0.03em; }
+  .fc-field select, .fc-field input[type=number] { padding: 7px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: Arial, sans-serif; background: white; color: #333; min-width: 80px; }
+  .fc-field select:focus, .fc-field input[type=number]:focus { outline: none; border-color: #007bff; box-shadow: 0 0 0 2px rgba(0,123,255,0.25); }
+  .fc-field input[type=number] { width: 80px; }
+  .fc-mode-toggle { display: flex; gap: 0; margin-bottom: 15px; border: 2px solid #007bff; border-radius: 4px; overflow: hidden; width: fit-content; }
+  .fc-mode-btn { padding: 7px 18px; font-size: 13px; font-weight: bold; cursor: pointer; border: none; background: white; color: #007bff; font-family: Arial, sans-serif; transition: all 0.2s; }
+  .fc-mode-btn.active { background: #007bff; color: white; }
+  .fc-divider { font-size: 12px; color: #6c757d; align-self: flex-end; padding-bottom: 10px; font-style: italic; }
+  .fc-results-bar { background-color: #e9ecef; padding: 10px 15px; border-radius: 4px; font-size: 14px; color: #495057; margin-bottom: 12px; }
+  .fc-draw-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin-bottom: 6px; background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 5px; flex-wrap: wrap; transition: all 0.2s; }
+  .fc-draw-row:hover { background-color: #e3f2fd; border-color: #007bff; }
+  .fc-draw-date { font-size: 13px; color: #6c757d; font-style: italic; min-width: 120px; }
+  .fc-draw-day { font-size: 11px; background-color: #cce5ff; color: #004085; border-radius: 10px; padding: 2px 8px; font-weight: bold; }
+  .fc-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 5px; }
+
+  /* Generator */
+  .gen-result { background-color: #e8f5e9; border: 1px solid #c3e6cb; border-radius: 5px; padding: 15px; margin-top: 15px; display: none; }
+  .gen-label { font-size: 13px; font-weight: bold; color: #155724; margin-bottom: 10px; }
+  .gen-rationale { font-size: 12px; color: #495057; margin-top: 10px; line-height: 1.6; }
+  .gen-rationale li { margin-left: 16px; margin-bottom: 3px; }
+
+  /* Heatmap */
+  .heatmap { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-top: 8px; }
+  .hm-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 11px; font-weight: bold; cursor: default; }
+
+  /* Co-occurrence matrix */
+  .matrix-wrap { overflow-x: auto; margin-top: 8px; }
+  .matrix-table { border-collapse: collapse; font-size: 9px; }
+  .matrix-table th { background-color: #f8f9fa; padding: 2px 3px; text-align: center; font-weight: bold; color: #495057; border: 1px solid #dee2e6; min-width: 18px; }
+  .matrix-table td { padding: 1px 2px; text-align: center; border: 1px solid #dee2e6; min-width: 18px; height: 18px; }
+  .matrix-table .row-header { background-color: #f8f9fa; font-weight: bold; color: #495057; }
+
+  /* Cycle chart */
+  .cycle-row { padding: 8px 0; border-bottom: 1px solid #e0e0e0; }
+  .cycle-row:last-child { border-bottom: none; }
+  .cycle-header { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+  .cycle-track { display: flex; gap: 3px; flex-wrap: wrap; }
+  .cycle-pip { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 20px; border-radius: 3px; font-size: 10px; font-weight: bold; color: white; padding: 0 4px; }
+
+  /* Due score */
+  .due-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #e0e0e0; }
+  .due-row:last-child { border-bottom: none; }
+  .due-score-bar { flex: 1; background-color: #e9ecef; border-radius: 3px; height: 18px; overflow: hidden; }
+  .due-score-fill { height: 100%; border-radius: 3px; display: flex; align-items: center; padding-left: 6px; font-size: 11px; color: white; font-weight: bold; }
+  .due-val { font-size: 12px; color: #6c757d; min-width: 40px; text-align: right; }
+
+  /* Star pairs */
+  .star-pair-item { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #e0e0e0; }
+  .star-pair-item:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>&#9733; Euromillions Tracker</h1>
+    <p>Draw history &amp; statistics</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('stats')">Statistics</button>
+    <button class="tab" onclick="showTab('overdue')">Overdue</button>
+    <button class="tab" onclick="showTab('forecast')">Forecast</button>
+    <button class="tab" onclick="showTab('generator')">Generator</button>
+    <button class="tab" onclick="showTab('draws')">All Draws</button>
+  </div>
+
+  <!-- STATISTICS -->
+  <div id="tab-stats" class="panel active">
+    <div class="sub-tabs">
+      <button class="sub-tab active" onclick="showSubTab('freq')">Frequency</button>
+      <button class="sub-tab" onclick="showSubTab('patterns')">Patterns</button>
+      <button class="sub-tab" onclick="showSubTab('distribution')">Distribution</button>
+      <button class="sub-tab" onclick="showSubTab('timing')">Timing</button>
+      <button class="sub-tab" onclick="showSubTab('pairs')">Pairs &amp; Triplets</button>
+      <button class="sub-tab" onclick="showSubTab('stars')">Star Analysis</button>
+      <button class="sub-tab" onclick="showSubTab('similarity')">Draw Similarity</button>
+      <button class="sub-tab" onclick="showSubTab('cycle')">Cycle Detector</button>
+      <button class="sub-tab" onclick="showSubTab('due')">Due Score</button>
+      <button class="sub-tab" onclick="showSubTab('heatmap')">Heat Map</button>
+      <button class="sub-tab" onclick="showSubTab('matrix')">Co-occurrence</button>
+    </div>
+    <div class="content">
+      <div class="metric-grid" id="metric-grid"></div>
+
+      <div id="sub-freq" class="sub-panel active">
+        <div class="stat-card"><div class="section-title">Most frequent main numbers &mdash; top 10</div><div id="freq-most"></div></div>
+        <div class="stat-card"><div class="section-title">Least frequent main numbers &mdash; bottom 10</div><div id="freq-least"></div></div>
+        <div class="stat-card"><div class="section-title">Lucky star frequencies</div><div id="freq-stars"></div></div>
+        <div class="stat-card"><div class="section-title">Recently hot &mdash; last 10 draws</div><div id="freq-hot10"></div><p class="info-text">Green = appeared 3+ times (hot). Grey = 0 times (cold).</p></div>
+        <div class="stat-card"><div class="section-title">Recently hot &mdash; last 20 draws</div><div id="freq-hot20"></div></div>
+      </div>
+
+      <div id="sub-patterns" class="sub-panel">
+        <div class="two-col">
+          <div class="stat-card"><div class="section-title">Odd vs even balance</div><div id="pat-odd-even"></div><p class="info-text">Split across all 5 main numbers per draw.</p></div>
+          <div class="stat-card"><div class="section-title">High vs low balance</div><div id="pat-high-low"></div><p class="info-text">Low = 1&ndash;25 &nbsp;|&nbsp; High = 26&ndash;50.</p></div>
+        </div>
+        <div class="stat-card"><div class="section-title">Consecutive number runs</div><div id="pat-consecutive"></div><p class="info-text">How often draws contain runs of 2, 3, or 4+ consecutive numbers.</p></div>
+      </div>
+
+      <div id="sub-distribution" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Number hot zones &mdash; by decade band</div><div id="dist-bands"></div><p class="info-text">Total appearances of all numbers within each band across all draws.</p></div>
+        <div class="stat-card"><div class="section-title">Draw sum analysis</div><div id="dist-sum"></div><p class="info-text">Sum of the 5 main numbers per draw. Euromillions draws typically cluster between 90&ndash;160.</p></div>
+        <div class="stat-card"><div class="section-title">Spread (standard deviation)</div><div id="dist-spread"></div><p class="info-text">Low spread = tight cluster. High spread = wide range. Typical spread is 14&ndash;16.</p></div>
+      </div>
+
+      <div id="sub-timing" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Average &amp; longest gap between appearances &mdash; top 20</div><div id="timing-gaps"></div><p class="info-text">Sorted by average gap (rarest first). Longest gap = biggest drought ever recorded.</p></div>
+      </div>
+
+      <div id="sub-pairs" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Top 10 pairs &mdash; raw count</div><div id="top-pairs"></div></div>
+        <div class="stat-card"><div class="section-title">Top 10 pairs &mdash; recency-weighted score</div><div id="top-pairs-weighted"></div><p class="info-text">Recent pairs score higher. Score = sum of 1/(draw position + 1) for each appearance.</p></div>
+        <div class="stat-card"><div class="section-title">Top 5 triplets drawn together</div><div id="top-triplets"></div></div>
+        <div class="stat-card"><div class="section-title">Rarest pairs &mdash; from top 15 most frequent numbers</div><div id="weak-pairs"></div><p class="info-text">Pairs from the most common numbers that have never or rarely appeared together.</p></div>
+      </div>
+
+      <div id="sub-stars" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Lucky star pairs drawn together</div><div id="star-pairs"></div></div>
+        <div class="stat-card"><div class="section-title">Top 15 star + main number combinations</div><div id="star-main-combos"></div><p class="info-text">How often each lucky star appears alongside each main number.</p></div>
+      </div>
+
+      <div id="sub-similarity" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Carryover numbers &mdash; back-to-back draws</div><div id="sim-carryover"></div><p class="info-text">Numbers that have appeared in two consecutive draws, and how many times.</p></div>
+        <div class="stat-card"><div class="section-title">Most similar draw pairs &mdash; 3+ shared numbers</div><div id="sim-most-similar"></div></div>
+        <div class="stat-card"><div class="section-title">Carryover distribution &mdash; consecutive draw pairs</div><div id="sim-overlap-dist"></div><p class="info-text">How many numbers carry over between each pair of consecutive draws.</p></div>
+      </div>
+
+      <div id="sub-cycle" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Cycle detector &mdash; top 20 numbers by regularity</div><div id="cycle-chart"></div><p class="info-text">Each bar represents the gap (in draws) between consecutive appearances. Consistent bar lengths suggest a semi-regular cycle.</p></div>
+      </div>
+
+      <div id="sub-due" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Due score &mdash; composite ranking</div><div id="due-scores"></div><p class="info-text">Score combines: current gap vs average gap, recent frequency (last 20 draws), and historical max gap. Higher score = more overdue relative to its own history.</p></div>
+      </div>
+
+      <div id="sub-heatmap" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Frequency heat map &mdash; all 50 numbers</div><div id="heatmap-grid"></div><p class="info-text">Dark blue = most frequent. Light = least frequent. Numbers 1&ndash;50 arranged in a 5&times;10 grid.</p></div>
+      </div>
+
+      <div id="sub-matrix" class="sub-panel">
+        <div class="stat-card"><div class="section-title">Co-occurrence matrix &mdash; all 50 numbers</div><p class="info-text" style="margin-bottom:8px;">Darker cell = appeared together more often. Diagonal is empty (self). Scroll right to see all columns.</p><div id="cooccurrence-matrix"></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OVERDUE -->
+  <div id="tab-overdue" class="panel">
+    <div class="content">
+      <div class="stat-card"><div class="section-title">Main numbers &mdash; draws since last appearance</div><div id="overdue-main"></div></div>
+      <div class="stat-card"><div class="section-title">Lucky stars &mdash; draws since last appearance</div><div id="overdue-stars"></div></div>
+    </div>
+  </div>
+
+  <!-- FORECAST -->
+  <div id="tab-forecast" class="panel">
+    <div class="controls">
+      <div class="field-group" style="margin-bottom:12px;">
+        <label style="margin-bottom:8px;">Search mode</label>
+        <div class="fc-mode-toggle">
+          <button class="fc-mode-btn active" id="fc-mode-range" onclick="fcSetMode('range')">Date range</button>
+          <button class="fc-mode-btn" id="fc-mode-anchor" onclick="fcSetMode('anchor')">Anchor + count</button>
+        </div>
+      </div>
+      <div id="fc-range-section">
+        <div class="fc-section">
+          <div class="fc-section-title">From (start date &mdash; all fields optional)</div>
+          <div class="fc-fields">
+            <div class="fc-field"><label>Day of week</label><select id="fc-from-dow"><option value="">Any</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option><option value="0">Sunday</option></select></div>
+            <div class="fc-field"><label>Day</label><select id="fc-from-day"><option value="">Any</option></select></div>
+            <div class="fc-field"><label>Month</label><select id="fc-from-month"><option value="">Any</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div>
+            <div class="fc-field"><label>Year</label><select id="fc-from-year"><option value="">Any</option></select></div>
+          </div>
+        </div>
+        <div class="fc-section">
+          <div class="fc-section-title">To (end date &mdash; all fields optional)</div>
+          <div class="fc-fields">
+            <div class="fc-field"><label>Day of week</label><select id="fc-to-dow"><option value="">Any</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option><option value="0">Sunday</option></select></div>
+            <div class="fc-field"><label>Day</label><select id="fc-to-day"><option value="">Any</option></select></div>
+            <div class="fc-field"><label>Month</label><select id="fc-to-month"><option value="">Any</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div>
+            <div class="fc-field"><label>Year</label><select id="fc-to-year"><option value="">Any</option></select></div>
+          </div>
+        </div>
+      </div>
+      <div id="fc-anchor-section" style="display:none;">
+        <div class="fc-section">
+          <div class="fc-section-title">Anchor date &mdash; all fields optional</div>
+          <div class="fc-fields">
+            <div class="fc-field"><label>Day of week</label><select id="fc-anc-dow"><option value="">Any</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option><option value="0">Sunday</option></select></div>
+            <div class="fc-field"><label>Day</label><select id="fc-anc-day"><option value="">Any</option></select></div>
+            <div class="fc-field"><label>Month</label><select id="fc-anc-month"><option value="">Any</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div>
+            <div class="fc-field"><label>Year</label><select id="fc-anc-year"><option value="">Any</option></select></div>
+          </div>
+        </div>
+        <div class="fc-section">
+          <div class="fc-section-title">Count &amp; direction</div>
+          <div class="fc-fields">
+            <div class="fc-field"><label>Show</label><input type="number" id="fc-count" min="1" max="500" value="10" style="width:70px;"></div>
+            <div class="fc-divider">draws</div>
+            <div class="fc-field"><label>Direction</label><select id="fc-direction"><option value="before">before / up to anchor</option><option value="after">after / from anchor</option></select></div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-actions">
+        <button class="btn btn-primary" onclick="runForecast()">Search draws</button>
+        <button class="btn btn-secondary" onclick="resetForecast()">Reset</button>
+      </div>
+    </div>
+    <div class="content">
+      <div id="fc-results-bar" class="fc-results-bar" style="display:none;"></div>
+      <div id="fc-results"></div>
+    </div>
+  </div>
+
+  <!-- GENERATOR -->
+  <div id="tab-generator" class="panel">
+    <div class="content">
+      <div class="stat-card">
+        <div class="section-title">Smart number generator</div>
+        <p style="font-size:13px;color:#495057;margin-bottom:15px;">Generates a statistically balanced set of 5 main numbers + 2 lucky stars based on your draw history. Weighs frequency, recent momentum, odd/even balance, sum range (90&ndash;160), decade band distribution, and avoids extremely rare pairs.</p>
+        <button class="btn btn-primary" onclick="generateNumbers()">Generate numbers</button>
+        <button class="btn btn-secondary" style="margin-left:8px;" onclick="generateNumbers()">Regenerate</button>
+      </div>
+      <div class="gen-result" id="gen-result">
+        <div class="gen-label">Suggested draw</div>
+        <div class="balls-row" id="gen-balls"></div>
+        <ul class="gen-rationale" id="gen-rationale"></ul>
+      </div>
+      <div class="stat-card" style="margin-top:15px;">
+        <div class="section-title">Generation history &mdash; this session</div>
+        <div id="gen-history"><div class="empty-message">No suggestions generated yet.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL DRAWS -->
+  <div id="tab-draws" class="panel">
+    <div class="content">
+
+      <!-- Sync bar at top -->
+      <div class="sync-bar">
+        <div class="sync-row">
+          <span class="sync-label">GitHub:</span>
+          <button class="btn btn-primary btn-sm" onclick="loadFromGitHub()">Load from GitHub</button>
+          <span class="sync-label" style="margin-left:8px;">Backup:</span>
+          <button class="btn btn-secondary btn-sm" onclick="exportJSON()">Export JSON</button>
+          <label>
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('import-file').click()">Import JSON</button>
+            <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
+          </label>
+        </div>
+        <div class="sync-status" id="gh-status"></div>
+      </div>
+
+      <div class="draws-header">
+        <div class="results-count" style="margin-bottom:0;flex:1;">Showing <strong><span id="draw-count">0</span></strong> draws</div>
+      </div>
+
+      <div class="view-toggle">
+        <button class="view-btn active" id="view-list-btn" onclick="setDrawView('list')">List</button>
+        <button class="view-btn" id="view-tl-btn" onclick="setDrawView('timeline')">Timeline</button>
+      </div>
+
+      <div id="view-list">
+        <div id="all-draws"></div>
+      </div>
+      <div id="view-timeline" style="display:none;">
+        <div class="timeline-wrap" id="timeline-draws"></div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- .container -->
+
+<script>
+const STORAGE_KEY = 'euromillions_draws_v1';
+const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/alex971data/my-webpage/main/draws.json';
+const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+let draws = [];
+let genHistory = [];
+let currentDrawView = 'list';
+let fcInitialised = false;
+
+// ── Persistence ───────────────────────────────────────────────────────────────
+function load() {
+  try { const r = localStorage.getItem(STORAGE_KEY); draws = r ? JSON.parse(r) : []; } catch(e) { draws = []; }
+  draws.sort((a,b) => b.date.localeCompare(a.date));
+}
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(draws)); } catch(e) { alert('Could not save to localStorage.'); }
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function makeBall(n, type) {
+  const b = document.createElement('div');
+  b.className = 'ball ' + (type === 'star' ? 'ball-star' : 'ball-main');
+  b.textContent = n; return b;
+}
+function starSep() { const s = document.createElement('span'); s.className = 'star-sep'; s.textContent = '\u2605'; return s; }
+function pct(n, total) { return total > 0 ? Math.round((n/total)*100) : 0; }
+function avg(arr) { return arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : 0; }
+function stdDev(arr) { const m = avg(arr); return Math.sqrt(arr.reduce((s,v)=>s+(v-m)**2,0)/arr.length); }
+function emptyMsg(t) { return '<div class="empty-message">'+(t||'Not enough data yet.')+'</div>'; }
+function freqBar(count, max, color) {
+  const p = max > 0 ? Math.round((count/max)*100) : 0;
+  return '<div class="freq-bar-bg"><div class="freq-bar" style="width:'+p+'%;background:'+color+';">'+(count>0?count:'')+'</div></div>';
+}
+function renderFreqList(el, arr, ballType, color, maxOverride) {
+  el.innerHTML = '';
+  const mx = maxOverride || (arr[0]?.c || 1);
+  arr.forEach(({n,c}) => {
+    const row = document.createElement('div'); row.className = 'freq-bar-wrap';
+    const lbl = document.createElement('div'); lbl.className = 'freq-label';
+    lbl.appendChild(makeBall(n, ballType)); row.appendChild(lbl);
+    row.innerHTML += freqBar(c, mx, color);
+    const cnt = document.createElement('div'); cnt.className = 'freq-count'; cnt.textContent = c+'x';
+    row.appendChild(cnt); el.appendChild(row);
+  });
+}
+
+// ── Tab navigation ─────────────────────────────────────────────────────────────
+function showTab(name) {
+  const names = ['stats','overdue','forecast','generator','draws'];
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', names[i] === name));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if (name === 'stats') renderStats();
+  if (name === 'overdue') renderOverdue();
+  if (name === 'draws') renderAllDraws();
+  if (name === 'forecast') initForecast();
+}
+function showSubTab(name) {
+  const names = ['freq','patterns','distribution','timing','pairs','stars','similarity','cycle','due','heatmap','matrix'];
+  document.querySelectorAll('.sub-tab').forEach((t,i) => t.classList.toggle('active', names[i] === name));
+  document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('sub-'+name).classList.add('active');
+}
+
+// ── Data helpers ──────────────────────────────────────────────────────────────
+function getFreqs() {
+  const main={}, stars={};
+  for(let n=1;n<=50;n++) main[n]=0;
+  for(let s=1;s<=12;s++) stars[s]=0;
+  draws.forEach(d=>{d.numbers.forEach(n=>main[n]++); d.stars.forEach(s=>stars[s]++);});
+  return {main,stars};
+}
+function getRecentFreqs(count) {
+  const freq={};
+  for(let n=1;n<=50;n++) freq[n]=0;
+  draws.slice(0,Math.min(count,draws.length)).forEach(d=>d.numbers.forEach(n=>freq[n]++));
+  return freq;
+}
+function getPairs() {
+  const pairs={}, trips={}, weighted={};
+  draws.forEach((d,idx)=>{
+    const ns=d.numbers;
+    for(let i=0;i<ns.length;i++) for(let j=i+1;j<ns.length;j++){
+      const k=ns[i]+'-'+ns[j]; pairs[k]=(pairs[k]||0)+1; weighted[k]=(weighted[k]||0)+1/(idx+1);
+    }
+    for(let i=0;i<ns.length;i++) for(let j=i+1;j<ns.length;j++) for(let l=j+1;l<ns.length;l++){
+      const k=ns[i]+'-'+ns[j]+'-'+ns[l]; trips[k]=(trips[k]||0)+1;
+    }
+  });
+  return {pairs,trips,weighted};
+}
+
+// ── Render all stats ──────────────────────────────────────────────────────────
+function renderStats() {
+  const n = draws.length;
+  const sums = draws.map(d=>d.numbers.reduce((a,b)=>a+b,0));
+  const avgSum = n>0 ? Math.round(avg(sums)) : 0;
+  document.getElementById('metric-grid').innerHTML =
+    '<div class="metric"><div class="metric-label">Total draws</div><div class="metric-value">'+n+'</div></div>'+
+    '<div class="metric"><div class="metric-label">Latest draw</div><div class="metric-value" style="font-size:15px">'+(n>0?draws[0].date:'&mdash;')+'</div></div>'+
+    '<div class="metric"><div class="metric-label">Earliest draw</div><div class="metric-value" style="font-size:15px">'+(n>0?draws[draws.length-1].date:'&mdash;')+'</div></div>'+
+    '<div class="metric"><div class="metric-label">Avg draw sum</div><div class="metric-value">'+(n>0?avgSum:'&mdash;')+'</div></div>';
+  if (n===0) {
+    document.querySelectorAll('[id^="freq-"],[id^="pat-"],[id^="dist-"],[id^="timing-"],[id^="top-"],[id^="weak-"],[id^="sim-"],[id^="star-"],[id^="cycle-"],[id^="due-"],[id^="heatmap-"],[id^="cooccurrence-"]')
+      .forEach(el=>el.innerHTML=emptyMsg('No draws yet. Load data from GitHub or import a JSON file.'));
+    return;
+  }
+  renderFrequency(); renderPatterns(); renderDistribution(); renderTiming();
+  renderPairs(); renderStarAnalysis(); renderSimilarity();
+  renderCycleDetector(); renderDueScore(); renderHeatmap(); renderCooccurrence();
+}
+
+// ── Frequency ─────────────────────────────────────────────────────────────────
+function renderFrequency() {
+  const {main,stars} = getFreqs();
+  const mainArr = Object.entries(main).map(([k,v])=>({n:+k,c:v})).sort((a,b)=>b.c-a.c);
+  const maxMain = mainArr[0].c||1;
+  renderFreqList(document.getElementById('freq-most'), mainArr.slice(0,10), 'main', '#007bff', maxMain);
+  renderFreqList(document.getElementById('freq-least'), [...mainArr].sort((a,b)=>a.c-b.c).slice(0,10), 'main', '#6c757d', maxMain);
+  const starsArr = Object.entries(stars).map(([k,v])=>({n:+k,c:v})).sort((a,b)=>b.c-a.c);
+  renderFreqList(document.getElementById('freq-stars'), starsArr, 'star', '#ffc107');
+  function renderHot(elId, count) {
+    const el = document.getElementById(elId);
+    const actual = Math.min(count, draws.length);
+    if (actual < 3) { el.innerHTML = emptyMsg('Need at least '+count+' draws.'); return; }
+    const freq = getRecentFreqs(actual);
+    const arr = Object.entries(freq).map(([k,v])=>({n:+k,c:v})).sort((a,b)=>b.c-a.c);
+    const mx = arr[0].c||1;
+    el.innerHTML = '';
+    arr.slice(0,15).forEach(({n,c})=>{
+      const row = document.createElement('div'); row.className = 'freq-bar-wrap';
+      const lbl = document.createElement('div'); lbl.className = 'freq-label';
+      lbl.appendChild(makeBall(n,'main')); row.appendChild(lbl);
+      row.innerHTML += freqBar(c, mx, c>=3?'#28a745':c===0?'#dee2e6':'#007bff');
+      const right = document.createElement('div'); right.style.cssText='display:flex;align-items:center;gap:5px;';
+      const cnt = document.createElement('div'); cnt.className='freq-count'; cnt.textContent=c+'x'; right.appendChild(cnt);
+      if(c>=3){const b=document.createElement('span');b.className='hot-badge';b.textContent='hot';right.appendChild(b);}
+      else if(c===0){const b=document.createElement('span');b.className='cold-badge';b.textContent='cold';right.appendChild(b);}
+      row.appendChild(right); el.appendChild(row);
+    });
+  }
+  renderHot('freq-hot10', 10); renderHot('freq-hot20', 20);
+}
+
+// ── Patterns ──────────────────────────────────────────────────────────────────
+function renderPatterns() {
+  const n = draws.length;
+  function patSection(el, counts, order, color) {
+    el.innerHTML = '';
+    const mx = Math.max(...order.map(k=>counts[k]||0), 1);
+    order.forEach(key=>{
+      const c = counts[key]||0;
+      const row = document.createElement('div'); row.className='pattern-row';
+      const lbl = document.createElement('span'); lbl.className='pattern-label'; lbl.textContent=key; row.appendChild(lbl);
+      row.innerHTML += freqBar(c, mx, color);
+      const cnt = document.createElement('span'); cnt.className='pattern-count'; cnt.textContent=c+'x'; row.appendChild(cnt);
+      const p = document.createElement('span'); p.className='pattern-pct'; p.textContent=pct(c,n)+'%'; row.appendChild(p);
+      el.appendChild(row);
+    });
+  }
+  const oeCounts={}, hlCounts={};
+  draws.forEach(d=>{
+    const odds=d.numbers.filter(x=>x%2!==0).length;
+    const oeKey=odds+' odd / '+(5-odds)+' even'; oeCounts[oeKey]=(oeCounts[oeKey]||0)+1;
+    const lows=d.numbers.filter(x=>x<=25).length;
+    const hlKey=lows+' low / '+(5-lows)+' high'; hlCounts[hlKey]=(hlCounts[hlKey]||0)+1;
+  });
+  patSection(document.getElementById('pat-odd-even'), oeCounts,
+    ['5 odd / 0 even','4 odd / 1 even','3 odd / 2 even','2 odd / 3 even','1 odd / 4 even','0 odd / 5 even'],'#007bff');
+  patSection(document.getElementById('pat-high-low'), hlCounts,
+    ['5 low / 0 high','4 low / 1 high','3 low / 2 high','2 low / 3 high','1 low / 4 high','0 low / 5 high'],'#28a745');
+  const consec={none:0,two:0,three:0,fourPlus:0};
+  draws.forEach(d=>{
+    const ns=[...d.numbers].sort((a,b)=>a-b); let maxRun=1,run=1;
+    for(let i=1;i<ns.length;i++){if(ns[i]===ns[i-1]+1){run++;maxRun=Math.max(maxRun,run);}else run=1;}
+    if(maxRun>=4)consec.fourPlus++; else if(maxRun===3)consec.three++; else if(maxRun===2)consec.two++; else consec.none++;
+  });
+  const cEl=document.getElementById('pat-consecutive'); cEl.innerHTML='';
+  const mx2=Math.max(consec.none,consec.two,consec.three,consec.fourPlus,1);
+  [['No consecutive numbers',consec.none],['2 consecutive (e.g. 22, 23)',consec.two],['3 consecutive (e.g. 8, 9, 10)',consec.three],['4+ consecutive (very rare)',consec.fourPlus]].forEach(([label,c])=>{
+    const row=document.createElement('div'); row.className='pattern-row';
+    const lbl=document.createElement('span'); lbl.className='pattern-label'; lbl.textContent=label; row.appendChild(lbl);
+    row.innerHTML+=freqBar(c,mx2,'#6f42c1');
+    const cnt=document.createElement('span'); cnt.className='pattern-count'; cnt.textContent=c+'x'; row.appendChild(cnt);
+    const p=document.createElement('span'); p.className='pattern-pct'; p.textContent=pct(c,n)+'%'; row.appendChild(p);
+    cEl.appendChild(row);
+  });
+}
+
+// ── Distribution ──────────────────────────────────────────────────────────────
+function renderDistribution() {
+  const bands=[[1,10],[11,20],[21,30],[31,40],[41,50]];
+  const bc=bands.map(([lo,hi])=>{let c=0;draws.forEach(d=>d.numbers.forEach(x=>{if(x>=lo&&x<=hi)c++;}));return c;});
+  const mbnd=Math.max(...bc,1);
+  const bEl=document.getElementById('dist-bands'); bEl.innerHTML='';
+  bands.forEach(([lo,hi],i)=>{
+    const row=document.createElement('div'); row.className='band-row';
+    const lbl=document.createElement('div'); lbl.className='band-label'; lbl.textContent=lo+'–'+hi; row.appendChild(lbl);
+    row.innerHTML+=freqBar(bc[i],mbnd,'#007bff');
+    const cnt=document.createElement('div'); cnt.className='freq-count'; cnt.textContent=bc[i]; row.appendChild(cnt);
+    bEl.appendChild(row);
+  });
+  const sums=draws.map(d=>d.numbers.reduce((a,b)=>a+b,0));
+  const avgS=avg(sums), minS=Math.min(...sums), maxS=Math.max(...sums);
+  const buckets={}; const bs=20;
+  sums.forEach(s=>{const k=Math.floor(s/bs)*bs; buckets[k]=(buckets[k]||0)+1;});
+  const mbkt=Math.max(...Object.values(buckets),1);
+  const sEl=document.getElementById('dist-sum'); sEl.innerHTML='';
+  const sr=document.createElement('div'); sr.className='summary-row';
+  sr.innerHTML='<span><strong>Avg:</strong> '+Math.round(avgS)+'</span><span><strong>Min:</strong> '+minS+'</span><span><strong>Max:</strong> '+maxS+'</span>';
+  sEl.appendChild(sr);
+  Object.entries(buckets).sort((a,b)=>+a[0]-+b[0]).forEach(([k,c])=>{
+    const row=document.createElement('div'); row.className='sum-row';
+    const lbl=document.createElement('div'); lbl.className='sum-label'; lbl.textContent=k+'–'+(+k+bs-1); row.appendChild(lbl);
+    row.innerHTML+=freqBar(c,mbkt,'#0069d9');
+    const cnt=document.createElement('div'); cnt.className='freq-count'; cnt.textContent=c; row.appendChild(cnt);
+    sEl.appendChild(row);
+  });
+  const spreads=draws.map(d=>parseFloat(stdDev(d.numbers).toFixed(1)));
+  const avgSp=avg(spreads).toFixed(1), minSp=Math.min(...spreads).toFixed(1), maxSp=Math.max(...spreads).toFixed(1);
+  const spEl=document.getElementById('dist-spread'); spEl.innerHTML='';
+  const ssr=document.createElement('div'); ssr.className='summary-row';
+  ssr.innerHTML='<span><strong>Avg:</strong> '+avgSp+'</span><span><strong>Tightest:</strong> '+minSp+'</span><span><strong>Widest:</strong> '+maxSp+'</span>';
+  spEl.appendChild(ssr);
+  const spB={}; spreads.forEach(s=>{const k=Math.floor(s/3)*3; spB[k]=(spB[k]||0)+1;});
+  const mspb=Math.max(...Object.values(spB),1);
+  Object.entries(spB).sort((a,b)=>+a[0]-+b[0]).forEach(([k,c])=>{
+    const row=document.createElement('div'); row.className='sum-row';
+    const lbl=document.createElement('div'); lbl.className='sum-label'; lbl.textContent=k+'–'+(+k+2); row.appendChild(lbl);
+    row.innerHTML+=freqBar(c,mspb,'#6c757d');
+    const cnt=document.createElement('div'); cnt.className='freq-count'; cnt.textContent=c; row.appendChild(cnt);
+    spEl.appendChild(row);
+  });
+}
+
+// ── Timing ────────────────────────────────────────────────────────────────────
+function renderTiming() {
+  const el=document.getElementById('timing-gaps'); el.innerHTML='';
+  if(draws.length<5){el.innerHTML=emptyMsg('Need at least 5 draws for gap analysis.');return;}
+  const apps={}; for(let n=1;n<=50;n++) apps[n]=[];
+  draws.forEach((d,idx)=>d.numbers.forEach(n=>apps[n].push(idx)));
+  const stats=[];
+  for(let n=1;n<=50;n++){
+    const a=apps[n];
+    if(a.length<2){stats.push({n,avgGap:null,maxGap:null,lastSeen:a[0]??null});continue;}
+    const gaps=[]; for(let i=1;i<a.length;i++) gaps.push(a[i]-a[i-1]);
+    stats.push({n,avgGap:parseFloat(avg(gaps).toFixed(1)),maxGap:Math.max(...gaps),lastSeen:a[0]});
+  }
+  stats.filter(s=>s.avgGap!==null).sort((a,b)=>b.avgGap-a.avgGap).slice(0,20).forEach(({n,avgGap,maxGap,lastSeen})=>{
+    const row=document.createElement('div'); row.className='timing-row';
+    row.appendChild(makeBall(n,'main'));
+    const a=document.createElement('span'); a.className='timing-avg'; a.textContent='Avg gap: '+avgGap+' draws'; row.appendChild(a);
+    const m=document.createElement('span'); m.className='timing-max'; m.textContent='Longest: '+maxGap; row.appendChild(m);
+    const c=document.createElement('span'); c.className='timing-curr';
+    c.textContent=lastSeen===0?'last draw':(lastSeen!==null?lastSeen+' ago':'never'); row.appendChild(c);
+    el.appendChild(row);
+  });
+}
+
+// ── Pairs ─────────────────────────────────────────────────────────────────────
+function renderPairs() {
+  const {pairs,trips,weighted}=getPairs();
+  function renderCombos(el,arr,badgeClass) {
+    el.innerHTML='';
+    if(!arr.length){el.innerHTML=emptyMsg();return;}
+    arr.forEach(([k,c])=>{
+      const nums=k.split('-').map(Number);
+      const row=document.createElement('div'); row.className='pair-item';
+      const bw=document.createElement('div'); bw.className='balls-row';
+      nums.forEach(num=>bw.appendChild(makeBall(num,'main'))); row.appendChild(bw);
+      const cnt=document.createElement('div'); cnt.className='badge '+badgeClass;
+      cnt.textContent=typeof c==='number'&&c<10?c.toFixed(3):c+(badgeClass==='badge-blue'?'x':'');
+      row.appendChild(cnt); el.appendChild(row);
+    });
+  }
+  renderCombos(document.getElementById('top-pairs'), Object.entries(pairs).sort((a,b)=>b[1]-a[1]).slice(0,10), 'badge-blue');
+  renderCombos(document.getElementById('top-pairs-weighted'), Object.entries(weighted).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([k,v])=>[k,parseFloat(v.toFixed(3))]), 'badge-green');
+  renderCombos(document.getElementById('top-triplets'), Object.entries(trips).sort((a,b)=>b[1]-a[1]).slice(0,5), 'badge-blue');
+  const {main}=getFreqs();
+  const top15=Object.entries(main).sort((a,b)=>b[1]-a[1]).slice(0,15).map(([k])=>+k).sort((a,b)=>a-b);
+  const weakArr=[]; for(let i=0;i<top15.length;i++) for(let j=i+1;j<top15.length;j++){const k=top15[i]+'-'+top15[j]; weakArr.push([k,pairs[k]||0]);}
+  const weakEl=document.getElementById('weak-pairs'); weakEl.innerHTML='';
+  weakArr.sort((a,b)=>a[1]-b[1]).slice(0,10).forEach(([k,c])=>{
+    const nums=k.split('-').map(Number);
+    const row=document.createElement('div'); row.className='pair-item';
+    const bw=document.createElement('div'); bw.className='balls-row';
+    nums.forEach(num=>bw.appendChild(makeBall(num,'main'))); row.appendChild(bw);
+    const cnt=document.createElement('div'); cnt.className='badge badge-gray'; cnt.textContent=c===0?'never':c+'x'; row.appendChild(cnt);
+    weakEl.appendChild(row);
+  });
+  if(!weakEl.innerHTML) weakEl.innerHTML=emptyMsg();
+}
+
+// ── Star analysis ─────────────────────────────────────────────────────────────
+function renderStarAnalysis() {
+  // Star pairs
+  const starPairs={};
+  draws.forEach(d=>{
+    const [s1,s2]=[...d.stars].sort((a,b)=>a-b);
+    const k=s1+'-'+s2; starPairs[k]=(starPairs[k]||0)+1;
+  });
+  const spEl=document.getElementById('star-pairs'); spEl.innerHTML='';
+  const spArr=Object.entries(starPairs).sort((a,b)=>b[1]-a[1]);
+  if(!spArr.length){spEl.innerHTML=emptyMsg();} else {
+    spArr.forEach(([k,c])=>{
+      const [s1,s2]=k.split('-').map(Number);
+      const row=document.createElement('div'); row.className='star-pair-item';
+      const bw=document.createElement('div'); bw.className='balls-row';
+      bw.appendChild(makeBall(s1,'star')); bw.appendChild(makeBall(s2,'star')); row.appendChild(bw);
+      const cnt=document.createElement('div'); cnt.className='badge badge-blue'; cnt.textContent=c+'x'; row.appendChild(cnt);
+      spEl.appendChild(row);
+    });
+  }
+
+  // Star + main combos
+  const combos={};
+  draws.forEach(d=>{
+    d.stars.forEach(s=>{ d.numbers.forEach(n=>{ const k=s+'s-'+n+'m'; combos[k]=(combos[k]||0)+1; }); });
+  });
+  const comboArr=Object.entries(combos).sort((a,b)=>b[1]-a[1]).slice(0,15);
+  const smEl=document.getElementById('star-main-combos'); smEl.innerHTML='';
+  if(!comboArr.length){smEl.innerHTML=emptyMsg();} else {
+    const maxC=comboArr[0][1];
+    comboArr.forEach(([k,c])=>{
+      const [sp,mp]=k.split('-');
+      const starNum=parseInt(sp); const mainNum=parseInt(mp);
+      const row=document.createElement('div'); row.className='freq-bar-wrap';
+      const lbl=document.createElement('div'); lbl.className='freq-label'; lbl.style.width='80px';
+      lbl.style.cssText='display:flex;gap:4px;align-items:center;min-width:80px;';
+      lbl.appendChild(makeBall(starNum,'star'));
+      const plus=document.createElement('span'); plus.style.cssText='font-size:11px;color:#6c757d;'; plus.textContent='+';
+      lbl.appendChild(plus);
+      lbl.appendChild(makeBall(mainNum,'main')); row.appendChild(lbl);
+      row.innerHTML+=freqBar(c,maxC,'#fd7e14');
+      const cnt=document.createElement('div'); cnt.className='freq-count'; cnt.textContent=c+'x'; row.appendChild(cnt);
+      smEl.appendChild(row);
+    });
+  }
+}
+
+// ── Similarity ────────────────────────────────────────────────────────────────
+function renderSimilarity() {
+  const n=draws.length;
+  const cEl=document.getElementById('sim-carryover'); cEl.innerHTML='';
+  if(n<2){cEl.innerHTML=emptyMsg('Need at least 2 draws.');}
+  else{
+    const cc={}; for(let i=1;i<=50;i++)cc[i]=0;
+    for(let i=0;i<draws.length-1;i++){const a=new Set(draws[i].numbers),b=new Set(draws[i+1].numbers);a.forEach(x=>{if(b.has(x))cc[x]++;});}
+    const cArr=Object.entries(cc).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
+    if(!cArr.length){cEl.innerHTML='<div class="empty-message">No numbers have appeared in back-to-back draws yet.</div>';}
+    else{
+      const maxC=cArr[0][1];
+      cArr.slice(0,15).forEach(([num,c])=>{
+        const row=document.createElement('div'); row.className='freq-bar-wrap';
+        const lbl=document.createElement('div'); lbl.className='freq-label'; lbl.appendChild(makeBall(+num,'main')); row.appendChild(lbl);
+        row.innerHTML+=freqBar(c,maxC,'#fd7e14');
+        const cnt=document.createElement('div'); cnt.className='freq-count'; cnt.textContent=c+'x'; row.appendChild(cnt);
+        cEl.appendChild(row);
+      });
+    }
+  }
+  const simEl=document.getElementById('sim-most-similar'); simEl.innerHTML='';
+  if(n<3){simEl.innerHTML=emptyMsg('Need at least 3 draws.');}
+  else{
+    const simPairs=[];
+    for(let i=0;i<draws.length;i++) for(let j=i+1;j<draws.length;j++){
+      const a=new Set(draws[i].numbers), shared=draws[j].numbers.filter(x=>a.has(x));
+      if(shared.length>=3) simPairs.push({i,j,shared});
+    }
+    simPairs.sort((a,b)=>b.shared.length-a.shared.length).slice(0,8).forEach(({i,j,shared})=>{
+      const row=document.createElement('div'); row.className='sim-row';
+      const dates=document.createElement('div'); dates.className='sim-dates'; dates.textContent=draws[i].date+' & '+draws[j].date; row.appendChild(dates);
+      const bw=document.createElement('div'); bw.className='balls-row'; shared.forEach(num=>bw.appendChild(makeBall(num,'main'))); row.appendChild(bw);
+      const badge=document.createElement('span'); badge.className='badge badge-blue'; badge.textContent=shared.length+' shared'; row.appendChild(badge);
+      simEl.appendChild(row);
+    });
+    if(!simPairs.length) simEl.innerHTML='<div class="empty-message">No draw pairs share 3+ numbers yet.</div>';
+  }
+  const oEl=document.getElementById('sim-overlap-dist'); oEl.innerHTML='';
+  if(n<2){oEl.innerHTML=emptyMsg();}
+  else{
+    const oc={0:0,1:0,2:0,3:0,4:0,5:0};
+    for(let i=0;i<draws.length-1;i++){const a=new Set(draws[i].numbers); const sh=draws[i+1].numbers.filter(x=>a.has(x)).length; oc[sh]=(oc[sh]||0)+1;}
+    const pairs2=draws.length-1;
+    const avgO=(Object.entries(oc).reduce((s,[k,v])=>s+(+k*v),0)/pairs2).toFixed(2);
+    const sr=document.createElement('div'); sr.className='summary-row'; sr.innerHTML='<strong>Avg carryover per consecutive draw pair:</strong> '+avgO+' numbers'; oEl.appendChild(sr);
+    const maxO=Math.max(...Object.values(oc),1);
+    Object.entries(oc).forEach(([k,c])=>{
+      const row=document.createElement('div'); row.className='sum-row';
+      const lbl=document.createElement('div'); lbl.className='sum-label'; lbl.textContent=k+' shared'; row.appendChild(lbl);
+      row.innerHTML+=freqBar(c,maxO,'#17a2b8');
+      const cnt=document.createElement('div'); cnt.className='freq-count'; cnt.textContent=c+'x ('+pct(c,pairs2)+'%)'; row.appendChild(cnt);
+      oEl.appendChild(row);
+    });
+  }
+}
+
+// ── Cycle detector ────────────────────────────────────────────────────────────
+function renderCycleDetector() {
+  const el = document.getElementById('cycle-chart'); el.innerHTML = '';
+  if (draws.length < 10) { el.innerHTML = emptyMsg('Need at least 10 draws for cycle analysis.'); return; }
+  const apps = {}; for(let n=1;n<=50;n++) apps[n]=[];
+  draws.forEach((d,idx) => d.numbers.forEach(n => apps[n].push(idx)));
+
+  // Score regularity = low std dev of gaps relative to avg gap
+  const scored = [];
+  for(let n=1;n<=50;n++){
+    const a = apps[n]; if(a.length < 4) continue;
+    const gaps = []; for(let i=1;i<a.length;i++) gaps.push(a[i]-a[i-1]);
+    const avgG = avg(gaps);
+    const sdG = stdDev(gaps);
+    const regularity = avgG > 0 ? parseFloat((1 - Math.min(sdG/avgG, 1)).toFixed(3)) : 0;
+    scored.push({n, gaps, avgG: parseFloat(avgG.toFixed(1)), sdG: parseFloat(sdG.toFixed(1)), regularity});
+  }
+  scored.sort((a,b) => b.regularity - a.regularity).slice(0, 20).forEach(({n, gaps, avgG, regularity}) => {
+    const row = document.createElement('div'); row.className = 'cycle-row';
+    const header = document.createElement('div'); header.className = 'cycle-header';
+    header.appendChild(makeBall(n,'main'));
+    const info = document.createElement('span'); info.style.cssText='font-size:12px;color:#495057;';
+    info.textContent = 'Avg gap: '+avgG+' draws  |  Regularity: '+(regularity*100).toFixed(0)+'%';
+    header.appendChild(info); row.appendChild(header);
+    const track = document.createElement('div'); track.className = 'cycle-track';
+    const maxGap = Math.max(...gaps, 1);
+    gaps.forEach(g => {
+      const pip = document.createElement('div'); pip.className = 'cycle-pip';
+      const intensity = g / maxGap;
+      const r = Math.round(0 + intensity * 220);
+      const gVal = Math.round(123 - intensity * 100);
+      const b = Math.round(255 - intensity * 200);
+      pip.style.background = 'rgb('+r+','+gVal+','+b+')';
+      pip.textContent = g; track.appendChild(pip);
+    });
+    row.appendChild(track); el.appendChild(row);
+  });
+}
+
+// ── Due score ─────────────────────────────────────────────────────────────────
+function renderDueScore() {
+  const el = document.getElementById('due-scores'); el.innerHTML = '';
+  if (draws.length < 5) { el.innerHTML = emptyMsg('Need at least 5 draws.'); return; }
+  const n = draws.length;
+  const apps = {}; for(let i=1;i<=50;i++) apps[i]=[];
+  draws.forEach((d,idx) => d.numbers.forEach(num => apps[num].push(idx)));
+  const recent20 = getRecentFreqs(20);
+  const scores = [];
+  for(let num=1;num<=50;num++){
+    const a = apps[num];
+    const lastSeen = a.length > 0 ? a[0] : n;
+    const currentGap = lastSeen;
+    let avgGap = 10, maxGap = 15;
+    if(a.length >= 2){
+      const gaps=[]; for(let i=1;i<a.length;i++) gaps.push(a[i]-a[i-1]);
+      avgGap = avg(gaps); maxGap = Math.max(...gaps);
+    }
+    // Score components (0-1 each)
+    const gapScore = avgGap > 0 ? Math.min(currentGap / avgGap, 3) / 3 : 0;
+    const maxGapScore = maxGap > 0 ? Math.min(currentGap / maxGap, 1) : 0;
+    const recentScore = 1 - Math.min(recent20[num] / 5, 1);
+    const score = parseFloat(((gapScore * 0.5 + maxGapScore * 0.3 + recentScore * 0.2) * 100).toFixed(1));
+    scores.push({num, score, currentGap, avgGap: parseFloat((avgGap||0).toFixed(1)), recent: recent20[num]});
+  }
+  scores.sort((a,b) => b.score - a.score);
+  const maxScore = scores[0].score || 1;
+  scores.forEach(({num, score, currentGap, avgGap, recent}) => {
+    const row = document.createElement('div'); row.className = 'due-row';
+    row.appendChild(makeBall(num,'main'));
+    const barWrap = document.createElement('div'); barWrap.className = 'due-score-bar';
+    const fill = document.createElement('div'); fill.className = 'due-score-fill';
+    const p = Math.round((score/maxScore)*100);
+    const color = p > 75 ? '#dc3545' : p > 50 ? '#fd7e14' : p > 25 ? '#007bff' : '#6c757d';
+    fill.style.cssText = 'width:'+p+'%;background:'+color+';';
+    fill.textContent = score.toFixed(0);
+    barWrap.appendChild(fill); row.appendChild(barWrap);
+    const info = document.createElement('span'); info.style.cssText='font-size:11px;color:#6c757d;min-width:140px;';
+    info.textContent = 'Gap: '+currentGap+' | Avg: '+avgGap+' | Recent: '+recent;
+    row.appendChild(info); el.appendChild(row);
+  });
+}
+
+// ── Heat map ──────────────────────────────────────────────────────────────────
+function renderHeatmap() {
+  const el = document.getElementById('heatmap-grid'); el.innerHTML = '';
+  const {main} = getFreqs();
+  const vals = Object.values(main);
+  const minF = Math.min(...vals), maxF = Math.max(...vals);
+  const grid = document.createElement('div'); grid.className = 'heatmap';
+  for(let n=1;n<=50;n++){
+    const cell = document.createElement('div'); cell.className = 'hm-cell';
+    const intensity = maxF > minF ? (main[n]-minF)/(maxF-minF) : 0.5;
+    const r = Math.round(204 - intensity*180);
+    const g = Math.round(229 - intensity*160);
+    const b = 255;
+    const textColor = intensity > 0.6 ? '#004085' : '#333';
+    cell.style.cssText = 'background:rgb('+r+','+g+','+b+');color:'+textColor+';';
+    cell.title = 'Number '+n+': '+main[n]+' times';
+    cell.textContent = n;
+    grid.appendChild(cell);
+  }
+  el.appendChild(grid);
+  // Legend
+  const legend = document.createElement('div'); legend.style.cssText='display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11px;color:#6c757d;';
+  legend.innerHTML = 'Cold <span style="display:inline-block;width:60px;height:12px;background:linear-gradient(to right,rgb(204,229,255),rgb(24,69,95);border-radius:2px;"></span> Hot';
+  el.appendChild(legend);
+}
+
+// ── Co-occurrence matrix ──────────────────────────────────────────────────────
+function renderCooccurrence() {
+  const el = document.getElementById('cooccurrence-matrix'); el.innerHTML = '';
+  if (draws.length < 5) { el.innerHTML = emptyMsg('Need at least 5 draws.'); return; }
+  // Build co-occurrence counts
+  const co = {};
+  for(let i=1;i<=50;i++) { co[i]={}; for(let j=1;j<=50;j++) co[i][j]=0; }
+  draws.forEach(d => {
+    const ns = d.numbers;
+    for(let i=0;i<ns.length;i++) for(let j=0;j<ns.length;j++) if(i!==j) co[ns[i]][ns[j]]++;
+  });
+  const allVals = [];
+  for(let i=1;i<=50;i++) for(let j=1;j<=50;j++) if(i!==j) allVals.push(co[i][j]);
+  const maxCo = Math.max(...allVals, 1);
+
+  const wrap = document.createElement('div'); wrap.className = 'matrix-wrap';
+  const table = document.createElement('table'); table.className = 'matrix-table';
+
+  // Header row
+  const thead = document.createElement('thead');
+  const hrow = document.createElement('tr');
+  const corner = document.createElement('th'); corner.textContent = ''; hrow.appendChild(corner);
+  for(let j=1;j<=50;j++){
+    const th = document.createElement('th'); th.textContent = j; hrow.appendChild(th);
+  }
+  thead.appendChild(hrow); table.appendChild(thead);
+
+  // Data rows
+  const tbody = document.createElement('tbody');
+  for(let i=1;i<=50;i++){
+    const tr = document.createElement('tr');
+    const rowH = document.createElement('td'); rowH.className='row-header'; rowH.textContent=i; tr.appendChild(rowH);
+    for(let j=1;j<=50;j++){
+      const td = document.createElement('td');
+      if(i===j){ td.style.background='#e9ecef'; td.textContent=''; }
+      else {
+        const v = co[i][j];
+        const intensity = v / maxCo;
+        const r = Math.round(204 - intensity*180);
+        const g = Math.round(229 - intensity*160);
+        const b = 255;
+        const textColor = intensity > 0.5 ? '#004085' : '#aaa';
+        td.style.cssText='background:rgb('+r+','+g+','+b+');color:'+textColor+';';
+        td.title = i+' & '+j+': '+v+' times';
+        td.textContent = v > 0 ? v : '';
+      }
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody); wrap.appendChild(table); el.appendChild(wrap);
+}
+
+// ── Number generator ──────────────────────────────────────────────────────────
+function generateNumbers() {
+  if (draws.length < 10) { alert('Need at least 10 draws for the generator to work well.'); return; }
+  const {main, stars} = getFreqs();
+  const recent10 = getRecentFreqs(10);
+  const recent20 = getRecentFreqs(20);
+  const n = draws.length;
+
+  // Build weighted scores for each main number
+  const scores = {};
+  for(let i=1;i<=50;i++){
+    const freqScore = main[i] / n;                          // overall frequency (0-1)
+    const recentScore = (recent10[i]/10 + recent20[i]/20) / 2;  // recent momentum
+    const apps = []; draws.forEach((d,idx)=>{ if(d.numbers.includes(i)) apps.push(idx); });
+    let dueScore = 0;
+    if(apps.length >= 2){
+      const gaps=[]; for(let k=1;k<apps.length;k++) gaps.push(apps[k]-apps[k-1]);
+      const avgG = avg(gaps);
+      const currentGap = apps[0];
+      dueScore = avgG > 0 ? Math.min(currentGap/avgG, 2)/2 : 0;
+    }
+    // Combined weight: frequency 40%, recency 35%, due 25%
+    scores[i] = freqScore*0.40 + recentScore*0.35 + dueScore*0.25;
+  }
+
+  // Select 5 numbers using weighted random, with structural constraints
+  let bestSet = null, bestSumDist = Infinity;
+  for(let attempt=0;attempt<500;attempt++){
+    const picked = weightedSampleNoReplace(scores, 5);
+    picked.sort((a,b)=>a-b);
+    const sum = picked.reduce((a,b)=>a+b,0);
+    const odds = picked.filter(x=>x%2!==0).length;
+    const lows = picked.filter(x=>x<=25).length;
+    const sumDist = Math.abs(sum - 125); // target sum ~125
+    // Must have 2-3 odd, 2-3 low/high, sum 90-160
+    if(odds>=2&&odds<=3&&lows>=2&&lows<=3&&sum>=90&&sum<=160){
+      if(sumDist < bestSumDist){ bestSumDist = sumDist; bestSet = picked; }
+    }
+  }
+  // Fallback: best sum distance without constraints
+  if(!bestSet){
+    let best2=null, bd=Infinity;
+    for(let attempt=0;attempt<200;attempt++){
+      const picked=weightedSampleNoReplace(scores,5).sort((a,b)=>a-b);
+      const d=Math.abs(picked.reduce((a,b)=>a+b,0)-125);
+      if(d<bd){bd=d;best2=picked;}
+    }
+    bestSet=best2;
+  }
+
+  // Stars: weighted by frequency
+  const starScores = {};
+  for(let s=1;s<=12;s++) starScores[s] = stars[s]/n;
+  const pickedStars = weightedSampleNoReplace(starScores, 2).sort((a,b)=>a-b);
+
+  // Display
+  const resultEl = document.getElementById('gen-result'); resultEl.style.display='block';
+  const ballsEl = document.getElementById('gen-balls'); ballsEl.innerHTML='';
+  bestSet.forEach(n=>ballsEl.appendChild(makeBall(n,'main')));
+  ballsEl.appendChild(starSep());
+  pickedStars.forEach(s=>ballsEl.appendChild(makeBall(s,'star')));
+
+  const sum = bestSet.reduce((a,b)=>a+b,0);
+  const odds = bestSet.filter(x=>x%2!==0).length;
+  const lows = bestSet.filter(x=>x<=25).length;
+  const ratEl = document.getElementById('gen-rationale'); ratEl.innerHTML='';
+  [
+    'Sum: '+sum+' (target range 90–160)',
+    'Balance: '+odds+' odd / '+(5-odds)+' even',
+    'Range: '+lows+' low (1–25) / '+(5-lows)+' high (26–50)',
+    'Weighted by: overall frequency (40%), recent momentum (35%), due score (25%)'
+  ].forEach(t=>{ const li=document.createElement('li'); li.textContent=t; ratEl.appendChild(li); });
+
+  // Add to session history
+  const histEl = document.getElementById('gen-history');
+  if(histEl.querySelector('.empty-message')) histEl.innerHTML='';
+  const hRow = document.createElement('div'); hRow.className='draw-row';
+  const ts = document.createElement('div'); ts.className='draw-date'; ts.textContent=new Date().toLocaleTimeString(); hRow.appendChild(ts);
+  const hBalls = document.createElement('div'); hBalls.className='balls-row';
+  bestSet.forEach(n=>hBalls.appendChild(makeBall(n,'main')));
+  hBalls.appendChild(starSep());
+  pickedStars.forEach(s=>hBalls.appendChild(makeBall(s,'star')));
+  hRow.appendChild(hBalls); histEl.insertBefore(hRow, histEl.firstChild);
+}
+
+function weightedSampleNoReplace(scores, k) {
+  const pool = Object.entries(scores).map(([n,w])=>({n:+n,w}));
+  const result = [];
+  for(let i=0;i<k;i++){
+    const total = pool.reduce((s,x)=>s+x.w,0);
+    let r = Math.random()*total, cum=0;
+    for(let j=0;j<pool.length;j++){
+      cum+=pool[j].w;
+      if(r<=cum){ result.push(pool[j].n); pool.splice(j,1); break; }
+    }
+  }
+  return result;
+}
+
+// ── Overdue ───────────────────────────────────────────────────────────────────
+function renderOverdue() {
+  const n=draws.length;
+  const mEl=document.getElementById('overdue-main'), sEl=document.getElementById('overdue-stars');
+  if(!n){mEl.innerHTML=sEl.innerHTML=emptyMsg('No draws yet. Load data from GitHub or import a JSON file.');return;}
+  const lastSeen={}, lastSeenStars={};
+  for(let i=1;i<=50;i++) lastSeen[i]=null;
+  for(let s=1;s<=12;s++) lastSeenStars[s]=null;
+  draws.forEach((d,idx)=>{d.numbers.forEach(num=>{if(lastSeen[num]===null)lastSeen[num]=idx;}); d.stars.forEach(s=>{if(lastSeenStars[s]===null)lastSeenStars[s]=idx;});});
+  function renderList(el,obj,type,threshold){
+    el.innerHTML='';
+    Object.entries(obj).map(([k,v])=>({n:+k,ago:v===null?n:v})).sort((a,b)=>b.ago-a.ago).forEach(({n:num,ago})=>{
+      const never=ago===draws.length;
+      const row=document.createElement('div'); row.className='overdue-row'; row.appendChild(makeBall(num,type));
+      const lbl=document.createElement('span'); lbl.className='overdue-ago';
+      lbl.textContent=never?'Never drawn':ago===0?'Last draw':ago+' draw'+(ago>1?'s':'')+' ago'; row.appendChild(lbl);
+      if(ago>=threshold||never){const b=document.createElement('span');b.className='overdue-badge';b.textContent='overdue';row.appendChild(b);}
+      const ds=document.createElement('span'); ds.className='overdue-count'; ds.textContent=never?'never':ago+' since'; row.appendChild(ds);
+      el.appendChild(row);
+    });
+  }
+  renderList(mEl,lastSeen,'main',10); renderList(sEl,lastSeenStars,'star',5);
+}
+
+// ── All draws ─────────────────────────────────────────────────────────────────
+function renderAllDraws() {
+  const ce=document.getElementById('draw-count'); if(ce) ce.textContent=draws.length;
+  renderListView(); renderTimelineView();
+}
+function setDrawView(view) {
+  currentDrawView = view;
+  document.getElementById('view-list-btn').classList.toggle('active', view==='list');
+  document.getElementById('view-tl-btn').classList.toggle('active', view==='timeline');
+  document.getElementById('view-list').style.display = view==='list'?'':'none';
+  document.getElementById('view-timeline').style.display = view==='timeline'?'':'none';
+}
+function renderListView() {
+  const el=document.getElementById('all-draws');
+  if(!draws.length){el.innerHTML=emptyMsg('No draws yet. Load data from GitHub or import a JSON file.');return;}
+  el.innerHTML='';
+  draws.forEach((d)=>{
+    const row=document.createElement('div'); row.className='draw-row';
+    const date=document.createElement('div'); date.className='draw-date'; date.textContent=d.date; row.appendChild(date);
+    const bw=document.createElement('div'); bw.className='balls-row';
+    d.numbers.forEach(n=>bw.appendChild(makeBall(n,'main'))); bw.appendChild(starSep()); d.stars.forEach(s=>bw.appendChild(makeBall(s,'star')));
+    row.appendChild(bw); el.appendChild(row);
+  });
+}
+function renderTimelineView() {
+  const el=document.getElementById('timeline-draws');
+  if(!draws.length){el.innerHTML=emptyMsg('No draws yet.');return;}
+  el.innerHTML='';
+  draws.forEach(d=>{
+    const row=document.createElement('div'); row.className='tl-row';
+    const date=document.createElement('div'); date.className='tl-date'; date.textContent=d.date; row.appendChild(date);
+    d.numbers.forEach(n=>{
+      const b=document.createElement('div'); b.className='tl-ball tl-ball-main'; b.textContent=n; row.appendChild(b);
+    });
+    const sep=document.createElement('span'); sep.className='tl-sep'; sep.textContent='\u2605'; row.appendChild(sep);
+    d.stars.forEach(s=>{
+      const b=document.createElement('div'); b.className='tl-ball tl-ball-star'; b.textContent=s; row.appendChild(b);
+    });
+    el.appendChild(row);
+  });
+}
+
+// ── Forecast ──────────────────────────────────────────────────────────────────
+function initForecast() {
+  if(fcInitialised) return; fcInitialised=true;
+  for(let i=1;i<=31;i++){
+    ['fc-from-day','fc-to-day','fc-anc-day'].forEach(id=>{
+      const o=document.createElement('option'); o.value=i; o.textContent=i;
+      document.getElementById(id).appendChild(o);
+    });
+  }
+  const years=[...new Set(draws.map(d=>d.date.slice(0,4)))].sort();
+  ['fc-from-year','fc-to-year','fc-anc-year'].forEach(id=>{
+    const sel=document.getElementById(id);
+    years.forEach(y=>{const o=document.createElement('option');o.value=y;o.textContent=y;sel.appendChild(o);});
+  });
+}
+function fcSetMode(mode) {
+  document.getElementById('fc-mode-range').classList.toggle('active',mode==='range');
+  document.getElementById('fc-mode-anchor').classList.toggle('active',mode==='anchor');
+  document.getElementById('fc-range-section').style.display=mode==='range'?'':'none';
+  document.getElementById('fc-anchor-section').style.display=mode==='anchor'?'':'none';
+}
+function fcMatchesCriteria(draw,dow,day,month,year){
+  const d=new Date(draw.date+'T00:00:00');
+  if(dow!==''&&d.getDay()!==parseInt(dow)) return false;
+  if(day!==''&&d.getDate()!==parseInt(day)) return false;
+  if(month!==''&&(d.getMonth()+1)!==parseInt(month)) return false;
+  if(year!==''&&d.getFullYear()!==parseInt(year)) return false;
+  return true;
+}
+function fcDescribe(dow,day,month,year){
+  const parts=[];
+  if(dow!=='') parts.push(DAYS[parseInt(dow)]);
+  if(day!=='') parts.push('day '+day);
+  if(month!=='') parts.push(MONTHS[parseInt(month)]);
+  if(year!=='') parts.push(year);
+  return parts.length?parts.join(' '):'any date';
+}
+function runForecast(){
+  initForecast();
+  const resultsEl=document.getElementById('fc-results');
+  const barEl=document.getElementById('fc-results-bar');
+  resultsEl.innerHTML='';
+  if(!draws.length){barEl.style.display='block';barEl.textContent='No draws loaded yet.';return;}
+  let matched=[], desc='';
+  const fcMode=document.getElementById('fc-mode-range').classList.contains('active')?'range':'anchor';
+  if(fcMode==='range'){
+    const fDow=document.getElementById('fc-from-dow').value, fDay=document.getElementById('fc-from-day').value;
+    const fMonth=document.getElementById('fc-from-month').value, fYear=document.getElementById('fc-from-year').value;
+    const tDow=document.getElementById('fc-to-dow').value, tDay=document.getElementById('fc-to-day').value;
+    const tMonth=document.getElementById('fc-to-month').value, tYear=document.getElementById('fc-to-year').value;
+    const fromBlank=!fDow&&!fDay&&!fMonth&&!fYear, toBlank=!tDow&&!tDay&&!tMonth&&!tYear;
+    if(!fromBlank&&!toBlank){
+      const fm=draws.filter(d=>fcMatchesCriteria(d,fDow,fDay,fMonth,fYear)).map(d=>d.date).sort();
+      const tm=draws.filter(d=>fcMatchesCriteria(d,tDow,tDay,tMonth,tYear)).map(d=>d.date).sort();
+      if(fm.length&&tm.length) matched=draws.filter(d=>d.date>=fm[0]&&d.date<=tm[tm.length-1]);
+      else matched=[];
+    } else if(!fromBlank) matched=draws.filter(d=>fcMatchesCriteria(d,fDow,fDay,fMonth,fYear));
+    else if(!toBlank) matched=draws.filter(d=>fcMatchesCriteria(d,tDow,tDay,tMonth,tYear));
+    else matched=[...draws];
+    const fromDesc=fromBlank?'':fcDescribe(fDow,fDay,fMonth,fYear);
+    const toDesc=toBlank?'':fcDescribe(tDow,tDay,tMonth,tYear);
+    desc='Showing <strong>'+matched.length+'</strong> draw'+(matched.length!==1?'s':'');
+    if(fromDesc&&toDesc) desc+=' between <em>'+fromDesc+'</em> and <em>'+toDesc+'</em>';
+    else if(fromDesc) desc+=' matching <em>'+fromDesc+'</em>';
+    else if(toDesc) desc+=' matching <em>'+toDesc+'</em>';
+    else desc+=' (all draws)';
+  } else {
+    const aDow=document.getElementById('fc-anc-dow').value, aDay=document.getElementById('fc-anc-day').value;
+    const aMonth=document.getElementById('fc-anc-month').value, aYear=document.getElementById('fc-anc-year').value;
+    const count=Math.max(1,parseInt(document.getElementById('fc-count').value)||10);
+    const dir=document.getElementById('fc-direction').value;
+    const anchorBlank=!aDow&&!aDay&&!aMonth&&!aYear;
+    const pool=draws.filter(d=>anchorBlank||fcMatchesCriteria(d,aDow,aDay,aMonth,aYear));
+    matched=dir==='before'?[...pool].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,count):[...pool].sort((a,b)=>a.date.localeCompare(b.date)).slice(0,count);
+    const ancDesc=anchorBlank?'any date':fcDescribe(aDow,aDay,aMonth,aYear);
+    desc='Showing <strong>'+matched.length+'</strong> draw'+(matched.length!==1?'s')+' matching <em>'+ancDesc+'</em> &mdash; '+count+' '+(dir==='before'?'most recent':'earliest');
+  }
+  matched.sort((a,b)=>b.date.localeCompare(a.date));
+  barEl.style.display='block'; barEl.innerHTML=desc;
+  if(!matched.length){resultsEl.innerHTML='<div class="empty-message">No draws match your search.</div>';return;}
+  matched.forEach(d=>{
+    const date=new Date(d.date+'T00:00:00');
+    const row=document.createElement('div'); row.className='fc-draw-row';
+    const dateEl=document.createElement('div'); dateEl.className='fc-draw-date'; dateEl.textContent=d.date; row.appendChild(dateEl);
+    const dayEl=document.createElement('span'); dayEl.className='fc-draw-day'; dayEl.textContent=DAYS[date.getDay()]; row.appendChild(dayEl);
+    const bw=document.createElement('div'); bw.className='balls-row';
+    d.numbers.forEach(n=>bw.appendChild(makeBall(n,'main'))); bw.appendChild(starSep()); d.stars.forEach(s=>bw.appendChild(makeBall(s,'star')));
+    row.appendChild(bw); resultsEl.appendChild(row);
+  });
+}
+function resetForecast(){
+  ['fc-from-dow','fc-from-day','fc-from-month','fc-from-year','fc-to-dow','fc-to-day','fc-to-month','fc-to-year','fc-anc-dow','fc-anc-day','fc-anc-month','fc-anc-year','fc-direction'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  const cnt=document.getElementById('fc-count');if(cnt)cnt.value=10;
+  document.getElementById('fc-results').innerHTML='';
+  document.getElementById('fc-results-bar').style.display='none';
+}
+
+// ── GitHub sync ───────────────────────────────────────────────────────────────
+async function loadFromGitHub() {
+  const statusEl=document.getElementById('gh-status');
+  statusEl.style.color='#6c757d'; statusEl.textContent='Fetching from GitHub...';
+  try {
+    const res=await fetch(GITHUB_RAW_URL+'?t='+Date.now());
+    if(!res.ok){
+      if(res.status===404) throw new Error('draws.json not found in repo. Make sure the file exists at the root of your main branch.');
+      throw new Error('HTTP '+res.status+' — '+res.statusText);
+    }
+    const imported=await res.json();
+    if(!Array.isArray(imported)) throw new Error('draws.json must contain a JSON array.');
+    if(!imported.every(d=>d.date&&Array.isArray(d.numbers)&&Array.isArray(d.stars))) throw new Error('Some entries are missing required fields.');
+    const prev=draws.length;
+    draws=imported; draws.sort((a,b)=>b.date.localeCompare(a.date)); save(); renderAllDraws();
+    statusEl.style.color='#155724';
+    statusEl.textContent='Loaded '+draws.length+' draws from GitHub'+(prev!==draws.length?' (was '+prev+')':'')+'. Synced at '+new Date().toLocaleTimeString();
+  } catch(err) {
+    statusEl.style.color='#721c24'; statusEl.textContent='Error: '+err.message;
+  }
+}
+
+function exportJSON(){const blob=new Blob([JSON.stringify(draws,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='euromillions-draws.json';a.click();}
+function importJSON(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const imp=JSON.parse(e.target.result);
+      if(!Array.isArray(imp)) throw new Error('Must be a JSON array');
+      if(!imp.every(d=>d.date&&Array.isArray(d.numbers)&&Array.isArray(d.stars))) throw new Error('Missing required fields');
+      draws=imp; draws.sort((a,b)=>b.date.localeCompare(a.date)); save(); renderAllDraws();
+      document.getElementById('gh-status').style.color='#155724';
+      document.getElementById('gh-status').textContent='Imported '+draws.length+' draws from file at '+new Date().toLocaleTimeString();
+    }catch(err){alert('Import failed: '+err.message);}
+  };
+  reader.readAsText(file); event.target.value='';
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+load();
+renderStats();
+</script>
+</body>
+</html>
