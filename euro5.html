@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EuroMillions Analyzer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body { font-family: Arial; padding:20px; background:#f8f9fa; }
-.balls-row { display:flex; gap:6px; }
+.section { margin-bottom:30px; }
+.balls-row { display:flex; gap:6px; flex-wrap:wrap; }
 .ball {
   width:28px;height:28px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
@@ -15,7 +16,13 @@ body { font-family: Arial; padding:20px; background:#f8f9fa; }
 }
 .main { background:#007bff; }
 .star { background:#ffc107;color:#000; }
-.section { margin-bottom:30px; }
+.row { display:flex; gap:10px; margin:5px 0; align-items:center; }
+.badge { padding:2px 6px; border-radius:4px; font-size:11px; }
+.blue { background:#007bff;color:#fff; }
+.green { background:#28a745;color:#fff; }
+.gray { background:#6c757d;color:#fff; }
+.bar { height:8px; background:#dee2e6; border-radius:4px; flex:1; position:relative; }
+.fill { height:100%; background:#007bff; border-radius:4px; }
 </style>
 </head>
 
@@ -25,16 +32,22 @@ body { font-family: Arial; padding:20px; background:#f8f9fa; }
 
 <div class="section">
   <button onclick="generateNumbers()">Generate Numbers</button>
-  <div id="gen-result"></div>
+  <div id="gen"></div>
 </div>
+
+<div class="section"><h3>Timing</h3><div id="timing"></div></div>
+<div class="section"><h3>Pairs</h3><div id="pairs"></div></div>
+<div class="section"><h3>Stars</h3><div id="stars"></div></div>
+<div class="section"><h3>Similarity</h3><div id="sim"></div></div>
+<div class="section"><h3>Cycle</h3><div id="cycle"></div></div>
+<div class="section"><h3>Due Score</h3><div id="due"></div></div>
+<div class="section"><h3>Heatmap</h3><div id="heat"></div></div>
+<div class="section"><h3>Overdue</h3><div id="overdue"></div></div>
 
 <script>
 
-// ── DATA ─────────────────────────────────────────────
-let draws = [];
-
-// SAMPLE DATA (replace or load your own)
-draws = [
+// ── SAMPLE DATA ─────────────────────────────────────
+let draws = [
   {date:"2026-04-20",numbers:[1,5,12,23,44],stars:[3,9]},
   {date:"2026-04-17",numbers:[2,11,19,28,50],stars:[1,7]},
   {date:"2026-04-15",numbers:[4,18,21,33,45],stars:[6,10]},
@@ -48,110 +61,176 @@ draws = [
 ];
 
 // ── HELPERS ─────────────────────────────────────────
-function avg(arr){ return arr.reduce((a,b)=>a+b,0)/arr.length || 0; }
-function stdDev(arr){
-  const m=avg(arr);
-  return Math.sqrt(avg(arr.map(x=>(x-m)**2))) || 0;
-}
-function pct(a,b){ return b?((a/b)*100).toFixed(1):0; }
+const avg=a=>a.reduce((x,y)=>x+y,0)/a.length||0;
+const std=a=>Math.sqrt(avg(a.map(x=>(x-avg(a))**2)))||0;
 
-function makeBall(n,type){
+function ball(n,t){
   const d=document.createElement('div');
-  d.className='ball '+type;
+  d.className='ball '+t;
   d.textContent=n;
   return d;
 }
 
-function getFreqs(){
-  const main={},stars={};
-  for(let i=1;i<=50;i++) main[i]=0;
-  for(let i=1;i<=12;i++) stars[i]=0;
+// ── TIMING ──────────────────────────────────────────
+function renderTiming(){
+  const el=timing; el.innerHTML='';
+  const apps={}; for(let i=1;i<=50;i++) apps[i]=[];
+  draws.forEach((d,i)=>d.numbers.forEach(n=>apps[n].push(i)));
 
-  draws.forEach(d=>{
-    d.numbers.forEach(n=>main[n]++);
-    d.stars.forEach(s=>stars[s]++);
+  Object.entries(apps).forEach(([n,a])=>{
+    if(a.length<2) return;
+    const gaps=[];
+    for(let i=1;i<a.length;i++) gaps.push(a[i]-a[i-1]);
+
+    const row=document.createElement('div'); row.className='row';
+    row.appendChild(ball(n,'main'));
+    row.append('avg:'+avg(gaps).toFixed(1),' max:'+Math.max(...gaps));
+    el.appendChild(row);
   });
-  return {main,stars};
 }
 
-function getRecentFreqs(n){
-  const recent = draws.slice(0,n);
+// ── PAIRS ───────────────────────────────────────────
+function renderPairs(){
+  const el=pairs; el.innerHTML='';
+  const map={};
+
+  draws.forEach(d=>{
+    for(let i=0;i<d.numbers.length;i++){
+      for(let j=i+1;j<d.numbers.length;j++){
+        const k=[d.numbers[i],d.numbers[j]].sort((a,b)=>a-b).join('-');
+        map[k]=(map[k]||0)+1;
+      }
+    }
+  });
+
+  Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,10).forEach(([k,c])=>{
+    const row=document.createElement('div'); row.className='row';
+    k.split('-').forEach(n=>row.appendChild(ball(n,'main')));
+    const b=document.createElement('span'); b.className='badge blue'; b.textContent=c;
+    row.appendChild(b);
+    el.appendChild(row);
+  });
+}
+
+// ── STAR ANALYSIS ───────────────────────────────────
+function renderStars(){
+  const el=stars; el.innerHTML='';
+  const map={};
+
+  draws.forEach(d=>{
+    const k=d.stars.join('-');
+    map[k]=(map[k]||0)+1;
+  });
+
+  Object.entries(map).forEach(([k,c])=>{
+    const row=document.createElement('div'); row.className='row';
+    k.split('-').forEach(n=>row.appendChild(ball(n,'star')));
+    row.appendChild(document.createTextNode(' '+c));
+    el.appendChild(row);
+  });
+}
+
+// ── SIMILARITY ──────────────────────────────────────
+function renderSim(){
+  const el=sim; el.innerHTML='';
+  for(let i=0;i<draws.length-1;i++){
+    const a=draws[i].numbers;
+    const b=draws[i+1].numbers;
+    const shared=a.filter(x=>b.includes(x));
+    if(shared.length){
+      const row=document.createElement('div'); row.className='row';
+      shared.forEach(n=>row.appendChild(ball(n,'main')));
+      el.appendChild(row);
+    }
+  }
+}
+
+// ── CYCLE ───────────────────────────────────────────
+function renderCycle(){
+  const el=cycle; el.innerHTML='';
+  for(let n=1;n<=50;n++){
+    const a=[];
+    draws.forEach((d,i)=>{ if(d.numbers.includes(n)) a.push(i); });
+    if(a.length<3) continue;
+
+    const gaps=[];
+    for(let i=1;i<a.length;i++) gaps.push(a[i]-a[i-1]);
+
+    const reg = 1 - Math.min(std(gaps)/avg(gaps),1);
+
+    const row=document.createElement('div'); row.className='row';
+    row.appendChild(ball(n,'main'));
+    row.append(' '+(reg*100).toFixed(0)+'% regular');
+    el.appendChild(row);
+  }
+}
+
+// ── DUE SCORE ──────────────────────────────────────
+function renderDue(){
+  const el=due; el.innerHTML='';
+  for(let n=1;n<=50;n++){
+    let last=null;
+    draws.forEach((d,i)=>{ if(d.numbers.includes(n)&&last===null) last=i; });
+    const gap=last??draws.length;
+
+    const row=document.createElement('div'); row.className='row';
+    row.appendChild(ball(n,'main'));
+    row.append(' gap:'+gap);
+    el.appendChild(row);
+  }
+}
+
+// ── HEATMAP ─────────────────────────────────────────
+function renderHeat(){
+  const el=heat; el.innerHTML='';
   const f={}; for(let i=1;i<=50;i++) f[i]=0;
-  recent.forEach(d=>d.numbers.forEach(n=>f[n]++));
-  return f;
+  draws.forEach(d=>d.numbers.forEach(n=>f[n]++));
+
+  for(let n=1;n<=50;n++){
+    const b=ball(n,'main');
+    b.style.opacity = 0.3 + (f[n]/draws.length);
+    el.appendChild(b);
+  }
+}
+
+// ── OVERDUE ─────────────────────────────────────────
+function renderOverdue(){
+  const el=overdue; el.innerHTML='';
+  for(let n=1;n<=50;n++){
+    let last=null;
+    draws.forEach((d,i)=>{ if(d.numbers.includes(n)&&last===null) last=i; });
+
+    const row=document.createElement('div'); row.className='row';
+    row.appendChild(ball(n,'main'));
+    row.append(' '+(last??'never'));
+    el.appendChild(row);
+  }
 }
 
 // ── GENERATOR ──────────────────────────────────────
-function weightedSampleNoReplace(scores, k) {
-  const pool = Object.entries(scores).map(([n,w])=>({n:+n,w}));
-  const result = [];
-
-  for(let i=0;i<k;i++){
-    const total = pool.reduce((s,x)=>s+x.w,0);
-    let r = Math.random()*total, cum=0;
-
-    for(let j=0;j<pool.length;j++){
-      cum+=pool[j].w;
-      if(r<=cum){
-        result.push(pool[j].n);
-        pool.splice(j,1);
-        break;
-      }
-    }
-  }
-  return result;
-}
-
 function generateNumbers(){
+  const nums=new Set();
+  while(nums.size<5) nums.add(Math.ceil(Math.random()*50));
+  const stars=new Set();
+  while(stars.size<2) stars.add(Math.ceil(Math.random()*12));
 
-  const {main,stars} = getFreqs();
-  const recent10 = getRecentFreqs(10);
-  const n = draws.length;
-
-  const scores={};
-
-  for(let i=1;i<=50;i++){
-
-    const freqScore = main[i]/n;
-    const recentScore = recent10[i]/10;
-
-    let dueScore=0;
-    const apps=[];
-    draws.forEach((d,idx)=>{
-      if(d.numbers.includes(i)) apps.push(idx);
-    });
-
-    if(apps.length>=2){
-      const gaps=[];
-      for(let j=1;j<apps.length;j++) gaps.push(apps[j]-apps[j-1]);
-      const avgG=avg(gaps);
-      const currentGap=apps[0];
-      dueScore = avgG ? Math.min(currentGap/avgG,2)/2 : 0;
-    }
-
-    scores[i]=freqScore*0.4 + recentScore*0.35 + dueScore*0.25;
-  }
-
-  const picked = weightedSampleNoReplace(scores,5).sort((a,b)=>a-b);
-
-  const starScores={};
-  for(let s=1;s<=12;s++) starScores[s]=stars[s]/n;
-
-  const pickedStars = weightedSampleNoReplace(starScores,2);
-
-  // DISPLAY
-  const el=document.getElementById('gen-result');
-  el.innerHTML='';
-  const row=document.createElement('div');
-  row.className='balls-row';
-
-  picked.forEach(n=>row.appendChild(makeBall(n,'main')));
-  pickedStars.forEach(s=>row.appendChild(makeBall(s,'star')));
-
+  const el=gen; el.innerHTML='';
+  const row=document.createElement('div'); row.className='row';
+  nums.forEach(n=>row.appendChild(ball(n,'main')));
+  stars.forEach(s=>row.appendChild(ball(s,'star')));
   el.appendChild(row);
 }
 
-</script>
+// ── INIT ───────────────────────────────────────────
+renderTiming();
+renderPairs();
+renderStars();
+renderSim();
+renderCycle();
+renderDue();
+renderHeat();
+renderOverdue();
 
+</script>
 </body>
 </html>
