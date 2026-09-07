@@ -3760,5 +3760,11 @@
     "name": "Aci Worldwide",
     "url": "https://ebwg.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/jobs?lastSelectedFacet=LOCATIONS&location=United+Kingdom&locationId=300000000300008&locationLevel=country&mode=location&selectedLocationsFacet=300000607842933",
     "priority": 1
+  },
+  {
+    "id": 628,
+    "name": "Airwallex",
+    "url": "https://careers.airwallex.com/jobs/?location%5B%5D=london&order=newest&location%5B0%5D=london",
+    "priority": 1
   }
 ]
