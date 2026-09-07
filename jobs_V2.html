@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search</title>
+    
+    <!-- Favicon - Add one of these options -->
+    <!--  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔗</text></svg>">  -->
+    <link rel="icon" type="image/png" href="favico/target.png">
+	
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .controls {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .controls label {
+            font-weight: bold;
+            margin-right: 5px;
+            white-space: nowrap;
+        }
+        
+        .controls select, .controls input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .controls select {
+            min-width: 100px;
+        }
+        
+        .search-input {
+            width: 140px;
+            transition: border-color 0.2s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+        }
+        
+        .alphabet-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 15px;
+        }
+        
+        .alphabet-btn {
+            background-color: #ffffff;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.2s;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .alphabet-btn:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .alphabet-btn.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .alphabet-btn.all {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        
+        .alphabet-btn.all:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        
+        .clear-filters {
+            background-color: #6c757d;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 0;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+        
+        .clear-filters:hover {
+            background-color: #545b62;
+        }
+        
+        .url-list {
+            padding: 20px;
+        }
+        
+        .url-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .url-item:hover {
+            background-color: #e3f2fd;
+            border-color: #007bff;
+            transform: translateY(-1px);
+        }
+        
+        .id-badge {
+            background-color: #6c757d;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            min-width: 35px;
+            text-align: center;
+            margin-right: 10px;
+            font-family: monospace;
+        }
+        
+        .priority-badge {
+            background-color: #007bff;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+            margin-right: 15px;
+        }
+        
+        .url-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            flex-grow: 1;
+        }
+        
+        .last-accessed {
+            font-size: 12px;
+            color: #666;  /* Change this color for default "X hours/days ago" text */
+            font-style: italic;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+        
+        .never-accessed {
+            color: #999;  /* Change this color for "Never accessed" text */
+        }
+        
+        .recently-accessed {
+            color: #28a745;  /* Change this color for recent activity (within 24 hours) */
+            font-weight: bold;
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+        
+        .results-count {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Job Search</h1>
+        </div>
+        
+        <div class="controls">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="searchInput">Search:</label>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Names" autocomplete="off">
+                </div>
+                <div class="filter-group">
+                    <label for="priorityFilter">Category:</label>
+                    <select id="priorityFilter">
+                        <option value="">All Categories</option>
+                        <option value="1">1. Top Financial</option>
+                        <option value="2">2. Other Financial</option>
+                        <option value="3">3. Insurance</option>
+                        <option value="4">4. Top Companies</option>
+                        <option value="5">5. Search Engine</option>
+                        <option value="6">6. Consulting</option>
+                        <option value="7">7. Goverment</option>
+                        <option value="8">8. Others</option>
+                        <option value="9">9. Sport/Games/Bet</option>
+                        <option value="10">10. AI & Tech</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="recentFilter">Recent:</label>
+                    <select id="recentFilter">
+                        <option value="">All</option>
+                        <option value="1">Now</option>
+                        <option value="60">Last hour</option>
+                        <option value="1440">24 hrs</option>
+                        <option value="4320">3 days</option>
+                        <option value="7200">5 days</option>
+                        <option value="10080">7 days</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+                <button class="clear-filters" id="clearFilters">Clear</button>
+            </div>
+            
+            <div class="alphabet-filter" id="alphabetFilter">
+                <span style="font-weight: bold; margin-right: 10px;">Filter:</span>				
+            </div>
+			
+        </div>
+        
+        <div class="url-list">
+            <div class="results-count" id="resultsCount"></div>
+            <div id="urlList"></div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // Company data is now loaded from companies.json
+        // (in the same folder as this page) instead of
+        // being hardcoded here.
+        // ========================================
+
+        let urlData = [];
+
+
+        // ========================================
+        // DON'T EDIT BELOW THIS LINE
+        // ========================================
+        
+        const urlList = document.getElementById('urlList');
+        const priorityFilter = document.getElementById('priorityFilter');
+        const recentFilter = document.getElementById('recentFilter');
+        const alphabetFilter = document.getElementById('alphabetFilter');
+        const clearFiltersBtn = document.getElementById('clearFilters');
+        const resultsCount = document.getElementById('resultsCount');
+        const searchInput = document.getElementById('searchInput');
+        
+        let selectedLetter = '';
+        let searchTerm = '';
+        
+        // Get last accessed time for a URL
+        function getLastAccessed(id) {
+            const lastAccessed = localStorage.getItem(`url_${id}_last_accessed`);
+            return lastAccessed ? new Date(lastAccessed) : null;
+        }
+        
+        // Set last accessed time for a URL
+        function setLastAccessed(id) {
+            localStorage.setItem(`url_${id}_last_accessed`, new Date().toISOString());
+        }
+        
+        // Format time difference for display
+        function formatTimeSince(date) {
+            if (!date) return 'Never accessed';
+            
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMinutes = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+            
+            if (diffMinutes < 1) return 'Just now';
+            if (diffMinutes < 60) return `${diffMinutes}m ago`;
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+            
+            return date.toLocaleDateString();
+        }
+        
+        // Determine CSS class based on last accessed time
+        function getAccessedClass(date) {
+            if (!date) return 'never-accessed';
+            
+            const now = new Date();
+            const diffMs = now - date;
+            const diffHours = Math.floor(diffMs / 3600000);
+            
+            if (diffHours < 24) return 'recently-accessed';
+            return '';
+        }
+        
+        // Initialize alphabet filter
+        function initAlphabetFilter() {
+            // Create "All" button
+            const allBtn = document.createElement('button');
+            allBtn.className = 'alphabet-btn all active';
+            allBtn.textContent = 'All';
+            allBtn.addEventListener('click', () => filterByLetter(''));
+            alphabetFilter.appendChild(allBtn);
+            
+            // Create letter buttons A-Z
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                const btn = document.createElement('button');
+                btn.className = 'alphabet-btn';
+                btn.textContent = letter;
+                btn.addEventListener('click', () => filterByLetter(letter));
+                alphabetFilter.appendChild(btn);
+            }
+            
+            // Create 0-9 button for numbers
+            const numbersBtn = document.createElement('button');
+            numbersBtn.className = 'alphabet-btn';
+            numbersBtn.textContent = '0-9';
+            numbersBtn.addEventListener('click', () => filterByLetter('0-9'));
+            alphabetFilter.appendChild(numbersBtn);
+        }
+        
+        function filterByLetter(letter) {
+            selectedLetter = letter;
+            
+            // Update active state of buttons
+            document.querySelectorAll('.alphabet-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (letter === '') {
+                document.querySelector('.alphabet-btn.all').classList.add('active');
+            } else {
+                document.querySelector(`.alphabet-btn:not(.all):not(.clear-filters)`).parentNode
+                    .querySelector(`[textContent="${letter}"]`)?.classList.add('active');
+                // Find and activate the correct button
+                Array.from(document.querySelectorAll('.alphabet-btn')).find(btn => 
+                    btn.textContent === letter
+                )?.classList.add('active');
+            }
+            
+            renderUrls();
+        }
+        
+        function sortByName(urls) {
+            return urls.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+        }
+        
+        function filterByPriority(urls, priority) {
+            if (!priority) return urls;
+            return urls.filter(item => item.priority == priority);
+        }
+        
+        function filterByRecent(urls, filterValue) {
+            if (!filterValue) return urls;
+            
+            // Special case for "never accessed"
+            if (filterValue === 'never') {
+                return urls.filter(item => {
+                    const lastAccessed = getLastAccessed(item.id);
+                    return !lastAccessed;
+                });
+            }
+            
+            // For time-based filters
+            const minutesLimit = parseInt(filterValue);
+            const now = new Date();
+            return urls.filter(item => {
+                const lastAccessed = getLastAccessed(item.id);
+                if (!lastAccessed) return false;
+                
+                const diffMs = now - lastAccessed;
+                const diffMinutes = Math.floor(diffMs / 60000);
+                
+                return diffMinutes <= minutesLimit;
+            });
+        }
+        
+        function filterByAlphabet(urls, letter) {
+            if (!letter) return urls;
+            
+            if (letter === '0-9') {
+                return urls.filter(item => /^[0-9]/.test(item.name));
+            }
+            
+            return urls.filter(item => 
+                item.name.toLowerCase().startsWith(letter.toLowerCase())
+            );
+        }
+        
+        function filterBySearch(urls, search) {
+            if (!search) return urls;
+            
+            const searchLower = search.toLowerCase();
+            return urls.filter(item => 
+                item.name.toLowerCase().includes(searchLower)
+            );
+        }
+        
+        function renderUrls() {
+            const selectedPriority = priorityFilter.value;
+            const selectedRecent = recentFilter.value;
+            let filteredUrls = urlData;
+            
+            // Apply filters in order
+            filteredUrls = filterByPriority(filteredUrls, selectedPriority);
+            filteredUrls = filterByRecent(filteredUrls, selectedRecent);
+            filteredUrls = filterByAlphabet(filteredUrls, selectedLetter);
+            filteredUrls = filterBySearch(filteredUrls, searchTerm);
+            filteredUrls = sortByName(filteredUrls);
+            
+            // Update results count
+            const totalUrls = urlData.length;
+            let filterText = `Showing ${filteredUrls.length} of ${totalUrls} URLs`;
+            
+            if (searchTerm) {
+                filterText += ` matching "${searchTerm}"`;
+            }
+            
+            resultsCount.textContent = filterText;
+            
+            urlList.innerHTML = '';
+            
+            if (filteredUrls.length === 0) {
+                urlList.innerHTML = '<div class="empty-message">No URLs match the selected filters</div>';
+                return;
+            }
+            
+            filteredUrls.forEach(item => {
+                const urlItem = document.createElement('div');
+                urlItem.className = 'url-item';
+                urlItem.title = `Click to open: ${item.url}`;
+                
+                const lastAccessed = getLastAccessed(item.id);
+                const timeText = formatTimeSince(lastAccessed);
+                const accessedClass = getAccessedClass(lastAccessed);
+                
+                urlItem.innerHTML = `
+                    <span class="id-badge">${item.id}</span>
+                    <span class="priority-badge">${item.priority}</span>
+                    <span class="url-name">${item.name}</span>
+                    <span class="last-accessed ${accessedClass}">${timeText}</span>
+                `;
+                
+                urlItem.addEventListener('click', () => {
+                    setLastAccessed(item.id);
+                    window.open(item.url, '_blank');
+                    // Update the display immediately
+                    setTimeout(() => {
+                        renderUrls();
+                    }, 100);
+                });
+                
+                urlList.appendChild(urlItem);
+            });
+        }
+        
+        function clearAllFilters() {
+            priorityFilter.value = '';
+            recentFilter.value = '';
+            selectedLetter = '';
+            searchTerm = '';
+            searchInput.value = '';
+            
+            // Reset alphabet buttons
+            document.querySelectorAll('.alphabet-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.alphabet-btn.all').classList.add('active');
+            
+            renderUrls();
+        }
+        
+        function handleSearch() {
+            searchTerm = searchInput.value.trim();
+            renderUrls();
+        }
+        
+        // Event listeners
+        priorityFilter.addEventListener('change', renderUrls);
+        recentFilter.addEventListener('change', renderUrls);
+        clearFiltersBtn.addEventListener('click', clearAllFilters);
+        searchInput.addEventListener('input', handleSearch);
+        searchInput.addEventListener('keyup', handleSearch);
+        
+        // Load company data from companies.json, then initialize
+        function loadCompanyData() {
+            fetch('companies.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    urlData = data;
+                    initAlphabetFilter();
+                    renderUrls();
+                })
+                .catch(error => {
+                    console.error('Failed to load companies.json:', error);
+                    urlList.innerHTML = '<div class="empty-message">Could not load companies.json. Make sure it is in the same folder as this page and that you are viewing this page via http/https (not directly opening the file).</div>';
+                    initAlphabetFilter();
+                });
+        }
+
+        // Initialize
+        loadCompanyData();
+    </script>
+</body>
+</html>

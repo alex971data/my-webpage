@@ -1,0 +1,3764 @@
+[
+  {
+    "id": 1,
+    "name": "Remitly",
+    "url": "https://careers.remitly.com/job-search-results/",
+    "priority": 1
+  },
+  {
+    "id": 2,
+    "name": "Bloomberg",
+    "url": "https://bloomberg.avature.net/careers/SearchJobs?_gl=1*1lxrntk*_gcl_au*MTE3NzA1ODk1Ny4xNzU2ODM4NDgx*_ga*NDg1NzM3MTExLjE3NTY4Mzg0ODI.*_ga_F61D775DS4*czE3NjA1NjAwNDkkbzYkZzAkdDE3NjA1NjAwNTYkajUzJGwwJGgw",
+    "priority": 1
+  },
+  {
+    "id": 3,
+    "name": "JPMorgan Chase",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/requisitions?keyword=%23nutmeg&location=LONDON%2C+United+Kingdom&locationId=300000057005324&locationLevel=state&mode=location",
+    "priority": 1
+  },
+  {
+    "id": 4,
+    "name": "Close Brothers Group",
+    "url": "https://www.closebrothers.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 5,
+    "name": "Crown Agents Bank",
+    "url": "https://careers.smartrecruiters.com/CrownAgentsBank",
+    "priority": 1
+  },
+  {
+    "id": 6,
+    "name": "European Bank",
+    "url": "https://jobs.ebrd.com/search/?createNewAlert=false&q=&locationsearch=london",
+    "priority": 1
+  },
+  {
+    "id": 7,
+    "name": "FCA",
+    "url": "https://fca.wd3.myworkdayjobs.com/FCA_Careers",
+    "priority": 1
+  },
+  {
+    "id": 8,
+    "name": "Fidelity",
+    "url": "https://fil.wd3.myworkdayjobs.com/en-US/001?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 1
+  },
+  {
+    "id": 9,
+    "name": "First Direct",
+    "url": "https://mycareer.hsbc.com/en_GB/external/SearchJobs/?1017=%5B67222%5D&1017_format=812&1023=%5B1248550%5D&1023_format=913&listFilterMode=1&pipelineRecordsPerPage=10&#anchor__search-jobs",
+    "priority": 1
+  },
+  {
+    "id": 10,
+    "name": "Fisher Investments",
+    "url": "https://www.fishercareers.com/search-jobs?_gl=1*szzscy*_gcl_aw*R0NMLjE3MjM1NTg4MzIuQ2owS0NRandpT3kxQmhEQ0FSSXNBREd2UW5CSHFlZGt0WmhOS2Y3MmVHeWxzbWs1TkJzT0hkOVJiaHoydXh1dVZXbjZzVWpRd21GSU1JUWFBdV9fRUFMd193Y0I.*_gcl_au*NDcwNTIzOTM1LjE3MjM1NTg4MzI.*_ga*MjAzMDQ0NDAwLjE3MjM1NTg4MzI.*_ga_L89E9NWVHN*MTcyMzU1ODgzMi4xLjEuMTcyMzU1ODg1OS4zMy4wLjA.",
+    "priority": 1
+  },
+  {
+    "id": 11,
+    "name": "Goldman Sachs",
+    "url": "https://higher.gs.com/results?LOCATION=London&page=1&sort=RELEVANCE",
+    "priority": 1
+  },
+  {
+    "id": 12,
+    "name": "HSBC Group",
+    "url": "https://portal.careers.hsbc.com/careers?location=London%2C%20England%2C%20United%20Kingdom&pid=563774612019885&domain=hsbc.com&sort_by=relevance&triggerGoButton=false",
+    "priority": 1
+  },
+  {
+    "id": 13,
+    "name": "Jaja",
+    "url": "https://jaja.co.uk/careers/",
+    "priority": 1
+  },
+  {
+    "id": 14,
+    "name": "Jefferies",
+    "url": "https://careers.jefferies.com/#en/sites/CX_1/jobs?location=London%2C+United+Kingdom&locationId=300000268117789&locationLevel=state&mode=location",
+    "priority": 1
+  },
+  {
+    "id": 15,
+    "name": "Lazard",
+    "url": "https://www.lazard.com/careers/jobs/",
+    "priority": 1
+  },
+  {
+    "id": 16,
+    "name": "Lloyds",
+    "url": "https://lbg.wd3.myworkdayjobs.com/en-US/lbg_Careers?source=lbgcareerssite&utm_source=cord&locations=373443f4ecb0019f0153a1f9f311ebe0&timeType=ae73709ec7900155fba9b76861087b00",
+    "priority": 1
+  },
+  {
+    "id": 17,
+    "name": "BottomLine",
+    "url": "https://www.bottomline.com/about/careers/jobs",
+    "priority": 1
+  },
+  {
+    "id": 18,
+    "name": "Macquarie",
+    "url": "https://recruitment.macquarie.com/en_US/careers/SearchJobs/?592=%5B887254%5D&592_format=9525&listFilterMode=1&jobRecordsPerPage=9&",
+    "priority": 1
+  },
+  {
+    "id": 19,
+    "name": "Millennium",
+    "url": "https://career.mlp.com/careers?location=London%2C%20United%20Kingdom&pid=755952525581&domain=mlp.com&sort_by=relevance&triggerGoButton=false&triggerGoButton=true",
+    "priority": 1
+  },
+  {
+    "id": 20,
+    "name": "Northern Trust",
+    "url": "https://ntrs.wd1.myworkdayjobs.com/northerntrust/?source=APPLICANT_SOURCE-3-356",
+    "priority": 1
+  },
+  {
+    "id": 21,
+    "name": "Royal Bank of Canada",
+    "url": "https://jobs.rbc.com/ca/en/search-results?keywords=project",
+    "priority": 1
+  },
+  {
+    "id": 22,
+    "name": "SS&C",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/ssctech/SSCTechnologies?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 1
+  },
+  {
+    "id": 23,
+    "name": "Zero Hash",
+    "url": "https://zero-hash.breezy.hr/?&location=London%2C%20GB#positions",
+    "priority": 1
+  },
+  {
+    "id": 24,
+    "name": "T. Rowe Price",
+    "url": "https://troweprice.wd5.myworkdayjobs.com/en-US/TRowePriceInternational?source=Indeed&locations=0502b9cdc12e10010e49bf3d20220000",
+    "priority": 1
+  },
+  {
+    "id": 25,
+    "name": "TSB",
+    "url": "https://career2.successfactors.eu/career?company=tsbukprod&lang=en_GB&site=VjItSmFoc1VqUEliN25XSmxwcnB4TjZ5QT09",
+    "priority": 1
+  },
+  {
+    "id": 26,
+    "name": "UBS",
+    "url": "https://jobs.ubs.com/TGnewUI/Search/Home/HomeWithPreLoad?partnerid=25008&siteid=5012&PageType=searchResults&SearchType=linkquery&LinkID=3109#keyWordSearch=&locationSearch=",
+    "priority": 1
+  },
+  {
+    "id": 27,
+    "name": "Vanguard",
+    "url": "https://www.vanguardjobs.com/job-search-results/?location=GB%2C%20England%2C%20London#",
+    "priority": 1
+  },
+  {
+    "id": 28,
+    "name": "Wells Fargo",
+    "url": "https://www.wellsfargojobs.com/en/jobs/",
+    "priority": 1
+  },
+  {
+    "id": 29,
+    "name": "3i Group Plc",
+    "url": "https://3i.wd103.myworkdayjobs.com/en-US/Intern_Career/jobs",
+    "priority": 1
+  },
+  {
+    "id": 30,
+    "name": "Bank ABC",
+    "url": "https://europecareers.bank-abc.com/",
+    "priority": 1
+  },
+  {
+    "id": 31,
+    "name": "Aberdeen Asset Management",
+    "url": "https://www.aberdeenplc.com/en-gb/careers",
+    "priority": 1
+  },
+  {
+    "id": 32,
+    "name": "AKJ Fintech",
+    "url": "https://www.akj.com/career",
+    "priority": 3
+  },
+  {
+    "id": 33,
+    "name": "The FA",
+    "url": "https://careers.thefa.com/jobs/home/",
+    "priority": 9
+  },
+  {
+    "id": 34,
+    "name": "ABN AMRO",
+    "url": "https://www.werkenbijabnamro.nl/vacatures/land/verenigd-koninkrijk",
+    "priority": 1
+  },
+  {
+    "id": 35,
+    "name": "GoCardless",
+    "url": "https://job-boards.greenhouse.io/gocardless?offices%5B%5D=85095",
+    "priority": 1
+  },
+  {
+    "id": 36,
+    "name": "West Ham United",
+    "url": "https://www.whufc.com/en/the-club/careers",
+    "priority": 9
+  },
+  {
+    "id": 37,
+    "name": "Tottenham Hotspur",
+    "url": "https://ce0812li.webitrent.com/ce0812li_webrecruitment/wrd/run/etrec179gf.open?wvid=9447152BOp",
+    "priority": 9
+  },
+  {
+    "id": 38,
+    "name": "AJ Bell Group",
+    "url": "https://www.ajbell.co.uk/group/careers",
+    "priority": 1
+  },
+  {
+    "id": 39,
+    "name": "Alfa Bank",
+    "url": "https://alphabanklondon.co.uk/careers",
+    "priority": 1
+  },
+  {
+    "id": 40,
+    "name": "Chelsea Footbal Club",
+    "url": "https://www.chelseafc.com/en/careers",
+    "priority": 9
+  },
+  {
+    "id": 41,
+    "name": "PGIM Careers",
+    "url": "https://jobs.pgim.com/",
+    "priority": 1
+  },
+  {
+    "id": 42,
+    "name": "Allianz",
+    "url": "https://careers.allianz.com/global/en/search-results?p=ChIJdd4hrwug2EcRmSrV3Vo6llI&location=London%2C%20UK",
+    "priority": 3
+  },
+  {
+    "id": 43,
+    "name": "Allied Irish Bank",
+    "url": "https://jobs.aib.ie/aib/go/AIB-UK/9605500/",
+    "priority": 1
+  },
+  {
+    "id": 44,
+    "name": "Arsenal Football Club",
+    "url": "https://careers.arsenal.com/",
+    "priority": 9
+  },
+  {
+    "id": 45,
+    "name": "Altium Capital Management",
+    "url": "https://altiumcap.com/open",
+    "priority": 1
+  },
+  {
+    "id": 46,
+    "name": "Alvarez & Marsal",
+    "url": "https://careers.alvarezandmarsal.com/",
+    "priority": 1
+  },
+  {
+    "id": 47,
+    "name": "Canopious",
+    "url": "https://jobs.canopius.com/en/sites/CX_1/jobs?_gl=1*ji21nj*_gcl_au*ODAwNzg1MTAuMTc4NjgwOTMwOA..*_ga*MjA0NTE0NjczNS4xNzg2ODA5MzA4*_ga_GPYCSGYBV4*czE3ODY4MDkzMDgkbzEkZzEkdDE3ODY4MDkzMTIkajU2JGwwJGgw&location=London%2C+United+Kingdom&locationId=100000059549768&locationLevel=state&mode=location",
+    "priority": 3
+  },
+  {
+    "id": 48,
+    "name": "Schroders Careers",
+    "url": "https://ekbq.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/",
+    "priority": 1
+  },
+  {
+    "id": 49,
+    "name": "IG Group",
+    "url": "https://ig.wd103.myworkdayjobs.com/EXT_IG",
+    "priority": 1
+  },
+  {
+    "id": 50,
+    "name": "ANZ Bank Careers",
+    "url": "https://careers.anz.com/go/ANZ-Jobs-List/4739210/",
+    "priority": 1
+  },
+  {
+    "id": 51,
+    "name": "Santander",
+    "url": "https://santander.wd3.myworkdayjobs.com/en-US/SantanderCareers?q=project&utm_source=santander.com&utm_medium=referral&utm_campaign=home&source=Santander_com",
+    "priority": 1
+  },
+  {
+    "id": 52,
+    "name": "Bank of America",
+    "url": "https://careers.bankofamerica.com/en-us",
+    "priority": 1
+  },
+  {
+    "id": 53,
+    "name": "Bank of England",
+    "url": "https://www.bankofengland.co.uk/careers",
+    "priority": 1
+  },
+  {
+    "id": 54,
+    "name": "Barclays",
+    "url": "https://home.barclays/careers/",
+    "priority": 1
+  },
+  {
+    "id": 55,
+    "name": "BlackRock",
+    "url": "https://careers.blackrock.com/",
+    "priority": 1
+  },
+  {
+    "id": 56,
+    "name": "Aviva Investors",
+    "url": "https://careers.avivainvestors.com/",
+    "priority": 1
+  },
+  {
+    "id": 57,
+    "name": "Royal London Group",
+    "url": "https://jobs.royallondon.com/",
+    "priority": 3
+  },
+  {
+    "id": 58,
+    "name": "Aztec Group",
+    "url": "https://aztec.group/careers/current-vacancies/",
+    "priority": 1
+  },
+  {
+    "id": 59,
+    "name": "Liberty Specialty Markets",
+    "url": "https://libertymutual1.avature.net/LibertyCareers/SearchJobs/?splitLocationSearch_country=232&listFilterMode=1&folderRecordsPerPage=6&",
+    "priority": 3
+  },
+  {
+    "id": 60,
+    "name": "Isio",
+    "url": "https://careers.isio.com/en-GB/jobs?utm_campaign=page_3534213_cta_26435572&utm_content=https%3A%2F%2Fcareers.isio.com&utm_medium=cta-block&utm_source=teamtailor-page",
+    "priority": 1
+  },
+  {
+    "id": 61,
+    "name": "Fitch Group",
+    "url": "https://careers.fitch.group/search/?createNewAlert=false&q=&locationsearch=london&optionsFacetsDD_customfield2=&optionsFacetsDD_department=&optionsFacetsDD_customfield4=",
+    "priority": 1
+  },
+  {
+    "id": 62,
+    "name": "Interpath Advisory",
+    "url": "https://apply.workable.com/interpath-advisory/",
+    "priority": 1
+  },
+  {
+    "id": 63,
+    "name": "Wise",
+    "url": "https://wise.jobs/",
+    "priority": 1
+  },
+  {
+    "id": 64,
+    "name": "Mastercard",
+    "url": "https://careers.mastercard.com/us/en",
+    "priority": 1
+  },
+  {
+    "id": 65,
+    "name": "Keyrock",
+    "url": "https://jobs.ashbyhq.com/keyrock?locationId=d513fbeb-208d-454b-bf28-0b7b77d29240",
+    "priority": 1
+  },
+  {
+    "id": 66,
+    "name": "SEi",
+    "url": "https://careers.seic.com/global/en/home?_gl=1*uvat92*_gcl_au*MTg5MDY3MTUzNy4xNzU2ODQwMDkx*_ga*MTgwMjEzNTU2Ni4xNzU2ODQwNTMw*_ga_MT7NE92F3W*czE3NTc0NDg3MzkkbzMkZzEkdDE3NTc0NDg5MDYkajM0JGwwJGgw",
+    "priority": 8
+  },
+  {
+    "id": 67,
+    "name": "BNY",
+    "url": "https://www.bny.com/corporate/global/en/about-us/careers/work-with-us.html",
+    "priority": 1
+  },
+  {
+    "id": 68,
+    "name": "Citi",
+    "url": "https://jobs.citi.com/search-jobs",
+    "priority": 1
+  },
+  {
+    "id": 69,
+    "name": "Clarksons",
+    "url": "https://www.clarksons.com/home/careers/experienced-professionals/",
+    "priority": 1
+  },
+  {
+    "id": 70,
+    "name": "TrinityBridge",
+    "url": "https://www.trinitybridge.com/about-us/careers",
+    "priority": 1
+  },
+  {
+    "id": 71,
+    "name": "Deutsche Bank",
+    "url": "https://careers.db.com/professionals/index?language_id=1#/professional/",
+    "priority": 1
+  },
+  {
+    "id": 72,
+    "name": "ING",
+    "url": "https://careers.ing.com/en/search-jobs",
+    "priority": 1
+  },
+  {
+    "id": 73,
+    "name": "Jupiter Asset Management",
+    "url": "https://jupiteram.com/global/en/corporate/working-at-jupiter/current-opportunities/",
+    "priority": 1
+  },
+  {
+    "id": 74,
+    "name": "Legal & General",
+    "url": "https://careers.legalandgeneral.com/",
+    "priority": 1
+  },
+  {
+    "id": 75,
+    "name": "CITIC CLSA",
+    "url": "https://citicclsa.wd3.myworkdayjobs.com/External?locations=107b208411a2102419a3f760cdba0000",
+    "priority": 1
+  },
+  {
+    "id": 76,
+    "name": "Pantheon Ventures",
+    "url": "https://job-boards.greenhouse.io/pantheonpublic",
+    "priority": 3
+  },
+  {
+    "id": 77,
+    "name": "AIG",
+    "url": "https://aig.wd1.myworkdayjobs.com/aig?locationCountry=29247e57dbaf46fb855b224e03170bc7&locations=ada8d448ea9f019981dd3d740c6bac4d",
+    "priority": 3
+  },
+  {
+    "id": 78,
+    "name": "PayPal",
+    "url": "https://careers.pypl.com/home/",
+    "priority": 1
+  },
+  {
+    "id": 79,
+    "name": "CMC Markets",
+    "url": "https://www.cmcmarkets.com/group/careers",
+    "priority": 1
+  },
+  {
+    "id": 80,
+    "name": "OpenPayd",
+    "url": "https://www.openpayd.com/careers/",
+    "priority": 1
+  },
+  {
+    "id": 81,
+    "name": "NatWest",
+    "url": "https://jobs.natwestgroup.com/search/jobs/in/country/united-kingdom",
+    "priority": 1
+  },
+  {
+    "id": 82,
+    "name": "Ninety One",
+    "url": "https://externalcareers.ninetyone.com/experienced-hires/index.html?searchCriteria[0][key]=LOV10&searchCriteria[0][values][]=10948&searchCriteria[1][key]=Resultsperpage&searchCriteria[1][values][]=10",
+    "priority": 1
+  },
+  {
+    "id": 83,
+    "name": "Nomura",
+    "url": "https://careers.nomura.com/Nomura/go/Career-Opportunities-Europe/9051100/",
+    "priority": 1
+  },
+  {
+    "id": 84,
+    "name": "Societe Generale",
+    "url": "https://careers.societegenerale.com/en/job-offers/project-manager-director-24000OIO-en",
+    "priority": 1
+  },
+  {
+    "id": 85,
+    "name": "Blackstone",
+    "url": "https://blackstone.wd1.myworkdayjobs.com/en-US/Blackstone_Careers",
+    "priority": 1
+  },
+  {
+    "id": 86,
+    "name": "Man Group",
+    "url": "https://www.man.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 87,
+    "name": "ICBC Standard Bank",
+    "url": "https://icbccareers.resourcesolutions.com/gold/iapply/index.cfm?event=jobs.search",
+    "priority": 1
+  },
+  {
+    "id": 88,
+    "name": "Jane Street",
+    "url": "https://www.janestreet.com/join-jane-street/open-roles/?type=experienced-candidates&location=london",
+    "priority": 1
+  },
+  {
+    "id": 89,
+    "name": "FNZ",
+    "url": "https://fnz.wd3.myworkdayjobs.com/fnz_careers?locations=565ae0c72c9101d60d389ef01e005201&timeType=1b2d5d2e4ebc01a4c6f282d8fc296900",
+    "priority": 1
+  },
+  {
+    "id": 90,
+    "name": "MUFG",
+    "url": "https://mufgub.wd3.myworkdayjobs.com/en-US/MUFG-Careers",
+    "priority": 1
+  },
+  {
+    "id": 91,
+    "name": "MET",
+    "url": "https://www.met.police.uk/police-forces/metropolitan-police/areas/c/careers/police-staff-roles/police-staff-vacancies/",
+    "priority": 7
+  },
+  {
+    "id": 92,
+    "name": "Marex",
+    "url": "https://www.marex.com/careers/career-opportunities/",
+    "priority": 1
+  },
+  {
+    "id": 93,
+    "name": "R3",
+    "url": "https://r3.com/careers/latest-job-opportunities/",
+    "priority": 1
+  },
+  {
+    "id": 94,
+    "name": "TD Banking",
+    "url": "https://td.wd3.myworkdayjobs.com/en-US/TD_Bank_Careers?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 1
+  },
+  {
+    "id": 95,
+    "name": "Australian Super",
+    "url": "https://ejjl.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?location=LONDON%2C+United+Kingdom&locationId=300000036725316&locationLevel=city&mode=location&radius=25&radiusUnit=MI",
+    "priority": 1
+  },
+  {
+    "id": 96,
+    "name": "Visa",
+    "url": "https://www.visa.co.uk/en_gb/jobs/",
+    "priority": 1
+  },
+  {
+    "id": 97,
+    "name": "CinVen",
+    "url": "https://cinven.pinpointhq.com/",
+    "priority": 1
+  },
+  {
+    "id": 98,
+    "name": "Apollo",
+    "url": "https://athene.wd5.myworkdayjobs.com/Apollo_Careers?locations=033362e37aa31001a2dd3350ad910000&locations=1586257e8e5310014892e2e5a24e0000",
+    "priority": 1
+  },
+  {
+    "id": 99,
+    "name": "7iM",
+    "url": "https://careers.7im.co.uk/vacancies/vacancy-search-results.aspx",
+    "priority": 1
+  },
+  {
+    "id": 100,
+    "name": "Aliance Bernsteins",
+    "url": "https://abglobal.wd1.myworkdayjobs.com/alliancebernsteincareers?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 1
+  },
+  {
+    "id": 101,
+    "name": "Allspring",
+    "url": "https://recruiting.ultipro.com/NEW1055NWPZ/JobBoard/419e3b86-b794-443a-bf5e-928e8ac8f78d/?q=&o=postedDateDesc&w=&wc=&we=&wpst=",
+    "priority": 1
+  },
+  {
+    "id": 102,
+    "name": "Apex",
+    "url": "https://theapexgroup.wd3.myworkdayjobs.com/apexgroupcareers?locations=0775a4ee0bf11001f885330831bc0000",
+    "priority": 1
+  },
+  {
+    "id": 103,
+    "name": "Amundi Investment Solutions",
+    "url": "https://jobs.amundi.com/job/list-of-all-jobs.aspx?all=1&mode=list#ancrecontenu",
+    "priority": 1
+  },
+  {
+    "id": 104,
+    "name": "AxA Investment",
+    "url": "https://jobs.axa/careersection/axa_im_external/moresearch.ftl",
+    "priority": 1
+  },
+  {
+    "id": 105,
+    "name": "BnP PariBas",
+    "url": "https://group.bnpparibas/en/careers/all-job-offers/permanent/london",
+    "priority": 1
+  },
+  {
+    "id": 106,
+    "name": "MoneyGram",
+    "url": "https://careers.moneygram.com/job-opportunities?title=&location=london&keyword=",
+    "priority": 1
+  },
+  {
+    "id": 107,
+    "name": "Convera",
+    "url": "https://job-boards.eu.greenhouse.io/convera?offices%5B%5D=4010280101",
+    "priority": 1
+  },
+  {
+    "id": 108,
+    "name": "Wester Union",
+    "url": "https://careers.westernunion.com/job-search-results/?keyword=london",
+    "priority": 1
+  },
+  {
+    "id": 109,
+    "name": "Ameriprise Financial",
+    "url": "https://careers.ameriprise.com/search-jobs/?search=&country=United+Kingdom&location=London&brand=Columbia+Threadneedle+Investments&pagesize=20#results",
+    "priority": 1
+  },
+  {
+    "id": 110,
+    "name": "EdenTree",
+    "url": "https://careers.benefactgroup.com/jobs?location=London&query=",
+    "priority": 1
+  },
+  {
+    "id": 111,
+    "name": "Franklin Templeton",
+    "url": "https://franklintempleton.wd5.myworkdayjobs.com/Primary-External-1?_gl=1*153fl8k*_gcl_au*MTI4MTQ2Njk5MC4xNzU4Mzc0ODM0*_ga*MjA1MzcxMjU0MC4xNzU4Mzc0ODM0*_ga_15V8ZZDP8Z*czE3NTgzNzQ4MzMkbzEkZzEkdDE3NTgzNzQ5MjYkajU2JGwwJGgw&locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 1
+  },
+  {
+    "id": 112,
+    "name": "Fulcrum Asset",
+    "url": "https://fulcrumasset.com/about-us/careers/",
+    "priority": 1
+  },
+  {
+    "id": 113,
+    "name": "Impax Asset Management",
+    "url": "https://careers-impaxam.icims.com/jobs/search?ss=1&searchLocation=--London",
+    "priority": 1
+  },
+  {
+    "id": 114,
+    "name": "Insight Investment",
+    "url": "https://www.insightinvestment.com/uk/nav/careers/vacancies/",
+    "priority": 1
+  },
+  {
+    "id": 115,
+    "name": "J O Hambro",
+    "url": "https://perpetual.wd3.myworkdayjobs.com/en-US/JOHCM_External?locationRegionStateProvince=d9bbc5c4067649ecbf64c920864362a9",
+    "priority": 1
+  },
+  {
+    "id": 116,
+    "name": "Jacobi",
+    "url": "https://jacobi.bamboohr.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 117,
+    "name": "MFS",
+    "url": "https://mfs.wd1.myworkdayjobs.com/MFS-Careers?locations=2c191d673ad410363966d1a6941a340c",
+    "priority": 1
+  },
+  {
+    "id": 118,
+    "name": "WTW",
+    "url": "https://careers.wtwco.com/jobs/search?block_index=0&block_uid=7600248349f098afc1761a0e9804bba2&cities%5B%5D=London&country_codes%5B%5D=GB&location_uids=&page=1&page_row_index=1&page_row_uid=a64a2fc0ce22bb1452e35839488df51d&page_version_uid=82800f2d718ca09e85dc6b6d7aa58363&query=&search_cities=&search_country_codes=&search_dropdown_field_1_values=&sort=",
+    "priority": 1
+  },
+  {
+    "id": 119,
+    "name": "Baker Street Advisors",
+    "url": "https://www.bakerstreetadvisors.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 120,
+    "name": "Loomi Sayies",
+    "url": "https://jobs.dayforcehcm.com/en-US/loomissayles/CANDIDATEPORTAL?locationString=London%2C+UK&distance=15&locationId=6&locationType=2",
+    "priority": 3
+  },
+  {
+    "id": 121,
+    "name": "M&G",
+    "url": "https://mgpru.wd3.myworkdayjobs.com/mandgprudential?locations=4754e8be5c2a014172262e61de4f816b&timeType=f5bc852146ef01ebe1fc7a268d4f8200",
+    "priority": 1
+  },
+  {
+    "id": 122,
+    "name": "Mornagan Stanley",
+    "url": "https://morganstanley.eightfold.ai/careers?source=mscom&start=0&pid=549793807896&sort_by=timestamp&filter_city=London",
+    "priority": 1
+  },
+  {
+    "id": 123,
+    "name": "Natixis",
+    "url": "https://recrutement.natixis.com/en/our-job-offers?tax_city=london&external=false",
+    "priority": 1
+  },
+  {
+    "id": 124,
+    "name": "AEW",
+    "url": "https://www.aew.com/about/careers#jobs",
+    "priority": 3
+  },
+  {
+    "id": 125,
+    "name": "NedBank",
+    "url": "https://jobs.nedbank.co.za/search/?createNewAlert=false&q=&locationsearch=london",
+    "priority": 1
+  },
+  {
+    "id": 126,
+    "name": "Pension Protection Fund",
+    "url": "https://www.ppf.co.uk/about-us/careers/Current-vacancies",
+    "priority": 1
+  },
+  {
+    "id": 127,
+    "name": "Premier Miton",
+    "url": "https://www.premiermiton.com/about-us/people/vacancies/",
+    "priority": 1
+  },
+  {
+    "id": 128,
+    "name": "Savils Investment",
+    "url": "https://careers.savillsim.com/jobs",
+    "priority": 1
+  },
+  {
+    "id": 129,
+    "name": "Walter Scott",
+    "url": "https://www.walterscott.com/careers/",
+    "priority": 1
+  },
+  {
+    "id": 130,
+    "name": "Balyansy",
+    "url": "https://bambusdev.my.site.com/s/",
+    "priority": 1
+  },
+  {
+    "id": 131,
+    "name": "Munich Re",
+    "url": "https://www.munichre.com/en/careers/job-search.html#1930147607",
+    "priority": 3
+  },
+  {
+    "id": 132,
+    "name": "Rothschild & Co",
+    "url": "https://www.rothschildandco.com/en/careers/experienced-professionals/vacancies/?division=&location=&corporate_grade=&worker_type=&city=1065",
+    "priority": 1
+  },
+  {
+    "id": 133,
+    "name": "Phoenix Group",
+    "url": "https://fa-enor-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/jobs?lastSelectedFacet=LOCATIONS&selectedLocationsFacet=300000002576021",
+    "priority": 3
+  },
+  {
+    "id": 134,
+    "name": "American Express",
+    "url": "https://aexp.eightfold.ai/careers?location=London%2C%20London%2C%20United%20Kingdom&pid=30778817&domain=aexp.com&sort_by=relevance&hl=en&triggerGoButton=false&triggerGoButton=true",
+    "priority": 1
+  },
+  {
+    "id": 135,
+    "name": "BroadRidge",
+    "url": "https://broadridge.wd5.myworkdayjobs.com/en-US/Careers/jobs?locations=d6cda7bdc9de01949329f26e5731717d",
+    "priority": 1
+  },
+  {
+    "id": 136,
+    "name": "State Street",
+    "url": "https://careers.statestreet.com/global/en/search-results?m=3&cityStateCountry=London%2C%20London%2C%20United%20Kingdom",
+    "priority": 1
+  },
+  {
+    "id": 137,
+    "name": "Finastra",
+    "url": "https://finastra.wd3.myworkdayjobs.com/FINC?locations=8061b46e841701d3947ce6097a40d67d",
+    "priority": 1
+  },
+  {
+    "id": 138,
+    "name": "Clearwater Analytics",
+    "url": "https://cwan.com/company/careers/?_location=london&_department=#results",
+    "priority": 1
+  },
+  {
+    "id": 139,
+    "name": "CFC",
+    "url": "https://cfc.pinpointhq.com/#js-careers-jobs-block",
+    "priority": 3
+  },
+  {
+    "id": 140,
+    "name": "Ki Insurance",
+    "url": "https://kipeople.my.salesforce-sites.com/recruit/fRecruit__ApplyJobList?portal=Ki+Careers",
+    "priority": 3
+  },
+  {
+    "id": 141,
+    "name": "Hiscox",
+    "url": "https://hiscox.wd3.myworkdayjobs.com/en-US/Hiscox_External_Site?utm_source=cord&locations=f43e256868681001eacdc94d8b970000",
+    "priority": 3
+  },
+  {
+    "id": 142,
+    "name": "MS Amlin",
+    "url": "https://msamlin.wd3.myworkdayjobs.com/en-US/MSAmlinCareers/details/ABS-Project-Portfolio-Manager_RQ12244-1?locations=6ad3ea69fefc01205f8e371b6401fea2&locations=7e5be4074a5910010557bed89d660000",
+    "priority": 3
+  },
+  {
+    "id": 143,
+    "name": "Arch Captial Insurance",
+    "url": "https://archgroup.wd1.myworkdayjobs.com/en-US/careers?utm_source=cord&locationCountry=29247e57dbaf46fb855b224e03170bc7&locations=b7ece8a00915100122c99017e28b0000",
+    "priority": 3
+  },
+  {
+    "id": 144,
+    "name": "Cord",
+    "url": "https://cord.com/candidate/search/281355?filters=%5B%7B%22a%22%3A%22sortBy%22%2C%22l%22%3A%22Posted%20date%22%2C%22v%22%3A%22recent_add%22%7D%2C%7B%22a%22%3A%22jobTitle%22%2C%22l%22%3A%22Project%20Manager%22%2C%22v%22%3A%22Project%20Manager%22%7D%2C%7B%22a%22%3A%22location%22%2C%22l%22%3A%22London%2C%20UK%22%2C%22v%22%3A%22London%2C%20UK%22%7D%2C%7B%22a%22%3A%22salary%22%2C%22l%22%3A%22Min%3A%20%C2%A375%2C000%22%2C%22v%22%3A75000%7D%2C%7B%22a%22%3A%22jobType%22%2C%22l%22%3A%22Permanent%22%2C%22v%22%3A%22Permanent%22%7D%5D&v=%7B%22label%22%3A%22Positions%22%2C%22value%22%3A%22listing%22%7D",
+    "priority": 5
+  },
+  {
+    "id": 145,
+    "name": "eFinancialCareers",
+    "url": "https://www.efinancialcareers.co.uk/jobs/project-manager/in-london%2C-uk?q=Project+manager&location=London%2C+UK&latitude=51.50721&longitude=-0.12758&countryCode=GB&locationPrecision=City&radius=40&radiusUnit=km&pageSize=15&currencyCode=GBP&language=en&jobSavedSearchId=07b498c0-e360-41ba-b15e-04edba636770&includeUnspecifiedSalary=true",
+    "priority": 5
+  },
+  {
+    "id": 146,
+    "name": "Temenos",
+    "url": "https://temenos.wd103.myworkdayjobs.com/en-US/Temenoscareers?locations=f9ec8703af7e1001b13a6239d5980000",
+    "priority": 1
+  },
+  {
+    "id": 147,
+    "name": "ICE",
+    "url": "https://careers.ice.com/jobs?city=London&page=1",
+    "priority": 1
+  },
+  {
+    "id": 148,
+    "name": "Pacific Life",
+    "url": "https://pacificlife.wd1.myworkdayjobs.com/PacificLifeReCareers?locations=0041f683bcec010098d8adaeeccb0000",
+    "priority": 3
+  },
+  {
+    "id": 149,
+    "name": "DBS",
+    "url": "https://www.dbs.com/careers/jobs.page?title=london&market=United%20Kingdom",
+    "priority": 1
+  },
+  {
+    "id": 150,
+    "name": "Shawbrook Bank",
+    "url": "https://careers.shawbrook.co.uk/en/jobs",
+    "priority": 1
+  },
+  {
+    "id": 151,
+    "name": "Saxo Bank",
+    "url": "https://www.home.saxo/about-us/careers",
+    "priority": 1
+  },
+  {
+    "id": 152,
+    "name": "Peperstone Spread Betting",
+    "url": "https://apply.workable.com/pepperstone/#jobs",
+    "priority": 1
+  },
+  {
+    "id": 153,
+    "name": "Capital",
+    "url": "https://careers.capital.com/#job-openings",
+    "priority": 1
+  },
+  {
+    "id": 154,
+    "name": "Interactive Broker",
+    "url": "https://job-boards.greenhouse.io/ibkr?offices%5B%5D=4014218002",
+    "priority": 1
+  },
+  {
+    "id": 155,
+    "name": "e-Toro",
+    "url": "https://www.etoro.com/about/careers/#join-our-team",
+    "priority": 1
+  },
+  {
+    "id": 156,
+    "name": "Couttus",
+    "url": "https://jobs.coutts.com/",
+    "priority": 1
+  },
+  {
+    "id": 157,
+    "name": "Pictet",
+    "url": "https://career012.successfactors.eu/career?company=banquepict&career%5fns=job%5flisting%5fsummary&navBarLevel=JOB%5fSEARCH&_s.crb=REroq1EEQPaKAm59xEKV0RF79RtcJ63R%2fw0pcqtCgUI%3d",
+    "priority": 1
+  },
+  {
+    "id": 158,
+    "name": "Arbuthnot Latham",
+    "url": "https://careers.arbuthnotlatham.co.uk/",
+    "priority": 1
+  },
+  {
+    "id": 159,
+    "name": "Freetrade",
+    "url": "https://freetrade.io/careers?ashby_location_id=f97aa4ef-38c2-4958-b88c-20bc05f2986a",
+    "priority": 1
+  },
+  {
+    "id": 160,
+    "name": "Monzo",
+    "url": "https://monzo.com/careers#jobs",
+    "priority": 1
+  },
+  {
+    "id": 161,
+    "name": "Revolut",
+    "url": "https://www.revolut.com/careers/?city=London",
+    "priority": 1
+  },
+  {
+    "id": 162,
+    "name": "Starling",
+    "url": "https://www.starlingbank.com/careers/#jobs",
+    "priority": 1
+  },
+  {
+    "id": 163,
+    "name": "Tide",
+    "url": "https://job-boards.greenhouse.io/tide?offices%5B%5D=4052076003",
+    "priority": 1
+  },
+  {
+    "id": 164,
+    "name": "Virgin Money",
+    "url": "https://careers.virginmoney.com/search-jobs/London%2C%20England/1382/4/2635167-6269131-2648110-2643743/51x50853/-0x12574/50/2",
+    "priority": 1
+  },
+  {
+    "id": 165,
+    "name": "Zopa Bank",
+    "url": "https://careers.zopa.com/work-with-us?location=london",
+    "priority": 1
+  },
+  {
+    "id": 166,
+    "name": "Google",
+    "url": "https://www.google.com/about/careers/applications/jobs/results?location=London%2C%20UK#!t=jo&jid=127025001&",
+    "priority": 4
+  },
+  {
+    "id": 167,
+    "name": "SportRadar",
+    "url": "https://sportradar.com/careers/?search=&department=&country=gb&order=&load=1",
+    "priority": 8
+  },
+  {
+    "id": 168,
+    "name": "Titanbay",
+    "url": "https://www.titanbay.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 169,
+    "name": "AON",
+    "url": "https://jobs.aon.com/jobs?location=london&stretch=10&stretchUnit=MILES&page=1&locations=London,London,United%20Kingdom",
+    "priority": 6
+  },
+  {
+    "id": 170,
+    "name": "TP ICAP",
+    "url": "https://tpicap.com/tpicap/careers/opportunities",
+    "priority": 1
+  },
+  {
+    "id": 171,
+    "name": "MI5",
+    "url": "https://recruitmentservices.applicationtrack.com/vx/lang-en-GB/mobile-0/appcentre-a18/candidate/jobboard/vacancy/1",
+    "priority": 7
+  },
+  {
+    "id": 172,
+    "name": "S&P Global",
+    "url": "https://careers.spglobal.com/jobs?location=London,%20Greater%20London,%20United%20Kingdom&woe=7&regionCode=GB&stretchUnit=MILES&stretch=10&page=4",
+    "priority": 1
+  },
+  {
+    "id": 173,
+    "name": "Canada Life Limited",
+    "url": "https://www.canadalife.co.uk/our-company/careers/",
+    "priority": 1
+  },
+  {
+    "id": 174,
+    "name": "Kong",
+    "url": "https://jobs.ashbyhq.com/kong?locationId=f54134b0-b9ee-478f-8851-0297360b5dff",
+    "priority": 8
+  },
+  {
+    "id": 175,
+    "name": "Otta",
+    "url": "https://app.welcometothejungle.com/",
+    "priority": 5
+  },
+  {
+    "id": 176,
+    "name": "GlassDoor",
+    "url": "https://www.glassdoor.co.uk/Job/london-england-project-manager-jobs-SRCH_IL.0,14_IC2671300_KO15,30.htm?fromAge=7",
+    "priority": 5
+  },
+  {
+    "id": 177,
+    "name": "Gov jobs",
+    "url": "https://www.civilservicejobs.service.gov.uk/csr/index.cgi",
+    "priority": 7
+  },
+  {
+    "id": 178,
+    "name": "Ministry of Justice",
+    "url": "https://jobs.justice.gov.uk/careers",
+    "priority": 7
+  },
+  {
+    "id": 179,
+    "name": "Janus Handerson",
+    "url": "https://jobs.janushenderson.com/search/?createNewAlert=false&q=london&optionsFacetsDD_customfield3=&optionsFacetsDD_country=&optionsFacetsDD_department=",
+    "priority": 1
+  },
+  {
+    "id": 180,
+    "name": "GCHQ",
+    "url": "https://www.gchq-careers.co.uk/",
+    "priority": 7
+  },
+  {
+    "id": 181,
+    "name": "Kensington and Chelsea",
+    "url": "https://www.rbkc.gov.uk/jobs-employment-and-skills",
+    "priority": 7
+  },
+  {
+    "id": 182,
+    "name": "Westminster",
+    "url": "https://careers.newjob.org.uk/WCC",
+    "priority": 7
+  },
+  {
+    "id": 183,
+    "name": "Camden",
+    "url": "https://www.camden.gov.uk/jobs-camden-council",
+    "priority": 7
+  },
+  {
+    "id": 184,
+    "name": "City of London",
+    "url": "https://careers.cityoflondon.gov.uk/",
+    "priority": 7
+  },
+  {
+    "id": 185,
+    "name": "Hammersmith & Fulham",
+    "url": "https://careers.newjob.org.uk/LBHF",
+    "priority": 7
+  },
+  {
+    "id": 186,
+    "name": "Richmond & Wandsworth",
+    "url": "https://www.richmond.gov.uk/jobs",
+    "priority": 7
+  },
+  {
+    "id": 187,
+    "name": "Islington",
+    "url": "https://jobs.islington.gov.uk/vacancies/vacancy-search-results.aspx",
+    "priority": 7
+  },
+  {
+    "id": 188,
+    "name": "Merton",
+    "url": "https://jobs.merton.gov.uk/vacancies.html#filter=p_web_site_id%3D6495%26p_published_to%3DWWW%26p_language%3DDEFAULT%26p_direct%3DY%26p_format%3DMOBILE%26p_include_exclude_from_list%3DN%26p_search%3D",
+    "priority": 7
+  },
+  {
+    "id": 189,
+    "name": "Citadel",
+    "url": "https://www.citadel.com/careers/open-opportunities?experience-filter=experienced-professionals&location-filter=london&selected-job-sections=388,389,387,390&current_page=1&sort_order=DESC&per_page=10&action=careers_listing_filter",
+    "priority": 1
+  },
+  {
+    "id": 190,
+    "name": "D. E. Shaw Group",
+    "url": "https://www.deshaw.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 191,
+    "name": "Two Sigma",
+    "url": "https://careers.twosigma.com/careers/OpenRoles/?5084=%5B16718359%5D&5084_format=3147&listFilterMode=1&jobRecordsPerPage=10&",
+    "priority": 1
+  },
+  {
+    "id": 192,
+    "name": "Farallon Capital",
+    "url": "https://job-boards.greenhouse.io/faralloncapitalmanagementllc",
+    "priority": 1
+  },
+  {
+    "id": 193,
+    "name": "AQR Capital",
+    "url": "https://careers.aqr.com/jobs/city/london#/",
+    "priority": 1
+  },
+  {
+    "id": 194,
+    "name": "Davidson Kempner",
+    "url": "https://job-boards.greenhouse.io/1456754456yhgbhfg?gh_src=03e8b4102us",
+    "priority": 1
+  },
+  {
+    "id": 195,
+    "name": "Point 72 Asset Management",
+    "url": "https://careers.point72.com/?location=london",
+    "priority": 1
+  },
+  {
+    "id": 196,
+    "name": "Brevan Howard",
+    "url": "https://wd3.myworkdaysite.com/recruiting/brevanhoward/BH_ExternalCareers",
+    "priority": 1
+  },
+  {
+    "id": 197,
+    "name": "Wellington Management",
+    "url": "https://wellington.wd5.myworkdayjobs.com/External?locations=26304b0c664210569c1104658a81b7c9",
+    "priority": 1
+  },
+  {
+    "id": 198,
+    "name": "Pimco",
+    "url": "https://pimco.wd1.myworkdayjobs.com/pimco-careers?locationCountry=29247e57dbaf46fb855b224e03170bc7&locations=c3a960b7b21f10016312adea6fcd0000",
+    "priority": 1
+  },
+  {
+    "id": 199,
+    "name": "Clarivate",
+    "url": "https://careers.clarivate.com/search-results",
+    "priority": 8
+  },
+  {
+    "id": 200,
+    "name": "Digitas",
+    "url": "https://www.digitas.com/en-gb/careers",
+    "priority": 8
+  },
+  {
+    "id": 201,
+    "name": "ABC International Bank",
+    "url": "https://europecareers.bank-abc.com/jobs",
+    "priority": 1
+  },
+  {
+    "id": 202,
+    "name": "Apax Partners",
+    "url": "https://www.apax.com/people/careers/",
+    "priority": 1
+  },
+  {
+    "id": 203,
+    "name": "Aspect Capital",
+    "url": "https://aspectcapital-94a5ce.careers.hibob.com/jobs?site=2533332",
+    "priority": 1
+  },
+  {
+    "id": 204,
+    "name": "Atomico",
+    "url": "https://careers.atomico.com/jobs?filter=eyJzZWFyY2hhYmxlX2xvY2F0aW9ucyI6WyJHcmVhdGVyIExvbmRvbiwgVUsiXX0%3D",
+    "priority": 4
+  },
+  {
+    "id": 205,
+    "name": "Balderton Capital",
+    "url": "https://careers.balderton.com/jobs?locations=London",
+    "priority": 4
+  },
+  {
+    "id": 206,
+    "name": "Winton Group",
+    "url": "https://www.winton.com/opportunities",
+    "priority": 1
+  },
+  {
+    "id": 207,
+    "name": "TPG",
+    "url": "https://job-boards.greenhouse.io/tpgcareers",
+    "priority": 1
+  },
+  {
+    "id": 208,
+    "name": "Toronto Dominion Bank",
+    "url": "https://td.wd3.myworkdayjobs.com/en-US/TD_Bank_Careers?locationCountry=29247e57dbaf46fb855b224e03170bc7&locations=dafbf576c2d2100094752eb02f090000",
+    "priority": 1
+  },
+  {
+    "id": 209,
+    "name": "Systematica Investments",
+    "url": "https://systematica.pinpointhq.com/",
+    "priority": 1
+  },
+  {
+    "id": 210,
+    "name": "Sumitomo Mitsui Banking Corporation",
+    "url": "https://careers.smbcgroup.com/smbc/search/?createNewAlert=false&q=&locationsearch=london",
+    "priority": 1
+  },
+  {
+    "id": 211,
+    "name": "Qube Research & Technologies",
+    "url": "https://www.qube-rt.com/careers/",
+    "priority": 1
+  },
+  {
+    "id": 212,
+    "name": "Quilter Investors",
+    "url": "https://quilter.wd3.myworkdayjobs.com/en-US/External-Career-Site?locations=a852fd6709e310013fbb984f5d5b0000",
+    "priority": 1
+  },
+  {
+    "id": 213,
+    "name": "JustPark",
+    "url": "https://apply.workable.com/justpark/#jobs",
+    "priority": 8
+  },
+  {
+    "id": 214,
+    "name": "Bank of China",
+    "url": "https://bankofchina.current-vacancies.com/Careers/BOC_vacancies-3261#",
+    "priority": 1
+  },
+  {
+    "id": 215,
+    "name": "Warner Bros.",
+    "url": "https://careers.wbd.com/warner-bros-jobs?s=1&rk=l-warner-bros-jobs",
+    "priority": 4
+  },
+  {
+    "id": 216,
+    "name": "Freshfields Law",
+    "url": "https://freshfields.wd3.myworkdayjobs.com/en-US/FBD_101?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 8
+  },
+  {
+    "id": 217,
+    "name": "About",
+    "url": "about.html",
+    "priority": 10
+  },
+  {
+    "id": 218,
+    "name": "UK Parliament",
+    "url": "https://www.parliament.uk/about/careers/job-search/",
+    "priority": 7
+  },
+  {
+    "id": 219,
+    "name": "Acturis",
+    "url": "https://careers.acturis.com/",
+    "priority": 3
+  },
+  {
+    "id": 220,
+    "name": "Thought Machine",
+    "url": "https://jobs.ashbyhq.com/thought-machine?locationId=203d3cb2-2bc5-48a8-b02d-2b5596874f64",
+    "priority": 8
+  },
+  {
+    "id": 221,
+    "name": "10x Banking",
+    "url": "https://www.10xbanking.com/about/job-vacancies",
+    "priority": 1
+  },
+  {
+    "id": 222,
+    "name": "Clear Bank",
+    "url": "https://clear.bank/join-clearbank/careers",
+    "priority": 1
+  },
+  {
+    "id": 223,
+    "name": "Form3",
+    "url": "https://www.form3.tech/careers/vacancies?jobLocation=100%25%20Remote%20%28UK%29",
+    "priority": 1
+  },
+  {
+    "id": 224,
+    "name": "LSEG - London Stock Exchange Group",
+    "url": "https://www.lseg.com/en/careers",
+    "priority": 1
+  },
+  {
+    "id": 225,
+    "name": "Swift",
+    "url": "https://www.swift.com/about-us/careers",
+    "priority": 1
+  },
+  {
+    "id": 226,
+    "name": "CBoe",
+    "url": "https://careers.cboe.com/us/en",
+    "priority": 1
+  },
+  {
+    "id": 227,
+    "name": "Forterro",
+    "url": "https://www.forterro.com/en/company/careers",
+    "priority": 8
+  },
+  {
+    "id": 228,
+    "name": "Checkout",
+    "url": "https://www.checkout.com/jobs/?location=United%20Kingdom",
+    "priority": 4
+  },
+  {
+    "id": 229,
+    "name": "Bupa",
+    "url": "https://careers.bupa.co.uk/search-jobs?places_name=London%2C%20Greater%20London%2C%20England&places_position=51.51437%2C-0.09229",
+    "priority": 8
+  },
+  {
+    "id": 230,
+    "name": "OakNorth",
+    "url": "https://oaknorth.co.uk/jobs/",
+    "priority": 1
+  },
+  {
+    "id": 231,
+    "name": "Marqeta",
+    "url": "https://www.marqeta.com/company/careers",
+    "priority": 1
+  },
+  {
+    "id": 232,
+    "name": "Formula E",
+    "url": "https://careers.fiaformulae.com/jobs",
+    "priority": 9
+  },
+  {
+    "id": 233,
+    "name": "GeniusSport",
+    "url": "https://www.geniussports.com/careers/#job-roles",
+    "priority": 8
+  },
+  {
+    "id": 234,
+    "name": "Marsh",
+    "url": "https://careers.marsh.com/eu/en/search-results",
+    "priority": 8
+  },
+  {
+    "id": 235,
+    "name": "QBE Insurance",
+    "url": "https://careers.qbe.com/gb/en/search-results?p=ChIJdd4hrwug2EcRmSrV3Vo6llI&location=London%2C%20UK",
+    "priority": 3
+  },
+  {
+    "id": 236,
+    "name": "Hiring Cafe",
+    "url": "https://hiringcafe.com/?searchState=%7B%22locations%22%3A%5B%7B%22id%22%3A%22xBg1yZQBoEtHp_8UXQ1z%22%2C%22types%22%3A%5B%22locality%22%5D%2C%22address_components%22%3A%5B%7B%22long_name%22%3A%22City+of+London%22%2C%22short_name%22%3A%22City+of+London%22%2C%22types%22%3A%5B%22locality%22%5D%7D%2C%7B%22long_name%22%3A%22England%22%2C%22short_name%22%3A%22ENG%22%2C%22types%22%3A%5B%22administrative_area_level_1%22%5D%7D%2C%7B%22long_name%22%3A%22United+Kingdom%22%2C%22short_name%22%3A%22GB%22%2C%22types%22%3A%5B%22country%22%5D%7D%5D%2C%22geometry%22%3A%7B%22location%22%3A%7B%22lat%22%3A51.51279%2C%22lon%22%3A-0.09184%7D%7D%2C%22formatted_address%22%3A%22City+of+London%2C+England%2C+GB%22%2C%22population%22%3A8072%2C%22workplace_types%22%3A%5B%5D%2C%22options%22%3A%7B%22radius%22%3A50%2C%22radius_unit%22%3A%22miles%22%2C%22ignore_radius%22%3Afalse%7D%7D%5D%2C%22dateFetchedPastNDays%22%3A61%2C%22jobTitleQuery%22%3A%22%28%5C%22project+manager%5C%22+OR+%5C%22delivery+manager%5C%22+OR+%5C%22delivery+lead%5C%22+OR%5C%22scrum+master%5C%22%29%22%7D",
+    "priority": 5
+  },
+  {
+    "id": 237,
+    "name": "Himalayas",
+    "url": "https://himalayas.app/jobs/countries/united-kingdom/project-management?view=filters&src=adv#job-search-results",
+    "priority": 5
+  },
+  {
+    "id": 238,
+    "name": "Argus Media",
+    "url": "https://www.argusmedia.com/en/about-argus/careers/open-positions",
+    "priority": 4
+  },
+  {
+    "id": 239,
+    "name": "Uni Link",
+    "url": "https://www.unilink.com/work-for-us",
+    "priority": 4
+  },
+  {
+    "id": 240,
+    "name": "Made Tech",
+    "url": "https://www.madetech.com/careers/#roles",
+    "priority": 4
+  },
+  {
+    "id": 241,
+    "name": "Pulse Live",
+    "url": "https://careers.pulselive.com/",
+    "priority": 4
+  },
+  {
+    "id": 242,
+    "name": "BehaVox",
+    "url": "https://www.behavox.com/careers#open-positions",
+    "priority": 4
+  },
+  {
+    "id": 243,
+    "name": "IBM",
+    "url": "https://www.ibm.com/uk-en/careers/search?field_keyword_05[0]=United%20Kingdom",
+    "priority": 4
+  },
+  {
+    "id": 244,
+    "name": "Taskize",
+    "url": "https://www.taskize.com/careers",
+    "priority": 4
+  },
+  {
+    "id": 245,
+    "name": "Publicissapient",
+    "url": "https://careers.publicissapient.com/job-search?q=&location_q=London&skipLocation=true&city=London&country=United+Kingdom",
+    "priority": 4
+  },
+  {
+    "id": 246,
+    "name": "The future laboratory",
+    "url": "https://www.thefuturelaboratory.com/contact#join-the-team",
+    "priority": 4
+  },
+  {
+    "id": 247,
+    "name": "Universal Music",
+    "url": "https://www.umusiccareers.com/unitedkingdom",
+    "priority": 4
+  },
+  {
+    "id": 248,
+    "name": "Charlotte Tilbury",
+    "url": "https://apply.workable.com/charlotte-tilbury/",
+    "priority": 4
+  },
+  {
+    "id": 249,
+    "name": "Code' Nast",
+    "url": "https://condenast.wd115.myworkdayjobs.com/CondeCareers?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 4
+  },
+  {
+    "id": 250,
+    "name": "Profinda",
+    "url": "https://profinda.bamboohr.com/careers",
+    "priority": 4
+  },
+  {
+    "id": 251,
+    "name": "Sward Group",
+    "url": "https://apply.workable.com/sword-group/%20_blank",
+    "priority": 4
+  },
+  {
+    "id": 252,
+    "name": "Version 1",
+    "url": "https://www.version1.com/careers/job-listing/?searchterm=&taxonomyFilter-dept=&taxonomyFilter-location=london&taxonomyFilter-practice=",
+    "priority": 4
+  },
+  {
+    "id": 253,
+    "name": "Leonardo",
+    "url": "https://leonardocompany.wd3.myworkdayjobs.com/LeonardoCareerSite?locations=2dc6ef272d0f010a9a4e072600c60000&locations=2dc6ef272d0f010a9a4e011f9a7e0000",
+    "priority": 4
+  },
+  {
+    "id": 254,
+    "name": "Bae Systems",
+    "url": "https://jobsearch.baesystems.com/browse-jobs/level-of-experience/experienced-professionals?_international_locations_checkboxes=united-kingdom&_location_checkboxes=london",
+    "priority": 4
+  },
+  {
+    "id": 255,
+    "name": "BCD Travel",
+    "url": "https://jobs.bcdtravel.com/search/?createNewAlert=false&q=&optionsFacetsDD_department=&optionsFacetsDD_customfield1=",
+    "priority": 4
+  },
+  {
+    "id": 256,
+    "name": "Parsec",
+    "url": "https://www.parsec-corp.com/join-our-team#jobs-section",
+    "priority": 4
+  },
+  {
+    "id": 257,
+    "name": "Calyx",
+    "url": "https://calyx.wd1.myworkdayjobs.com/en-US/Perceptive/jobs?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 4
+  },
+  {
+    "id": 258,
+    "name": "Janea Systems",
+    "url": "https://www.janeasystems.com/careers",
+    "priority": 4
+  },
+  {
+    "id": 259,
+    "name": "RWS",
+    "url": "https://globalcareers-rws.icims.com/jobs/search?ss=1&searchLocation=13702--Remote",
+    "priority": 4
+  },
+  {
+    "id": 260,
+    "name": "Arcadis",
+    "url": "https://jobs.arcadis.com/careers?domain=arcadis.com&start=0&location=London%2C+Greater+London%2C+United+Kingdom&pid=563671530556590&sort_by=distance&filter_distance=80&filter_include_remote=1&filter_include_relocation=0",
+    "priority": 4
+  },
+  {
+    "id": 261,
+    "name": "Imporable",
+    "url": "https://www.improbable.io/careers",
+    "priority": 4
+  },
+  {
+    "id": 262,
+    "name": "Salary Finance",
+    "url": "https://job-boards.eu.greenhouse.io/salaryfinancecareers?offices%5B%5D=4017044101",
+    "priority": 1
+  },
+  {
+    "id": 263,
+    "name": "Curve",
+    "url": "https://www.curve.com/careers/",
+    "priority": 1
+  },
+  {
+    "id": 264,
+    "name": "Zepz",
+    "url": "https://zepz.io/careers/#available-roles",
+    "priority": 1
+  },
+  {
+    "id": 265,
+    "name": "Codat",
+    "url": "https://codat.io/careers/?ashby_location_id=5f24aa49-f04f-4512-9bd2-5b9adcedd8a5",
+    "priority": 1
+  },
+  {
+    "id": 266,
+    "name": "Disney",
+    "url": "https://www.disneycareers.com/en/location/england-jobs/391/2635167-6269131/3",
+    "priority": 4
+  },
+  {
+    "id": 267,
+    "name": "SalesForce",
+    "url": "https://www.salesforce.com/company/careers/jobs/?pagesize=20&_ga=2.27075837.1782687594.1785901784-1914052223.1784325799&_gac=1.184307412.1785539892.CjwKCAjwj7HTBhBiEiwA8s35OumbOLgDWRtqSH2gbA99C5q93wyBJRLO6CoYX948YtWkGxtODSBNyhoCrOQQAvD_BwE&country=United+Kingdom&region=London%2C+City+of&page=1",
+    "priority": 4
+  },
+  {
+    "id": 268,
+    "name": "Verisk",
+    "url": "https://fa-ewmy-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?location=London%2C+United+Kingdom&locationId=100000023099203&locationLevel=state&mode=location",
+    "priority": 4
+  },
+  {
+    "id": 269,
+    "name": "OKTA",
+    "url": "https://www.okta.com/uk/company/careers/job-listing/?department=All&location=2638",
+    "priority": 4
+  },
+  {
+    "id": 270,
+    "name": "Xero",
+    "url": "https://careers.xero.com/jobs/?search=&location=London&location=UK%3A+Remote&origin=global",
+    "priority": 4
+  },
+  {
+    "id": 271,
+    "name": "Experian",
+    "url": "https://jobs.experian.com/jobs?options=194&page=1&ln=&la=0&lo=0&lr=10&li=",
+    "priority": 4
+  },
+  {
+    "id": 272,
+    "name": "Sage",
+    "url": "https://www.sage.com/en-gb/company/careers/career-search/?country=United%20Kingdom&page=1",
+    "priority": 4
+  },
+  {
+    "id": 273,
+    "name": "Hubspot",
+    "url": "https://www.hubspot.com/careers/jobs/all?page=1#office=united-kingdom;",
+    "priority": 4
+  },
+  {
+    "id": 274,
+    "name": "LexisNexis",
+    "url": "https://risk.lexisnexis.com/about-us/careers/jobs/?q=&hPP=20&idx=lnrs-prod-jobs&p=1&dFR%5Bcountry%5D%5B0%5D=United%20Kingdom&fR%5B_language%5D%5B0%5D=en-US&is_v=1",
+    "priority": 4
+  },
+  {
+    "id": 275,
+    "name": "Paysafe",
+    "url": "https://jobs.paysafe.com/search/?createNewAlert=false&q=&locationsearch=london&optionsFacetsDD_city=&optionsFacetsDD_country=",
+    "priority": 4
+  },
+  {
+    "id": 276,
+    "name": "Battleface",
+    "url": "https://www.battleface.com/en-gb/careers/#current-job-openings",
+    "priority": 3
+  },
+  {
+    "id": 277,
+    "name": "Zurik",
+    "url": "https://www.careers.zurich.com/search/?createNewAlert=false&q=&locationsearch=london&optionsFacetsDD_shifttype=&optionsFacetsDD_department=&optionsFacetsDD_customfield3=United+Kingdom",
+    "priority": 3
+  },
+  {
+    "id": 278,
+    "name": "Unum Insurance",
+    "url": "https://unum.wd1.myworkdayjobs.com/en-US/External?locations=7423734e3a3a100202588885eda20000",
+    "priority": 3
+  },
+  {
+    "id": 279,
+    "name": "TransUnion",
+    "url": "https://transunion.wd5.myworkdayjobs.com/transunion?locationCountry=29247e57dbaf46fb855b224e03170bc7&locations=ecddb8eb8cfd01011cf49664c7ef0000&locations=22eb14ac872801011c42426397200000&locations=47a60d481c4c01c984141e8b16bdb1c7",
+    "priority": 1
+  },
+  {
+    "id": 280,
+    "name": "Uniphore",
+    "url": "https://uniphore.wd503.myworkdayjobs.com/Uniphore?locations=30f9250602fa10011ea9c41fcde70000",
+    "priority": 4
+  },
+  {
+    "id": 281,
+    "name": "AirBnB",
+    "url": "https://careers.airbnb.com/positions/?_where_you_work=london-united-kingdom",
+    "priority": 4
+  },
+  {
+    "id": 282,
+    "name": "Standard Chartered Bank",
+    "url": "https://jobs.standardchartered.com/go/Experienced-Professional-jobs/9783657/?feedid=363857&markerViewed=&carouselIndex=&facetFilters=%7B%22jobLocationCity%22%3A%5B%22London%22%5D%7D&pageNumber=0",
+    "priority": 1
+  },
+  {
+    "id": 283,
+    "name": "WorldPay",
+    "url": "https://worldpay.wd5.myworkdayjobs.com/Worldpay_External_Careers_Site?Country=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 1
+  },
+  {
+    "id": 284,
+    "name": "Funding Circle",
+    "url": "https://jobs.ashbyhq.com/fundingcircle?locationId=70d63226-743c-4fb6-aa64-fc800c31b858",
+    "priority": 1
+  },
+  {
+    "id": 285,
+    "name": "Accenture",
+    "url": "https://www.accenture.com/gb-en/careers/jobsearch?ct=London&jk=project%20manager&sb=0",
+    "priority": 4
+  },
+  {
+    "id": 286,
+    "name": "CapGemini",
+    "url": "https://www.capgemini.com/gb-en/careers/join-us/?page=1&size=11&keyword=project&location=London&country_code=gb-en",
+    "priority": 4
+  },
+  {
+    "id": 287,
+    "name": "Deloitte",
+    "url": "https://apply.deloitte.co.uk/UKCareers/",
+    "priority": 4
+  },
+  {
+    "id": 288,
+    "name": "CGI",
+    "url": "https://cgi.njoyn.com/corp/xweb/xweb.asp?NTKN=c&clid=21001&Page=joblisting",
+    "priority": 4
+  },
+  {
+    "id": 289,
+    "name": "Tata Consulting",
+    "url": "https://ibegin.tcsapps.com/candidate/jobs/search",
+    "priority": 4
+  },
+  {
+    "id": 290,
+    "name": "Sopra Steria Consulting",
+    "url": "https://careers.soprasteria.co.uk/uk/en/c/delivering-projects-jobs",
+    "priority": 4
+  },
+  {
+    "id": 291,
+    "name": "GFT Technologies",
+    "url": "https://jobs.gft.com/go/uk/4411501/?createNewAlert=false&q=&locationsearch=london&optionsFacetsDD_country=&optionsFacetsDD_customfield1=&optionsFacetsDD_shifttype=&optionsFacetsDD_facility=",
+    "priority": 4
+  },
+  {
+    "id": 292,
+    "name": "Amazon",
+    "url": "https://www.amazon.jobs/content/en-gb/teams/fulfillment-and-operations/rme-emea?country%5B%5D=GB&cmpid=SA_GOFO200364C&gad_source=1&gad_campaignid=23958733840&gbraid=0AAAABDixsNO8h-FvfpXDAmb4esiPpzG2Z&gclid=Cj0KCQjwnIDUBhDrARIsAJDGwSsE6JIVorFiDMs1RTPRWfsxzTuHx5RMQpM_igFkY4ZNDq-AtFz1yrYaAlaqEALw_wcB&city%5B%5D=London",
+    "priority": 4
+  },
+  {
+    "id": 293,
+    "name": "Microsoft",
+    "url": "https://apply.careers.microsoft.com/careers?start=30&location=London&pid=1970393556889818&sort_by=distance&filter_distance=8&filter_include_remote=1&filter_include_relocation=0",
+    "priority": 4
+  },
+  {
+    "id": 294,
+    "name": "Oracle",
+    "url": "https://careers.oracle.com/en/sites/jobsearch/jobs?lastSelectedFacet=LOCATIONS&selectedLocationsFacet=300000270621083",
+    "priority": 4
+  },
+  {
+    "id": 295,
+    "name": "Tesco",
+    "url": "https://careers.tesco.com/en_GB/careers/SearchJobs/?semanticSearch=project&748_location_place=London,%20England,%20United%20Kingdom&748_location_radius=5&748_location_coordinates=[51.51,-0.13]&listFilterMode=1&jobRecordsPerPage=10&",
+    "priority": 8
+  },
+  {
+    "id": 296,
+    "name": "McDonalds",
+    "url": "https://people.mcdonalds.co.uk/job-search?query=project&places_query=London%2C%20Greater%20London%2C%20England&places_position=51.51437%2C-0.09229",
+    "priority": 4
+  },
+  {
+    "id": 297,
+    "name": "Lidl",
+    "url": "https://careers.lidl.co.uk/jobsearch?baseSearch={%22term%22:%22project%22,%22location%22:{%22max_distance%22:%225%22,%22midPointName%22:%22London%22,%22latitude%22:51.5072178,%22longitude%22:-0.12758619999999998}}",
+    "priority": 8
+  },
+  {
+    "id": 298,
+    "name": "Aldi",
+    "url": "https://careers.aldirecruitment.co.uk/vacancies/vacancy-search-results.aspx",
+    "priority": 8
+  },
+  {
+    "id": 299,
+    "name": "Asda",
+    "url": "https://www.asda.jobs/jobs?location_city=London&postcode=london&page=1",
+    "priority": 8
+  },
+  {
+    "id": 300,
+    "name": "Murex",
+    "url": "https://murex.wd3.myworkdayjobs.com/MurexCareerPage1?locations=4e70ce22e010100201f46550bfb90000",
+    "priority": 1
+  },
+  {
+    "id": 301,
+    "name": "Avaloq",
+    "url": "https://www.avaloq.com/careers/job-openings",
+    "priority": 1
+  },
+  {
+    "id": 302,
+    "name": "FIS",
+    "url": "https://careers.fisglobal.com/us/en/search-results?keywords=project",
+    "priority": 1
+  },
+  {
+    "id": 303,
+    "name": "Fiserv",
+    "url": "https://careers.fiserv.com/us/en/search-results?p=ChIJdd4hrwug2EcRmSrV3Vo6llI&location=London%2C%20UK",
+    "priority": 1
+  },
+  {
+    "id": 304,
+    "name": "Flutter",
+    "url": "https://careers.fluttergroup.com/jobs/?search=&location=London&pagesize=20#results",
+    "priority": 9
+  },
+  {
+    "id": 305,
+    "name": "Entain",
+    "url": "https://entaincareers.com/job-search/?country=United+Kingdom&perPage=25",
+    "priority": 9
+  },
+  {
+    "id": 306,
+    "name": "Playtech",
+    "url": "https://www.playtechpeople.com/jobs-our/?activeLocation=United+Kingdom",
+    "priority": 9
+  },
+  {
+    "id": 307,
+    "name": "PIC (Pension Insurance Corporation)",
+    "url": "https://apply.workable.com/pension-services-corporation-limited/#jobs",
+    "priority": 3
+  },
+  {
+    "id": 308,
+    "name": "Crosstide",
+    "url": "https://crosstideconsulting.com/careers",
+    "priority": 4
+  },
+  {
+    "id": 309,
+    "name": "Light & Wonder",
+    "url": "https://lnw.wd5.myworkdayjobs.com/LightWonderExternalCareers?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 9
+  },
+  {
+    "id": 310,
+    "name": "Allwyn",
+    "url": "https://www.allwyn.co.uk/job-board",
+    "priority": 9
+  },
+  {
+    "id": 311,
+    "name": "Better Collective",
+    "url": "https://bettercollective.recruitee.com/better-collective-open-positions?jobs-d0e9028b%5Btab%5D=GB",
+    "priority": 9
+  },
+  {
+    "id": 312,
+    "name": "Midnite",
+    "url": "https://jobs.ashbyhq.com/midnite?locationId=64b3b108-d7ff-4099-bbcf-5ed8e289e692",
+    "priority": 9
+  },
+  {
+    "id": 313,
+    "name": "Fantastic",
+    "url": "https://job-boards.greenhouse.io/fanaticsfbg?offices%5B%5D=4018594009",
+    "priority": 9
+  },
+  {
+    "id": 314,
+    "name": "BetVictor",
+    "url": "https://www.bv-group.com/careers/",
+    "priority": 9
+  },
+  {
+    "id": 315,
+    "name": "Sega Europe",
+    "url": "https://careers.sega.co.uk/vacancies?f%5B0%5D=country%3AUnited%20Kingdom&page=0",
+    "priority": 9
+  },
+  {
+    "id": 316,
+    "name": "Sony Interactive",
+    "url": "https://careers.playstation.com/?location_name=London%2C%20UK&location_type=2",
+    "priority": 9
+  },
+  {
+    "id": 317,
+    "name": "Rockstar Games",
+    "url": "https://www.rockstargames.com/careers/openings",
+    "priority": 9
+  },
+  {
+    "id": 318,
+    "name": "Tripledot Studios",
+    "url": "https://www.tripledot.com/careers",
+    "priority": 9
+  },
+  {
+    "id": 319,
+    "name": "King Games",
+    "url": "https://careers.king.com/us/en/search-results?keywords=london",
+    "priority": 9
+  },
+  {
+    "id": 320,
+    "name": "Eletronic Arts",
+    "url": "https://jobs.ea.com/en_US/careers/Home/?8171=%5B10617%5D&8171_format=5683&listFilterMode=1&jobRecordsPerPage=20&",
+    "priority": 9
+  },
+  {
+    "id": 321,
+    "name": "Rock Steady Studios",
+    "url": "https://rocksteadyltd.com/careers/",
+    "priority": 9
+  },
+  {
+    "id": 322,
+    "name": "Aristocrat",
+    "url": "https://aristocrat.wd3.myworkdayjobs.com/AristocratExternalCareersSite?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 9
+  },
+  {
+    "id": 323,
+    "name": "TradingHub",
+    "url": "https://tradinghub.com/job-openings?ashby_location_id=e534888a-a971-4d75-a057-319ae54ecd69",
+    "priority": 1
+  },
+  {
+    "id": 324,
+    "name": "Barings",
+    "url": "https://barings.wd1.myworkdayjobs.com/Barings?locations=b95ae5b4178d0114f1a7426bd04a377d",
+    "priority": 1
+  },
+  {
+    "id": 325,
+    "name": "ISS Stoxx",
+    "url": "https://issgovernance.wd1.myworkdayjobs.com/ISScareers?locations=b643cd7adf82014b4f5d5f103808166b&locations=81d327f737a110177146ac59c9cf6aea",
+    "priority": 1
+  },
+  {
+    "id": 326,
+    "name": "Liverty",
+    "url": "https://careers.libertylondon.com/jobs?query=&country=United+Kingdom",
+    "priority": 8
+  },
+  {
+    "id": 327,
+    "name": "Wealth Dynamix",
+    "url": "https://wealth-dynamix.com/careers/",
+    "priority": 1
+  },
+  {
+    "id": 328,
+    "name": "Planet Payment",
+    "url": "https://planet.wd3.myworkdayjobs.com/Planet?locations=a6ed52018c8e1000bebd80cb080d0000",
+    "priority": 1
+  },
+  {
+    "id": 329,
+    "name": "Carta",
+    "url": "https://carta.com/careers/",
+    "priority": 1
+  },
+  {
+    "id": 330,
+    "name": "Nationwide",
+    "url": "https://nationwide-jobs.co.uk/find?lat=51.5072178&lon=-0.1275862&distance=5mi&location=London%2C+UK",
+    "priority": 1
+  },
+  {
+    "id": 331,
+    "name": "Premium Credit",
+    "url": "https://careers.premiumcredit.com/jobs",
+    "priority": 1
+  },
+  {
+    "id": 332,
+    "name": "Gousto",
+    "url": "https://www.gousto.co.uk/jobs?location=London",
+    "priority": 8
+  },
+  {
+    "id": 333,
+    "name": "AccuRx",
+    "url": "https://careers.atomico.com/companies/accurx#content",
+    "priority": 8
+  },
+  {
+    "id": 334,
+    "name": "Ankar",
+    "url": "https://ankar.ai/careers",
+    "priority": 8
+  },
+  {
+    "id": 335,
+    "name": "Ben",
+    "url": "https://www.thanksben.com/careers#jobs",
+    "priority": 8
+  },
+  {
+    "id": 336,
+    "name": "Deepl",
+    "url": "https://jobs.ashbyhq.com/DeepL?locationId=c2bf9358-f4a5-4b34-a275-d58c447740b6",
+    "priority": 8
+  },
+  {
+    "id": 337,
+    "name": "Dexory",
+    "url": "https://www.dexory.com/open-positions",
+    "priority": 8
+  },
+  {
+    "id": 338,
+    "name": "Electric Twin",
+    "url": "https://www.electrictwin.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 339,
+    "name": "Gaia",
+    "url": "https://gaiafamily.com/en-us/about/careers",
+    "priority": 8
+  },
+  {
+    "id": 340,
+    "name": "Habito",
+    "url": "https://www.habito.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 341,
+    "name": "Healx",
+    "url": "https://healx.ai/careers/",
+    "priority": 8
+  },
+  {
+    "id": 342,
+    "name": "Lab Genius",
+    "url": "https://labgeniustx.com/careers/",
+    "priority": 8
+  },
+  {
+    "id": 343,
+    "name": "Land Invest",
+    "url": "https://careers.lendinvest.com/#jobs",
+    "priority": 1
+  },
+  {
+    "id": 344,
+    "name": "Lime",
+    "url": "https://www.li.me/about/careers#anchorjobs",
+    "priority": 8
+  },
+  {
+    "id": 345,
+    "name": "Mews",
+    "url": "https://www.mews.com/en/careers#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 346,
+    "name": "Neko Health",
+    "url": "https://www.nekohealth.com/gb/en/careers",
+    "priority": 8
+  },
+  {
+    "id": 347,
+    "name": "Omio",
+    "url": "https://www.omio.com/corporate/jobs/",
+    "priority": 8
+  },
+  {
+    "id": 348,
+    "name": "Open FX",
+    "url": "https://www.openfx.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 349,
+    "name": "Pelago Health",
+    "url": "https://pelagohealth.com/company/careers/#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 350,
+    "name": "Physics X",
+    "url": "https://job-boards.eu.greenhouse.io/physicsx?offices%5B%5D=4024608101",
+    "priority": 8
+  },
+  {
+    "id": 351,
+    "name": "Raycast",
+    "url": "https://www.raycast.com/careers#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 352,
+    "name": "Scandit",
+    "url": "https://www.scandit.com/careers/current-openings/",
+    "priority": 8
+  },
+  {
+    "id": 353,
+    "name": "Scarlet",
+    "url": "https://jobs.ashbyhq.com/scarlet?locationId=886fdb47-e81e-40ea-bc8a-2c6e7626d04e",
+    "priority": 8
+  },
+  {
+    "id": 354,
+    "name": "Stripe",
+    "url": "https://stripe.com/careers/search?locations=Europe--Great+Britain",
+    "priority": 8
+  },
+  {
+    "id": 355,
+    "name": "Tem",
+    "url": "https://www.tem.energy/join-our-mission#career",
+    "priority": 8
+  },
+  {
+    "id": 356,
+    "name": "Travel Perk",
+    "url": "https://www.perk.com/uk/careers/?department=data&office=london#careers",
+    "priority": 8
+  },
+  {
+    "id": 357,
+    "name": "UniPlaces",
+    "url": "https://uniplaces.thinkopen.solutions/jobs",
+    "priority": 8
+  },
+  {
+    "id": 358,
+    "name": "Wellhub",
+    "url": "https://wellhub.com/careers/#positions",
+    "priority": 8
+  },
+  {
+    "id": 359,
+    "name": "Wonder Studios",
+    "url": "https://job-boards.eu.greenhouse.io/wonderstudios?offices%5B%5D=4028932101",
+    "priority": 8
+  },
+  {
+    "id": 360,
+    "name": "Zapp",
+    "url": "https://careers.justzapp.com/open-roles",
+    "priority": 8
+  },
+  {
+    "id": 361,
+    "name": "Adfin",
+    "url": "https://adfin.com/careers#open-positions",
+    "priority": 1
+  },
+  {
+    "id": 362,
+    "name": "CSC",
+    "url": "https://hczw.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs?lastSelectedFacet=LOCATIONS&mode=location&selectedLocationsFacet=300000367610299",
+    "priority": 1
+  },
+  {
+    "id": 363,
+    "name": "Adzuna",
+    "url": "https://www.adzuna.co.uk/jobs/careers",
+    "priority": 5
+  },
+  {
+    "id": 364,
+    "name": "Anthropic",
+    "url": "https://www.anthropic.com/careers/jobs?office=4001220008",
+    "priority": 10
+  },
+  {
+    "id": 365,
+    "name": "Apron",
+    "url": "https://getapron.com/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 366,
+    "name": "Arondite",
+    "url": "https://apply.workable.com/arondite/",
+    "priority": 8
+  },
+  {
+    "id": 367,
+    "name": "Arthur",
+    "url": "https://jobs.ashbyhq.com/arthur-ai",
+    "priority": 8
+  },
+  {
+    "id": 368,
+    "name": "AttackIQ",
+    "url": "https://www.attackiq.com/who-we-are/careers/openings/",
+    "priority": 8
+  },
+  {
+    "id": 369,
+    "name": "Beamery",
+    "url": "https://careers.beamery.com/jobs/",
+    "priority": 8
+  },
+  {
+    "id": 370,
+    "name": "Beauty Pie",
+    "url": "https://beautypie.careers.hibob.com/jobs?site=2483616",
+    "priority": 8
+  },
+  {
+    "id": 371,
+    "name": "Birdie",
+    "url": "https://www.birdie.care/join-us#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 372,
+    "name": "BitPay",
+    "url": "https://www.bitpay.com/en-gb/careers#jobs",
+    "priority": 1
+  },
+  {
+    "id": 373,
+    "name": "Bloom & Wild",
+    "url": "https://jobs.lever.co/bloomon?location=London",
+    "priority": 8
+  },
+  {
+    "id": 374,
+    "name": "Build",
+    "url": "https://build.inc/careers",
+    "priority": 8
+  },
+  {
+    "id": 375,
+    "name": "Cartesia",
+    "url": "https://www.cartesia.ai/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 376,
+    "name": "Castle",
+    "url": "https://app.dover.com/jobs/castle",
+    "priority": 8
+  },
+  {
+    "id": 377,
+    "name": "Causaly",
+    "url": "https://jobs.ashbyhq.com/causaly?locationId=6fd040e3-4666-4e05-b46b-ed9756e6fc6b&utm_source=causaly_main",
+    "priority": 10
+  },
+  {
+    "id": 378,
+    "name": "City Mapper",
+    "url": "https://citymapper.com/jobs",
+    "priority": 8
+  },
+  {
+    "id": 379,
+    "name": "Clickhouse",
+    "url": "https://clickhouse.com/company/careers",
+    "priority": 10
+  },
+  {
+    "id": 380,
+    "name": "Coalition",
+    "url": "https://www.coalitioninc.com/jobs",
+    "priority": 10
+  },
+  {
+    "id": 381,
+    "name": "Booking.com",
+    "url": "https://jobs.booking.com/booking/jobs?locations=London,City%20of%20London,United%20Kingdom&page=1",
+    "priority": 4
+  },
+  {
+    "id": 382,
+    "name": "Cisco",
+    "url": "https://careers.cisco.com/global/en/search-results?from=20&s=1",
+    "priority": 10
+  },
+  {
+    "id": 383,
+    "name": "GResearch",
+    "url": "https://www.gresearch.com/vacancies/?utm_term=jobs%20in%20ai&utm_campaign=World:+AI+-+Search+(UK)&utm_source=adwords&utm_medium=ppc&utm_id=24182988698&hsa_acc=7851591103&hsa_cam=24182988698&hsa_grp=203195533161&hsa_ad=822385594010&hsa_src=g&hsa_tgt=kwd-351749614531&hsa_kw=jobs%20in%20ai&hsa_mt=p&hsa_net=adwords&hsa_ver=3&gad_source=1&gad_campaignid=24182988698&gbraid=0AAAAADMRepZ0aD6vyplH4osaSte9rkEAJ&gclid=CjwKCAjwqc_UBhBKEiwAWbl25r2FfgSX1murDzLcciha1yTMpc7RqTqaYuIUk-HO2Ou3GsUUAkMQgRoCMToQAvD_BwE",
+    "priority": 10
+  },
+  {
+    "id": 384,
+    "name": "CoreWave",
+    "url": "https://www.coreweave.com/careers",
+    "priority": 10
+  },
+  {
+    "id": 385,
+    "name": "DoorDash",
+    "url": "https://careersatdoordash.com/job-search/?keyword=&location=London&spage=1",
+    "priority": 8
+  },
+  {
+    "id": 386,
+    "name": "Mars",
+    "url": "https://careers.mars.com/global/en/search-results?gad_source=1&gad_campaignid=22800873026&gbraid=0AAAAA-O_PjNNdOvrmAfSY7CY15HrVW_y8&gclid=CjwKCAjwqc_UBhBKEiwAWbl25kdfOqMcU8p_EVpDCaxVuWBxF2ZTSoiTXGBTey0U8UWobdqN8LXtKRoChtQQAvD_BwE",
+    "priority": 8
+  },
+  {
+    "id": 387,
+    "name": "OpenAI",
+    "url": "https://openai.com/careers/search/?l=fca11f90-4dac-47b6-80e0-752cfeab792b",
+    "priority": 10
+  },
+  {
+    "id": 388,
+    "name": "Rician",
+    "url": "https://careers.rivian.com/careers-home/jobs?location=London,%20Greater%20London,%20United%20Kingdom&woe=7&regionCode=GB&stretchUnit=MILES&stretch=10&page=1",
+    "priority": 8
+  },
+  {
+    "id": 389,
+    "name": "Fyxer",
+    "url": "https://jobs.ashbyhq.com/fyxer?locationId=4850e59e-74f3-4c86-aeff-749dc8c7ec9f",
+    "priority": 10
+  },
+  {
+    "id": 390,
+    "name": "StackOne",
+    "url": "https://jobs.ashbyhq.com/stackone?locationId=726e4ca8-4d5a-4f40-b023-d1b8b43e708f",
+    "priority": 10
+  },
+  {
+    "id": 391,
+    "name": "Omnea",
+    "url": "https://www.omnea.co/careers#opportunities",
+    "priority": 10
+  },
+  {
+    "id": 392,
+    "name": "Maze",
+    "url": "https://jobs.ashbyhq.com/mazedesign?locationId=f0a642a6-3356-49c9-80e7-e4469f569fd6",
+    "priority": 8
+  },
+  {
+    "id": 393,
+    "name": "MongoDB",
+    "url": "https://www.mongodb.com/company/careers/see-jobs",
+    "priority": 8
+  },
+  {
+    "id": 394,
+    "name": "Synthesia",
+    "url": "https://www.synthesia.io/careers#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 395,
+    "name": "Reach PLC",
+    "url": "https://jobs.reachplc.com/jobs",
+    "priority": 8
+  },
+  {
+    "id": 396,
+    "name": "We are Reach",
+    "url": "https://wearereach.co.uk/careers/",
+    "priority": 8
+  },
+  {
+    "id": 397,
+    "name": "Entrust",
+    "url": "https://entrust.wd1.myworkdayjobs.com/EntrustCareers?_gl=1*eyde8e*_ga*MTUwODE1MTY3OS4xNzg4MDc5NTAw*_ga_6QRW66BW5T*czE3ODgwNzk0OTgkbzEkZzAkdDE3ODgwNzk1MDEkajYwJGwwJGgwJGROYkNOSTZxY2JpeFhaUHhKdVZ3MlotZWpUMFdjLXloNmJn*_gcl_au*Mzk4MDU1MTUuMTc4ODA3OTUwMQ..&locations=82f56e9bcad010019f2a062ae1440000",
+    "priority": 8
+  },
+  {
+    "id": 398,
+    "name": "Spotify",
+    "url": "https://www.lifeatspotify.com/jobs?l=london",
+    "priority": 4
+  },
+  {
+    "id": 399,
+    "name": "Cohere",
+    "url": "https://jobs.ashbyhq.com/cohere?locationId=4f020ac6-7f9d-4ffb-bd62-f25b3c1da2ee",
+    "priority": 10
+  },
+  {
+    "id": 400,
+    "name": "Proofpoint",
+    "url": "https://proofpoint.wd5.myworkdayjobs.com/proofpointcareers?locationCountry=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 8
+  },
+  {
+    "id": 401,
+    "name": "TeamViewer",
+    "url": "https://careers.teamviewer.com/jobs?query=&location=London",
+    "priority": 8
+  },
+  {
+    "id": 402,
+    "name": "Hargreaves Lansdown",
+    "url": "https://hargreaveslansdown.wd3.myworkdayjobs.com/HargreavesLansdown?locations=e9cb0fdf9f7b100144bb7d0b6da30000",
+    "priority": 1
+  },
+  {
+    "id": 403,
+    "name": "Meta",
+    "url": "https://www.metacareers.com/jobsearch/?offices[0]=London%2C%20UK",
+    "priority": 4
+  },
+  {
+    "id": 404,
+    "name": "TikTok",
+    "url": "https://lifeattiktok.com/search?recruitment_id_list=&job_category_id_list=&subject_id_list=&location_code_list=CT_93&keyword=project&limit=12&offset=0",
+    "priority": 4
+  },
+  {
+    "id": 405,
+    "name": "Pigment",
+    "url": "https://jobs.lever.co/pigment?location=London",
+    "priority": 8
+  },
+  {
+    "id": 406,
+    "name": "Legora",
+    "url": "https://legora.com/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 407,
+    "name": "Pleo",
+    "url": "https://jobs.ashbyhq.com/pleo/?locationId=315e6a4f-cb28-47af-96f9-e07a3742544f",
+    "priority": 8
+  },
+  {
+    "id": 408,
+    "name": "DarkTrace",
+    "url": "https://darktrace.wd3.myworkdayjobs.com/DarktaceExternal?Country=29247e57dbaf46fb855b224e03170bc7&Location=92173c029bd41001b46e621583dd0000",
+    "priority": 8
+  },
+  {
+    "id": 409,
+    "name": "Miro",
+    "url": "https://miro.com/careers/open-positions/?location=london-uk&page=1",
+    "priority": 4
+  },
+  {
+    "id": 410,
+    "name": "Fujitsu",
+    "url": "https://www.jobs.global.fujitsu.com/search?searchResultView=LIST&markerViewed=&carouselIndex=&facetFilters=%7B%22sfstd_jobLocation_obj%22%3A%5B%22London%22%5D%7D&pageNumber=0",
+    "priority": 4
+  },
+  {
+    "id": 411,
+    "name": "Asana",
+    "url": "https://asana.com/en-gb/jobs/all",
+    "priority": 8
+  },
+  {
+    "id": 412,
+    "name": "Intercom",
+    "url": "https://fin.ai/careers/listings",
+    "priority": 8
+  },
+  {
+    "id": 413,
+    "name": "SAP",
+    "url": "https://jobs.sap.com/search/?createNewAlert=false&q=&locationsearch=&optionsFacetsDD_department=&optionsFacetsDD_customfield3=&optionsFacetsDD_country=GB",
+    "priority": 8
+  },
+  {
+    "id": 414,
+    "name": "NHS",
+    "url": "https://www.jobs.nhs.uk/candidate/search/results?country=GB-ENG&searchFormType=main&keyword=project&location=London&language=en#",
+    "priority": 4
+  },
+  {
+    "id": 415,
+    "name": "Gonini",
+    "url": "https://apply.workable.com/bezos/",
+    "priority": 4
+  },
+  {
+    "id": 416,
+    "name": "Flexport",
+    "url": "https://www.flexport.com/careers/jobs/?location=London",
+    "priority": 8
+  },
+  {
+    "id": 417,
+    "name": "UPS",
+    "url": "https://www.jobs-ups.com/global/en/search-results",
+    "priority": 8
+  },
+  {
+    "id": 418,
+    "name": "FexEx",
+    "url": "https://careers.fedex.com/career-areas/professional/jobs?location_name=London%2C%20UK&location_type=2",
+    "priority": 4
+  },
+  {
+    "id": 419,
+    "name": "Samsara",
+    "url": "https://www.samsara.com/uk/company/careers/roles?locations=London,+UK",
+    "priority": 8
+  },
+  {
+    "id": 420,
+    "name": "Zen Cargo",
+    "url": "https://www.zencargo.com/careers/",
+    "priority": 8
+  },
+  {
+    "id": 421,
+    "name": "Motive",
+    "url": "https://gomotive.com/en-gb/company/careers/jobs/",
+    "priority": 8
+  },
+  {
+    "id": 422,
+    "name": "Iterable",
+    "url": "https://iterable.com/careers/",
+    "priority": 8
+  },
+  {
+    "id": 423,
+    "name": "Netflix",
+    "url": "https://explore.jobs.netflix.net/careers?location=London%2C%20England%2C%20United%20Kingdom&pid=790302949609&domain=netflix.com&sort_by=relevance&triggerGoButton=false",
+    "priority": 4
+  },
+  {
+    "id": 424,
+    "name": "Colibra",
+    "url": "https://www.collibra.com/company/careers#filter1=london-united-kingdom&sub-menu-find-jobs",
+    "priority": 8
+  },
+  {
+    "id": 425,
+    "name": "Complay Advantage",
+    "url": "https://complyadvantage.com/careers/jobs/",
+    "priority": 8
+  },
+  {
+    "id": 426,
+    "name": "Conduct",
+    "url": "https://conduct.ai/about#careers",
+    "priority": 8
+  },
+  {
+    "id": 427,
+    "name": "Credit Benchmark",
+    "url": "https://www.creditbenchmark.com/careers/current-vacancies/",
+    "priority": 1
+  },
+  {
+    "id": 428,
+    "name": "Culture Amp",
+    "url": "https://www.cultureamp.com/company/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 429,
+    "name": "Cutover",
+    "url": "https://cutover.com/careers#open-positions",
+    "priority": 1
+  },
+  {
+    "id": 430,
+    "name": "DataDog",
+    "url": "https://careers.datadoghq.com/all-jobs/?location_EMEA%5B0%5D=United%20Kingdom",
+    "priority": 10
+  },
+  {
+    "id": 431,
+    "name": "Decagon",
+    "url": "https://decagon.ai/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 432,
+    "name": "Just Works",
+    "url": "https://www.justworks.com/careers#jobs",
+    "priority": 8
+  },
+  {
+    "id": 433,
+    "name": "Deliveroo",
+    "url": "https://careers.deliveroo.co.uk/join-the-team/?search=&locations=united-kingdom",
+    "priority": 4
+  },
+  {
+    "id": 434,
+    "name": "Draftwise",
+    "url": "https://www.draftwise.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 435,
+    "name": "Duffel",
+    "url": "https://duffel.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 436,
+    "name": "Duvo",
+    "url": "https://www.duvo.ai/careers",
+    "priority": 8
+  },
+  {
+    "id": 437,
+    "name": "Ethon",
+    "url": "https://ethonai.recruitee.com/",
+    "priority": 8
+  },
+  {
+    "id": 438,
+    "name": "Evervault",
+    "url": "https://evervault.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 439,
+    "name": "Uber",
+    "url": "https://jobs.uber.com/en/jobs/?location=London&radius=10&page=1&pagesize=10",
+    "priority": 4
+  },
+  {
+    "id": 440,
+    "name": "Markel",
+    "url": "https://markelcorp.wd5.myworkdayjobs.com/GlobalCareers?locations=a57b9f6cdd121085d75cbe359647140b&locations=9d47f6646d881007fd0cc5173a8cf3a6&_gl=1*rk82hv*_ga*MTkwODg5NTc0My4xNzg4MDk2Nzcz*_ga_K460B89M23*czE3ODgwOTY3NzIkbzEkZzAkdDE3ODgwOTY3NzMkajYwJGwwJGgw",
+    "priority": 3
+  },
+  {
+    "id": 441,
+    "name": "Turo",
+    "url": "https://turo.wd12.myworkdayjobs.com/Turo_careers?locations=1a2497085f72100d90c1d3ba37d20000",
+    "priority": 8
+  },
+  {
+    "id": 442,
+    "name": "Zoominfo",
+    "url": "https://www.zoominfo.com/careers#jobs",
+    "priority": 8
+  },
+  {
+    "id": 443,
+    "name": "Cribl",
+    "url": "https://cribl.io/careers/?location=Remote+-+United+Kingdom",
+    "priority": 8
+  },
+  {
+    "id": 444,
+    "name": "Affirm",
+    "url": "https://www.affirm.com/careers#jobOpenings",
+    "priority": 8
+  },
+  {
+    "id": 445,
+    "name": "Siemens",
+    "url": "https://jobs.siemens.com/en_US/externaljobs/SearchJobs/?42386=%5B812127%5D&42386_format=17546&42387=%5B305399163%5D&42387_format=17547&listFilterMode=1&folderRecordsPerPage=6&",
+    "priority": 4
+  },
+  {
+    "id": 446,
+    "name": "Tokio Marine HCC",
+    "url": "https://www.tmhcc.com/en/careers",
+    "priority": 3
+  },
+  {
+    "id": 447,
+    "name": "Figma",
+    "url": "https://www.figma.com/careers/#job-openings",
+    "priority": 8
+  },
+  {
+    "id": 448,
+    "name": "Fireblocks",
+    "url": "https://www.fireblocks.com/careers#open-roles",
+    "priority": 1
+  },
+  {
+    "id": 449,
+    "name": "Fireworks",
+    "url": "https://fireworks.ai/careers",
+    "priority": 8
+  },
+  {
+    "id": 450,
+    "name": "Cursor",
+    "url": "https://cursor.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 451,
+    "name": "Vercel",
+    "url": "https://vercel.com/careers?location=London",
+    "priority": 8
+  },
+  {
+    "id": 452,
+    "name": "Lovable",
+    "url": "https://lovable.dev/careers?location=London",
+    "priority": 8
+  },
+  {
+    "id": 453,
+    "name": "Cognition",
+    "url": "https://cognition.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 454,
+    "name": "Juice box",
+    "url": "https://juicebox.ai/careers#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 455,
+    "name": "UIPath",
+    "url": "https://www.uipath.com/careers/jobs",
+    "priority": 8
+  },
+  {
+    "id": 456,
+    "name": "Fonoa",
+    "url": "https://jobs.ashbyhq.com/fonoa?locationId=eca8fe00-5a8a-49f7-b97d-d8ac29619070",
+    "priority": 8
+  },
+  {
+    "id": 457,
+    "name": "Frame Securities",
+    "url": "https://framesecurity.com/careers#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 458,
+    "name": "Glosier",
+    "url": "https://life.glossier.com/",
+    "priority": 8
+  },
+  {
+    "id": 459,
+    "name": "Gong",
+    "url": "https://www.gong.io/careers?location=London#careers-listing-section",
+    "priority": 8
+  },
+  {
+    "id": 460,
+    "name": "Granola",
+    "url": "https://www.granola.ai/jobs",
+    "priority": 8
+  },
+  {
+    "id": 461,
+    "name": "Harmonic",
+    "url": "https://www.harmonic.fun/careers/#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 462,
+    "name": "Hutch Games",
+    "url": "https://www.hutch.io/careers/",
+    "priority": 8
+  },
+  {
+    "id": 463,
+    "name": "Metaview",
+    "url": "https://jobs.ashbyhq.com/metaview?locationId=54169c5c-9baa-4811-b04a-28670812af0e",
+    "priority": 8
+  },
+  {
+    "id": 464,
+    "name": "Lightning AI",
+    "url": "https://job-boards.greenhouse.io/lightningai?offices%5B%5D=4039276003",
+    "priority": 10
+  },
+  {
+    "id": 465,
+    "name": "Linear",
+    "url": "https://linear.app/careers",
+    "priority": 8
+  },
+  {
+    "id": 466,
+    "name": "Linktree",
+    "url": "https://linktr.ee/s/about/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 467,
+    "name": "Marker",
+    "url": "https://marker.page/jobs/",
+    "priority": 8
+  },
+  {
+    "id": 468,
+    "name": "Mistral",
+    "url": "https://jobs.ashbyhq.com/mistral.ai?locationId=cf380cd8-d043-4423-904c-ebe2f8e1e252",
+    "priority": 8
+  },
+  {
+    "id": 469,
+    "name": "Moo",
+    "url": "https://jobs.lever.co/moo/?lever-origin=applied&lever-source%5B0%5D=MOOCareers&location=London",
+    "priority": 8
+  },
+  {
+    "id": 470,
+    "name": "Motorway",
+    "url": "https://jobs.ashbyhq.com/motorway?locationId=ea2a04d6-1d1d-43aa-bbdf-f9820892a38d",
+    "priority": 8
+  },
+  {
+    "id": 471,
+    "name": "Multiverse",
+    "url": "https://www.multiverse.io/careers/were-hiring#job-list",
+    "priority": 8
+  },
+  {
+    "id": 472,
+    "name": "Nexthink",
+    "url": "https://nexthink.com/company/careers/jobs",
+    "priority": 8
+  },
+  {
+    "id": 473,
+    "name": "Notion",
+    "url": "https://www.notion.com/careers?location=london-united-kingdom",
+    "priority": 8
+  },
+  {
+    "id": 474,
+    "name": "Cyera",
+    "url": "https://www.cyera.com/careers#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 475,
+    "name": "Outbrain",
+    "url": "https://www.teads.com/teads-careers/job-openings/",
+    "priority": 8
+  },
+  {
+    "id": 476,
+    "name": "Plaid",
+    "url": "https://plaid.com/careers/?location=London+Office#search",
+    "priority": 8
+  },
+  {
+    "id": 477,
+    "name": "Plain",
+    "url": "https://www.plain.com/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 478,
+    "name": "PointFive",
+    "url": "https://www.pointfive.co/careers#positions",
+    "priority": 8
+  },
+  {
+    "id": 479,
+    "name": "Roli",
+    "url": "https://app.screenloop.com/careers/roli",
+    "priority": 8
+  },
+  {
+    "id": 480,
+    "name": "Scale",
+    "url": "https://scale.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 481,
+    "name": "Spend Desk",
+    "url": "https://career.spendesk.com/jobs?split_view=true&geobound_coordinates%5Btop_left_lat%5D=51.52594064813257&geobound_coordinates%5Btop_left_lon%5D=-0.09205341339111328&geobound_coordinates%5Bbottom_right_lat%5D=51.52396812656874&geobound_coordinates%5Bbottom_right_lon%5D=-0.0887918472290039&query=",
+    "priority": 8
+  },
+  {
+    "id": 482,
+    "name": "Spiko",
+    "url": "https://spiko.teamtailor.com/jobs?query=&location=London",
+    "priority": 1
+  },
+  {
+    "id": 483,
+    "name": "Starburst",
+    "url": "https://www.starburst.io/careers/open-roles/",
+    "priority": 8
+  },
+  {
+    "id": 484,
+    "name": "Twilio",
+    "url": "https://jobs.twilio.com/careers?start=0&location=United+Kingdom&pid=1099554760833&sort_by=distance&filter_include_remote=1&filter_include_relocation=0",
+    "priority": 8
+  },
+  {
+    "id": 485,
+    "name": "Supersolid",
+    "url": "https://supersolid.com/careers",
+    "priority": 9
+  },
+  {
+    "id": 486,
+    "name": "Sylvera",
+    "url": "https://jobs.ashbyhq.com/sylvera?locationId=a5fc2262-ca10-421e-b420-4246a385fa1e",
+    "priority": 8
+  },
+  {
+    "id": 487,
+    "name": "Taktile",
+    "url": "https://www.taktile.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 488,
+    "name": "Tebi",
+    "url": "https://jobs.ashbyhq.com/tebi?locationId=04d78a5b-ff4e-4277-a39a-c30f9e6f6a09",
+    "priority": 8
+  },
+  {
+    "id": 489,
+    "name": "Temporal",
+    "url": "https://temporal.io/careers#become-a-temporalite",
+    "priority": 8
+  },
+  {
+    "id": 490,
+    "name": "Tessl",
+    "url": "https://tessl.io/careers#job-listings",
+    "priority": 8
+  },
+  {
+    "id": 491,
+    "name": "Trustpilot",
+    "url": "https://corporate.trustpilot.com/careers#jobs",
+    "priority": 8
+  },
+  {
+    "id": 492,
+    "name": "Wordsmith",
+    "url": "https://jobs.ashbyhq.com/wordsmith?locationId=4402acec-0bd5-4020-a379-8205fc65e560",
+    "priority": 8
+  },
+  {
+    "id": 493,
+    "name": "Worldover",
+    "url": "https://worldover.io/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 494,
+    "name": "Insidor",
+    "url": "https://www.isidor.ai/",
+    "priority": 8
+  },
+  {
+    "id": 495,
+    "name": "Wexler",
+    "url": "https://jobs.ashbyhq.com/Pear-VC?departmentId=a0308fb2-8ddf-4f9f-8d1a-7ce76d40a080&locationId=522faa20-7cbb-43cf-a2b7-585290b4dab7",
+    "priority": 8
+  },
+  {
+    "id": 496,
+    "name": "Time Trace Labs",
+    "url": "https://timetracelabs.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 497,
+    "name": "Outpost",
+    "url": "https://www.outpost.bio/career#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 498,
+    "name": "Tano",
+    "url": "https://www.tano.ai/careers#roles",
+    "priority": 10
+  },
+  {
+    "id": 499,
+    "name": "Source.Dev",
+    "url": "https://jobs.ashbyhq.com/sourcedev?locationId=c93a94e9-6959-425e-8940-e33bff93eb88",
+    "priority": 8
+  },
+  {
+    "id": 500,
+    "name": "Primer",
+    "url": "https://jobs.ashbyhq.com/primer.io?locationId=2289df43-efac-4dec-9543-56ffe9d06f56",
+    "priority": 8
+  },
+  {
+    "id": 501,
+    "name": "FifthDemensio",
+    "url": "https://careers.fifthdimensionai.com/#jobs",
+    "priority": 10
+  },
+  {
+    "id": 502,
+    "name": "Ferry",
+    "url": "https://www.deployferry.io/careers",
+    "priority": 8
+  },
+  {
+    "id": 503,
+    "name": "Mimo",
+    "url": "https://career.mimohq.com/jobs",
+    "priority": 8
+  },
+  {
+    "id": 504,
+    "name": "Cakewalk",
+    "url": "https://getcakewalk.notion.site/Open-Positions-39794f057cb3803f8b75fc5efa8051a6",
+    "priority": 8
+  },
+  {
+    "id": 505,
+    "name": "Light",
+    "url": "https://light.inc/careers#positions",
+    "priority": 8
+  },
+  {
+    "id": 506,
+    "name": "Fiat Republic",
+    "url": "https://fiatrepublic.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 507,
+    "name": "Zinc",
+    "url": "https://zincwork.pinpointhq.com/#js-careers-jobs-block",
+    "priority": 8
+  },
+  {
+    "id": 508,
+    "name": "Tilt",
+    "url": "https://jobs.ashbyhq.com/tilt?locationId=2486975f-f85a-425b-9e4e-f768c47e9848",
+    "priority": 8
+  },
+  {
+    "id": 509,
+    "name": "Gradient Labs",
+    "url": "https://gradient-labs.ai/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 510,
+    "name": "Deblock",
+    "url": "https://apply.workable.com/deblock",
+    "priority": 8
+  },
+  {
+    "id": 511,
+    "name": "Aikido",
+    "url": "https://www.aikido.dev/company/careers#jobs",
+    "priority": 8
+  },
+  {
+    "id": 512,
+    "name": "Juno",
+    "url": "https://www.y.uno/en/careers",
+    "priority": 8
+  },
+  {
+    "id": 513,
+    "name": "Kota",
+    "url": "https://www.kota.io/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 514,
+    "name": "Complyance",
+    "url": "https://www.complyance.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 515,
+    "name": "Jeeves",
+    "url": "https://www.tryjeeves.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 516,
+    "name": "Wayflyer",
+    "url": "https://jobs.ashbyhq.com/wayflyer?locationId=909d1a97-0bb2-4e96-8eb3-648383d1de7e",
+    "priority": 8
+  },
+  {
+    "id": 517,
+    "name": "Robinhood",
+    "url": "https://careers.robinhood.com/",
+    "priority": 8
+  },
+  {
+    "id": 518,
+    "name": "GitButler",
+    "url": "https://jobs.gitbutler.com/",
+    "priority": 8
+  },
+  {
+    "id": 519,
+    "name": "Kernel",
+    "url": "https://www.kernel.ai/company/careers?ashby_location_id=0e6b172d-251c-460d-86cf-13c79ce237ec#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 520,
+    "name": "Orbital",
+    "url": "https://jobs.ashbyhq.com/orbital?locationId=ef069969-5247-43d4-bf6b-df583a0c7dc8",
+    "priority": 8
+  },
+  {
+    "id": 521,
+    "name": "Yonder",
+    "url": "https://www.yonder.com/careers#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 522,
+    "name": "Dialpad",
+    "url": "https://www.dialpad.com/careers/open-opportunities/?office=london-uk",
+    "priority": 8
+  },
+  {
+    "id": 523,
+    "name": "Synthesized",
+    "url": "https://synthesized.teamtailor.com/#jobs",
+    "priority": 8
+  },
+  {
+    "id": 524,
+    "name": "QuestDB",
+    "url": "https://questdb.com/careers/",
+    "priority": 8
+  },
+  {
+    "id": 525,
+    "name": "Hi Bob",
+    "url": "https://www.hibob.com/careers/",
+    "priority": 8
+  },
+  {
+    "id": 526,
+    "name": "Pilant",
+    "url": "https://www.getpliant.com/en/careers#open-positions",
+    "priority": 8
+  },
+  {
+    "id": 527,
+    "name": "Uncapped",
+    "url": "https://apply.workable.com/uncapped/",
+    "priority": 8
+  },
+  {
+    "id": 528,
+    "name": "Risk Ledger",
+    "url": "https://riskledger.com/jobs",
+    "priority": 8
+  },
+  {
+    "id": 529,
+    "name": "Superscript",
+    "url": "https://jobs.gosuperscript.com/jobs",
+    "priority": 3
+  },
+  {
+    "id": 530,
+    "name": "Griffin",
+    "url": "https://griffin.com/careers#open-roles",
+    "priority": 8
+  },
+  {
+    "id": 531,
+    "name": "Moody's",
+    "url": "https://careers.moodys.com/en/search-jobs/London%2C%20England/49841/4/2635167-6269131-2648110-2643743/51x50853/-0x12574/50/2",
+    "priority": 1
+  },
+  {
+    "id": 532,
+    "name": "Flow",
+    "url": "https://www.flowengineering.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 533,
+    "name": "9fin",
+    "url": "https://9fin.com/careers?ashby_location_id=8a974a6f-46c5-4196-ac7f-e78ebc631b34",
+    "priority": 8
+  },
+  {
+    "id": 534,
+    "name": "Cuva",
+    "url": "https://www.cuvva.com/careers#open-roles",
+    "priority": 3
+  },
+  {
+    "id": 535,
+    "name": "Trivia",
+    "url": "https://thrivalimited.recruit.charliehr.com/careers",
+    "priority": 8
+  },
+  {
+    "id": 536,
+    "name": "Juro",
+    "url": "https://juro.com/careers#roles",
+    "priority": 8
+  },
+  {
+    "id": 537,
+    "name": "Cronofy",
+    "url": "https://www.cronofy.com/careers#07801af6f1c3",
+    "priority": 8
+  },
+  {
+    "id": 538,
+    "name": "Charlie",
+    "url": "https://www.charliehr.com/careers#Vacancies",
+    "priority": 8
+  },
+  {
+    "id": 539,
+    "name": "Much better adventures",
+    "url": "https://apply.workable.com/muchbetteradventures/#jobs",
+    "priority": 8
+  },
+  {
+    "id": 540,
+    "name": "Get Agent",
+    "url": "https://careers.getagent.co.uk/jobs",
+    "priority": 8
+  },
+  {
+    "id": 541,
+    "name": "Edgefolio",
+    "url": "https://careers.edgefolio.com/jobs",
+    "priority": 1
+  },
+  {
+    "id": 542,
+    "name": "Altana Wealth",
+    "url": "https://altanawealth.com/new-position/",
+    "priority": 1
+  },
+  {
+    "id": 543,
+    "name": "Ui Path",
+    "url": "https://www.uipath.com/careers/jobs",
+    "priority": 9
+  },
+  {
+    "id": 544,
+    "name": "Land Tech",
+    "url": "https://land.tech/careers#careers",
+    "priority": 8
+  },
+  {
+    "id": 545,
+    "name": "Monese",
+    "url": "https://careers.monese.com/jobs",
+    "priority": 1
+  },
+  {
+    "id": 546,
+    "name": "Elliptic",
+    "url": "https://www.elliptic.co/open-positions/?ashby_location_id=2b0f1813-9bf4-48ea-82d4-8bfc130bc975#list",
+    "priority": 1
+  },
+  {
+    "id": 547,
+    "name": "Persuit",
+    "url": "https://careers.persuit.com/#jobs",
+    "priority": 8
+  },
+  {
+    "id": 548,
+    "name": "Profitero+",
+    "url": "https://careers.publicisgroupe.com/profitero/jobs?locations=London,,United%20Kingdom&page=1",
+    "priority": 8
+  },
+  {
+    "id": 549,
+    "name": "Edited",
+    "url": "https://edited.com/careers/#join-our-team",
+    "priority": 8
+  },
+  {
+    "id": 550,
+    "name": "Patient know best",
+    "url": "https://apply.workable.com/patients/",
+    "priority": 8
+  },
+  {
+    "id": 551,
+    "name": "Hootsuite",
+    "url": "https://careers.hootsuite.com/jobs/search?page=1&country_codes%5B%5D=GB&query=",
+    "priority": 8
+  },
+  {
+    "id": 552,
+    "name": "Trinity",
+    "url": "https://apply.workable.com/trinnylondon/",
+    "priority": 8
+  },
+  {
+    "id": 553,
+    "name": "Zilch",
+    "url": "https://www.zilch.com/uk/careers/#job-list",
+    "priority": 8
+  },
+  {
+    "id": 554,
+    "name": "ShildPay",
+    "url": "https://shieldpay.teamtailor.com/jobs",
+    "priority": 1
+  },
+  {
+    "id": 555,
+    "name": "Vonage",
+    "url": "https://www.vonage.com/careers/search/#loc=4009285002&dept=0&page=1&sort=desc",
+    "priority": 8
+  },
+  {
+    "id": 556,
+    "name": "Totara",
+    "url": "https://totara-learning-solutions.breezy.hr/?&country=United%20Kingdom#positions",
+    "priority": 8
+  },
+  {
+    "id": 557,
+    "name": "Elixirr",
+    "url": "https://www.elixirr.com/en-gb/job-openings/",
+    "priority": 8
+  },
+  {
+    "id": 558,
+    "name": "AIB Group",
+    "url": "https://jobs.aib.ie/aib/go/ExperiencedRoles/9774700/?_gl=1*5lgyg0*_gcl_au*OTMxNDk2MjQ4LjE3ODY5MDUxMjI.*_ga*MTc4NzAwMTk3Ny4xNzg2OTA1MTIy*_ga_KET7JQ3CP4*czE3ODg2OTM3MzQkbzIkZzEkdDE3ODg2OTM3NDQkajUwJGwwJGgw",
+    "priority": 1
+  },
+  {
+    "id": 559,
+    "name": "Sona",
+    "url": "https://www.sona.ai/careers#openPositions",
+    "priority": 10
+  },
+  {
+    "id": 560,
+    "name": "O1 Health",
+    "url": "https://jobs.lever.co/32Co",
+    "priority": 8
+  },
+  {
+    "id": 561,
+    "name": "Attio",
+    "url": "https://attio.com/careers?location=united-kingdom",
+    "priority": 8
+  },
+  {
+    "id": 562,
+    "name": "The Fork",
+    "url": "https://www.careers.thefork.com/search-results?keywords=london",
+    "priority": 8
+  },
+  {
+    "id": 563,
+    "name": "CarWoW",
+    "url": "https://www.carwow.co.uk/jobs#jobs-widget",
+    "priority": 8
+  },
+  {
+    "id": 564,
+    "name": "Circle Health",
+    "url": "https://careers.circlehealthgroup.co.uk/job-search/?locations=London%2C+UK",
+    "priority": 8
+  },
+  {
+    "id": 565,
+    "name": "Cleo",
+    "url": "https://revolutpeople.com/cleo/public/careers?pid=website&af_sub4=4492003c-c3dc-4f29-832e-8a1fdda1d509&fbp=fb.1.1788347548587.496111623534886183&locations=2",
+    "priority": 1
+  },
+  {
+    "id": 566,
+    "name": "Medtronic",
+    "url": "https://medtronic.wd1.myworkdayjobs.com/MedtronicCareers?locationCountry=29247e57dbaf46fb855b224e03170bc7&locationRegionStateProvince=5d288ad1e2a84e09a32c0954a5946d7f",
+    "priority": 8
+  },
+  {
+    "id": 567,
+    "name": "Fulham Football Club",
+    "url": "https://www.fulhamfc.com/club/careers",
+    "priority": 9
+  },
+  {
+    "id": 568,
+    "name": "Benefact Group",
+    "url": "https://careers.benefactgroup.com/jobs?department_id=175141",
+    "priority": 1
+  },
+  {
+    "id": 569,
+    "name": "GAN",
+    "url": "https://careers.gan.com/#jobs",
+    "priority": 9
+  },
+  {
+    "id": 570,
+    "name": "Legend",
+    "url": "https://careers.gan.com/#jobs",
+    "priority": 9
+  },
+  {
+    "id": 571,
+    "name": "BP",
+    "url": "https://careers.bp.com/listing?production_bp_jobs%5BrefinementList%5D%5Blocation_list%5D%5B0%5D=London%2C%20United%20Kingdom",
+    "priority": 4
+  },
+  {
+    "id": 572,
+    "name": "Apple",
+    "url": "https://jobs.apple.com/en-gb/search?location=greater-london-state436",
+    "priority": 4
+  },
+  {
+    "id": 573,
+    "name": "Serco",
+    "url": "https://careers.serco.com/gb/en/search-results?m=3&location=London%2C%20Greater%20London%2C%20United%20Kingdom",
+    "priority": 4
+  },
+  {
+    "id": 574,
+    "name": "BAT",
+    "url": "https://careers.bat.com/en/location/london-jobs/1045/2635167-6269131-2643743/4",
+    "priority": 8
+  },
+  {
+    "id": 575,
+    "name": "Diageo",
+    "url": "https://www.diageo.com/en/careers/search-and-apply?location=London%2C+England",
+    "priority": 8
+  },
+  {
+    "id": 576,
+    "name": "GSK",
+    "url": "https://jobs.gsk.com/gb/en/search-results?s=1",
+    "priority": 4
+  },
+  {
+    "id": 577,
+    "name": "Unilever",
+    "url": "https://careers.unilever.com/en/search-jobs",
+    "priority": 4
+  },
+  {
+    "id": 578,
+    "name": "Shell",
+    "url": "https://shell.wd3.myworkdayjobs.com/shellcareers?k=project&locations=a87fe1bd64b801008b75f0a7a72ca91e&locations=a87fe1bd64b801efe63734a5a72c7614",
+    "priority": 4
+  },
+  {
+    "id": 579,
+    "name": "AstraZeneca",
+    "url": "https://careers.astrazeneca.com/search-jobs",
+    "priority": 4
+  },
+  {
+    "id": 580,
+    "name": "Hitachi",
+    "url": "https://www.hitachi-solutions.co.uk/vacancies/",
+    "priority": 4
+  },
+  {
+    "id": 581,
+    "name": "Papaya Global",
+    "url": "https://www.comeet.com/jobs/papayaglobal/16.005?location=London",
+    "priority": 1
+  },
+  {
+    "id": 582,
+    "name": "Attensi",
+    "url": "https://careers.attensi.com/jobs?split_view=true&geobound_coordinates%5Btop_left_lat%5D=51.50700959481885&geobound_coordinates%5Btop_left_lon%5D=-0.10729372501373291&geobound_coordinates%5Bbottom_right_lat%5D=51.50455542612896&geobound_coordinates%5Bbottom_right_lon%5D=-0.10218679904937744",
+    "priority": 8
+  },
+  {
+    "id": 583,
+    "name": "T2 Games",
+    "url": "https://careers.take2games.com/jobs?office=77442",
+    "priority": 9
+  },
+  {
+    "id": 584,
+    "name": "GSMA",
+    "url": "https://gsma.wd3.myworkdayjobs.com/External_Careers?locations=4283dcb98833013fd08d2a1f0937040b",
+    "priority": 8
+  },
+  {
+    "id": 585,
+    "name": "Algolia",
+    "url": "https://job-boards.greenhouse.io/algolia?offices%5B%5D=4004874004",
+    "priority": 10
+  },
+  {
+    "id": 586,
+    "name": "St James's Place",
+    "url": "https://sjp.csod.com/ux/ats/careersite/4/home?c=sjp&city=london",
+    "priority": 1
+  },
+  {
+    "id": 587,
+    "name": "PinPoint",
+    "url": "https://workwithus.pinpointhq.com/#openings",
+    "priority": 8
+  },
+  {
+    "id": 588,
+    "name": "Emurgo",
+    "url": "https://emurgo.breezy.hr/?&location=London%2C%20GB#positions",
+    "priority": 10
+  },
+  {
+    "id": 589,
+    "name": "Trilitech blockchain",
+    "url": "https://jobs.ashbyhq.com/trilitech?employmentType=FullTime&locationId=a06d405a-abc5-470c-a8e5-969d9f0c1f00&utm_source=poJ0MPLyB9",
+    "priority": 10
+  },
+  {
+    "id": 590,
+    "name": "Marshmallow Insurance",
+    "url": "https://jobs.ashbyhq.com/marshmallow?utm_source=KjXb3BbOgr",
+    "priority": 3
+  },
+  {
+    "id": 591,
+    "name": "Alter Domus",
+    "url": "https://careers.alterdomus.com/en/search-jobs",
+    "priority": 1
+  },
+  {
+    "id": 592,
+    "name": "Addleshaw Goddard",
+    "url": "https://joinus.addleshawgoddard.com/jobs/search?block_index=0&block_uid=944121667d3c3d1e93f5c5b97a0508c5&cities%5B%5D=London&location_uids=&page=1&page_row_index=1&page_row_uid=348d81ae041d01755b794fc065a137e8&page_version_uid=57943cdb773e48866bca840b69882b3a&query=&search_cities=&search_departments=&search_dropdown_field_1_values=&search_dropdown_field_2_values=&search_dropdown_field_3_values=&sort=",
+    "priority": 1
+  },
+  {
+    "id": 593,
+    "name": "Polo Worsk Insurance",
+    "url": "https://poloworks.pinpointhq.com/",
+    "priority": 3
+  },
+  {
+    "id": 594,
+    "name": "Clearwater",
+    "url": "https://cwan.com/company/careers/?_location=london&_department=#results",
+    "priority": 1
+  },
+  {
+    "id": 595,
+    "name": "Royal Bank of Scotland (Natwest Group)",
+    "url": "https://jobs.natwestgroup.com/search/jobs/in/london",
+    "priority": 1
+  },
+  {
+    "id": 596,
+    "name": "Adyen",
+    "url": "https://careers.adyen.com/vacancies?location=London",
+    "priority": 1
+  },
+  {
+    "id": 597,
+    "name": "Aldemore",
+    "url": "https://aldermore.current-vacancies.com/Careers/Aldermore_vacancy_search_page-3181#",
+    "priority": 1
+  },
+  {
+    "id": 598,
+    "name": "Allfunds",
+    "url": "https://allfunds.wd103.myworkdayjobs.com/Allfunds_External_Career_Site",
+    "priority": 1
+  },
+  {
+    "id": 599,
+    "name": "Alrayan bank",
+    "url": "https://www.alrayanbank.co.uk/jobs-and-careers/view-vacancies",
+    "priority": 1
+  },
+  {
+    "id": 600,
+    "name": "Anz",
+    "url": "https://careers.anz.com/search/?createNewAlert=false&q=&locationsearch=london&optionsFacetsDD_country=&optionsFacetsDD_customfield4=&optionsFacetsDD_customfield5=&optionsFacetsDD_facility=&optionsFacetsDD_customfield1=",
+    "priority": 1
+  },
+  {
+    "id": 601,
+    "name": "BLME Mono Fintech",
+    "url": "https://blmeandnft.careers.adp.com/vacancies",
+    "priority": 1
+  },
+  {
+    "id": 602,
+    "name": "BMO",
+    "url": "https://jobs.bmo.com/global/en/search-results",
+    "priority": 1
+  },
+  {
+    "id": 603,
+    "name": "Pictet",
+    "url": "https://career012.successfactors.eu/career?company=banquepict&career%5fns=job%5flisting%5fsummary&navBarLevel=JOB%5fSEARCH&_s.crb=1ZKsRoZvLSUOCYzhUZKuzefTNELsziOhYvHTgltWPa8%3d",
+    "priority": 1
+  },
+  {
+    "id": 604,
+    "name": "CIBC",
+    "url": "https://cibc.wd3.myworkdayjobs.com/search?Country=29247e57dbaf46fb855b224e03170bc7",
+    "priority": 1
+  },
+  {
+    "id": 605,
+    "name": "Capital One",
+    "url": "https://jobs.capitalone.co.uk/search-jobs/London%2C%20England/47643/4/2635167-6269131-2648110-2643743/51x50853/-0x12574/50/2",
+    "priority": 1
+  },
+  {
+    "id": 606,
+    "name": "Cynergy Bank",
+    "url": "https://careers.cynergybank.co.uk/jobs?split_view=true&query=&location=Central+London",
+    "priority": 1
+  },
+  {
+    "id": 607,
+    "name": "GB Bank",
+    "url": "https://careers.gbbank.co.uk/jobs",
+    "priority": 1
+  },
+  {
+    "id": 608,
+    "name": "Intesa SanPaolo",
+    "url": "https://jobs.intesasanpaolo.com/search/?createNewAlert=false&q=&locationsearch=&optionsFacetsDD_facility=&optionsFacetsDD_country=GB&optionsFacetsDD_department=&optionsFacetsDD_customfield1=Experienced",
+    "priority": 1
+  },
+  {
+    "id": 609,
+    "name": "Investec",
+    "url": "https://careers.investec.co.uk/jobs/vacancy/find/results/",
+    "priority": 1
+  },
+  {
+    "id": 610,
+    "name": "KROO",
+    "url": "https://web.kroo.com/careers",
+    "priority": 1
+  },
+  {
+    "id": 611,
+    "name": "More than money",
+    "url": "https://careers.nab.com.au/jobs/search?page=1&cities%5B%5D=UK-+London&query=",
+    "priority": 1
+  },
+  {
+    "id": 612,
+    "name": "Bank of Ireland",
+    "url": "https://careers.bankofireland.com/jobs/search?page=1&cities%5B%5D=London&query=",
+    "priority": 1
+  },
+  {
+    "id": 613,
+    "name": "Simple Business",
+    "url": "https://travelers.wd5.myworkdayjobs.com/SimplyBusinesssExternal?locations=89aa261a3abf013608efde26672c0c67",
+    "priority": 3
+  },
+  {
+    "id": 614,
+    "name": "FloQast",
+    "url": "https://www.floqast.com/careers?_gl=1*17yp2zi*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwnvTUBhBoEiwAZNDxZwlyTpBd1LJPW2AsvDd4HK7H59akUwnDaODHh14CqKM8m_He77bCMBoCDecQAvD_BwE&gbraid=0AAAAApNBk2Z8c8VscdkU3-DFwLiec1epm#Open-Positions",
+    "priority": 8
+  },
+  {
+    "id": 615,
+    "name": "BuiltIn",
+    "url": "https://builtinlondon.uk/companies/type/fintech-companies",
+    "priority": 5
+  },
+  {
+    "id": 616,
+    "name": "Velocity",
+    "url": "https://www.velocity.xyz/careers#job-board-section",
+    "priority": 1
+  },
+  {
+    "id": 617,
+    "name": "Nevis",
+    "url": "https://www.neviswealth.com/careers/#open-positions",
+    "priority": 1
+  },
+  {
+    "id": 618,
+    "name": "Nous",
+    "url": "https://www.nous.co/careers#roles",
+    "priority": 8
+  },
+  {
+    "id": 619,
+    "name": "Capsa",
+    "url": "https://capsa.ai/careers#roles",
+    "priority": 1
+  },
+  {
+    "id": 620,
+    "name": "Merge Money",
+    "url": "https://jobs.ashbyhq.com/mergemoney?locationId=1be96a0c-0753-4ba1-b01f-aa65a38c9119",
+    "priority": 1
+  },
+  {
+    "id": 621,
+    "name": "Qfex",
+    "url": "https://www.ycombinator.com/companies/qfex/jobs",
+    "priority": 1
+  },
+  {
+    "id": 622,
+    "name": "Palm",
+    "url": "https://careers.usepalm.com/jobs",
+    "priority": 8
+  },
+  {
+    "id": 623,
+    "name": "Cloud Capital",
+    "url": "https://www.cloudcapital.co/careers",
+    "priority": 1
+  },
+  {
+    "id": 624,
+    "name": "Tuza",
+    "url": "https://www.tuza.ai/careers#roles",
+    "priority": 1
+  },
+  {
+    "id": 625,
+    "name": "Celonis",
+    "url": "https://careers.celonis.com/join-us/open-positions?groupedLocation=London%2C+United+Kingdom",
+    "priority": 8
+  },
+  {
+    "id": 626,
+    "name": "Carta",
+    "url": "https://job-boards.greenhouse.io/carta?offices%5B%5D=4161952003",
+    "priority": 1
+  },
+  {
+    "id": 627,
+    "name": "Aci Worldwide",
+    "url": "https://ebwg.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/jobs?lastSelectedFacet=LOCATIONS&location=United+Kingdom&locationId=300000000300008&locationLevel=country&mode=location&selectedLocationsFacet=300000607842933",
+    "priority": 1
+  }
+]
