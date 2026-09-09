@@ -217,7 +217,7 @@
   },
   {
     "id": 37,
-    "name": "Tottenham Hotspur",
+    "name": "Tottenham Hotspur Football Club",
     "url": "https://ce0812li.webitrent.com/ce0812li_webrecruitment/wrd/run/etrec179gf.open?wvid=9447152BOp",
     "priority": 9
   },
@@ -3769,32 +3769,8 @@
   },
   {
     "id": 629,
-    "name": "11:FS",
-    "url": "https://www.11fs.com/careers/vacancies",
+    "name": "Alica Bank",
+    "url": "https://www.allica.bank/careers?_gl=1*wbwfgy*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmoH5zWzhfdZOE7PACmDDlv9wqnnbWRdnCOFnEFThI191JWzZG3ddzQaAtnfEALw_wcB&gbraid=0AAAAABgtp6XmvcZdD6uTXMENJduhs6hdL#latest-vacancies",
     "priority": 1
-  },
-  {
-    "id": 630,
-    "name": "3S Money",
-    "url": "https://app.screenloop.com/careers/3smoney?location_id=1208",
-    "priority": 1
-  },
-  {
-    "id": 631,
-    "name": "73 Strings",
-    "url": "https://73strings.teamtailor.com/jobs",
-    "priority": 1
-  },
-  {
-    "id": 632,
-    "name": "9Spokes",
-    "url": "https://9spokes.bamboohr.com/careers",
-    "priority": 1
-  },
-  {
-    "id": 633,
-    "name": "AVEVA",
-    "url": "https://aveva.wd3.myworkdayjobs.com/en-US/AVEVA_careers/details/Senior-Agile-Project-Manager_R015167?q=project&locationCountry=29247e57dbaf46fb855b224e03170bc7",
-    "priority": 8
   }
 ]
